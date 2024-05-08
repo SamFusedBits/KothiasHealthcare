@@ -1,5 +1,6 @@
 package com.example.ksharsutra
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -21,6 +22,8 @@ class LoginActivity: AppCompatActivity() {
 
         val signInButton = findViewById<Button>(R.id.signin)
 
+        // Create a SharedPreferences instance
+        val sharedPreferences = getSharedPreferences("MySharedPref", Context.MODE_PRIVATE)
 
         signInButton.setOnClickListener {
             if(username.text.toString().isEmpty()){
@@ -35,6 +38,13 @@ class LoginActivity: AppCompatActivity() {
                 password.error = "Please enter password"
                 return@setOnClickListener
             }else{
+                // Store the username, email, and password in SharedPreferences
+                val editor = sharedPreferences.edit()
+                editor.putString("username", username.text.toString())
+                editor.putString("email", email.text.toString())
+                editor.putString("password", password.text.toString())
+                editor.apply()
+
                 val intent = Intent(this, HomePageActivity::class.java)
                 startActivity(intent)
             }
