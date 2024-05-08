@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_blue">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/light_blue"
+    tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
