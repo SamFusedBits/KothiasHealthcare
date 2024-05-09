@@ -4,58 +4,144 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="111dp"
-        android:layout_height="125dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="187dp"
-        android:layout_marginEnd="45dp"
-        android:background="@drawable/help_circle"
-        android:src="@drawable/dr" />
-
-    <TextView
-        android:id="@+id/greetingTextView"
-        android:layout_width="172dp"
-        android:layout_height="45dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="236dp"
-        android:layout_marginEnd="232dp"
-        android:layout_marginBottom="565dp"
-        android:text="Hello,"
-        android:textColor="#808080"
-        android:textSize="20dp" />
-
-    <TextView
-        android:id="@+id/usernameTextView"
-        android:layout_width="225dp"
-        android:layout_height="48dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="352dp"
-        android:layout_marginEnd="172dp"
-        android:text="Dr. Manish Kothia"
-        android:textColor="#000000"
-        android:textSize="20dp"
-        android:textStyle="bold" />
-
     <LinearLayout
-        android:id="@+id/bottom_toolbar"
-        android:layout_width="393dp"
-        android:layout_height="63dp"
+        android:id="@+id/top_toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="61dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="9dp"
         android:layout_marginEnd="9dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="794dp"
+        android:background="@drawable/rounded_home_widget_light_pink"
+        android:gravity="left"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/search"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:gravity="start"
+            android:src="@drawable/search_logo" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="258dp"
+            android:layout_height="wrap_content"
+            android:text="Search specific questions"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar5"
+        android:layout_width="187dp"
+        android:layout_height="172dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="105dp"
+        android:layout_marginEnd="121dp"
+        android:layout_marginBottom="124dp"
+        android:background="@drawable/rounded_home_widget_light_pink"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="105dp"
+        android:layout_height="66dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="623dp"
+        android:layout_marginEnd="202dp"
+        app:srcCompat="@drawable/how_to_use_logo" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="126dp"
+        android:layout_height="75dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="703dp"
+        android:text="Instructions: How to use"
+        android:textSize="19dp"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="198dp"
+        android:layout_height="172dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="227dp"
+        android:layout_marginBottom="322dp"
+        android:background="@drawable/rounded_toolbar_home_green"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="160dp"
+        android:layout_height="65dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="521dp"
+        android:text="Contact us today and   get a consultation!"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar3"
+        android:layout_width="187dp"
+        android:layout_height="172dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="223dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="520dp"
+        android:background="@drawable/rounded_toolbar_home_green"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="186dp"
+        android:layout_height="81dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="230dp"
+        android:layout_marginTop="317dp"
+        android:layout_marginEnd="7dp"
+        android:text="Symptom Analysis Score"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/bottom_toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="78dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="9dp"
         android:background="@drawable/rounded_toolbar_home_dark"
         android:gravity="center"
         android:orientation="horizontal"
@@ -100,52 +186,115 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="192dp"
-        android:layout_height="143dp"
+        android:layout_width="187dp"
+        android:layout_height="172dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="216dp"
-        android:layout_marginBottom="318dp"
-        android:background="@drawable/button_background_signin"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="222dp"
+        android:layout_marginBottom="520dp"
+        android:background="@drawable/rounded_toolbar_home_dark"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar6"
+        android:layout_width="187dp"
+        android:layout_height="172dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="223dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="324dp"
+        android:background="@drawable/rounded_toolbar_home_dark"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
 
     <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="84dp"
+        android:layout_height="81dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="238dp"
+        android:layout_marginTop="429dp"
+        android:layout_marginEnd="101dp"
+        app:srcCompat="@drawable/health_articles_logo" />
+
+    <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="67dp"
+        android:layout_width="86dp"
+        android:layout_height="79dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerVertical="true"
-        android:layout_marginEnd="272dp"
-        android:layout_marginBottom="384dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="305dp"
+        android:layout_marginBottom="395dp"
         app:srcCompat="@drawable/contact_logo" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="171dp"
-        android:layout_height="58dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="225dp"
-        android:layout_marginBottom="323dp"
-        android:textColor="@color/white"
-        android:text="Contact us today and get a consultation!"
-        android:textSize="18dp" />
-
-    <SearchView
-        android:layout_width="403dp"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="96dp"
+        android:layout_height="70dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/searchview_border"
-        android:queryHint="Search"
-        android:textColorHint="@color/black"
-        android:textColor="@color/black"/>
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="241dp"
+        android:layout_marginEnd="297dp"
+        app:srcCompat="@drawable/heart_logo" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="159dp"
+        android:layout_height="43dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="319dp"
+        android:text="Anorectal Disease Questionnaire"
+        android:textSize="17dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="132dp"
+        android:layout_height="63dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="245dp"
+        android:layout_marginTop="524dp"
+        android:layout_marginEnd="46dp"
+        android:text="Health Articles"
+        android:textSize="19dp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="74dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="85dp"
+        android:layout_marginBottom="594dp"
+        app:srcCompat="@drawable/stethoscope_logo" />
+
+    <Button
+        android:id="@+id/proceed"
+        android:layout_width="57dp"
+        android:layout_height="29dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="656dp"
+        android:background="@drawable/rounded_toolbar_home_green"
+        android:text="" />
 
 </RelativeLayout>
