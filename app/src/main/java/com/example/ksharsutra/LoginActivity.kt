@@ -1,5 +1,6 @@
 package com.example.ksharsutra
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -16,11 +17,14 @@ class LoginActivity: AppCompatActivity() {
         val username = findViewById<EditText>(R.id.username)
         val email = findViewById<EditText>(R.id.email)
         val password = findViewById<EditText>(R.id.password)
+        val phoneNumber = findViewById<EditText>(R.id.phone_number)
         val forgotPassword = findViewById<TextView>(R.id.forgot_password)
         val createAccount = findViewById<TextView>(R.id.create_account)
 
         val signInButton = findViewById<Button>(R.id.signin)
 
+        // Create a SharedPreferences instance
+        val sharedPreferences = getSharedPreferences("MySharedPref", Context.MODE_PRIVATE)
 
         signInButton.setOnClickListener {
             if(username.text.toString().isEmpty()){
@@ -34,7 +38,20 @@ class LoginActivity: AppCompatActivity() {
             else if(password.text.toString().isEmpty()){
                 password.error = "Please enter password"
                 return@setOnClickListener
-            }else{
+            }
+            else if(phoneNumber.text.toString().isEmpty()){
+                phoneNumber.error = "Please enter phone number"
+                return@setOnClickListener
+            }
+            else{
+                // Store the username, email, and password in SharedPreferences
+                val editor = sharedPreferences.edit()
+                editor.putString("username", username.text.toString())
+                editor.putString("email", email.text.toString())
+                editor.putString("password", password.text.toString())
+                editor.putString("phone_number", phoneNumber.text.toString())
+                editor.apply()
+
                 val intent = Intent(this, HomePageActivity::class.java)
                 startActivity(intent)
             }
