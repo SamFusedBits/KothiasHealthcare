@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/light_blue"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/back_arrow"
+        android:layout_width="34dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back_arrow_prediction" />
+
+    <ImageView
+        android:id="@+id/prediction_logo"
+        android:layout_width="281dp"
+        android:layout_height="275dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/back_arrow"
+        app:srcCompat="@drawable/prediction_hands_logo" />
+
+    <TextView
+        android:id="@+id/prediction_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prediction"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/prediction_logo" />
+
+    <TextView
+        android:id="@+id/prediction_ready_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your prediction is ready. Check it out now!"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/prediction_heading" />
+
+    <Button
+        android:id="@+id/view_prediction"
+        android:layout_width="277dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="248dp"
+        android:background="@drawable/button_background_signin"
+        android:text="View prediction"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/prediction_ready_message" />
+</androidx.constraintlayout.widget.ConstraintLayout>
