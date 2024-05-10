@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ivory_white">
+    android:background="@color/ivory_white"
+    android:orientation="horizontal">
+
 
     <LinearLayout
         android:id="@+id/bottom_toolbar"
@@ -14,14 +16,14 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/button_bg_layout_green"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
@@ -29,7 +31,6 @@
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_weight="0.5"
-            android:background="@drawable/button_bg_layout_ivory"
             android:src="@drawable/toolbar_home_logo" />
 
         <ImageView
@@ -37,7 +38,6 @@
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_weight="0.5"
-            android:background="@drawable/button_bg_layout_ivory"
             android:src="@drawable/toolbar_report_logo" />
 
         <ImageView
@@ -45,7 +45,6 @@
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_weight="0.5"
-            android:background="@drawable/button_bg_layout_ivory"
             android:src="@drawable/toolbar_appointment_logo" />
 
         <ImageView
@@ -53,7 +52,6 @@
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_weight="0.5"
-            android:background="@drawable/button_bg_layout_ivory"
             android:src="@drawable/toolbar_doctor_logo" />
 
         <ImageView
@@ -61,30 +59,17 @@
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_weight="0.5"
-            android:background="@drawable/button_bg_layout_ivory"
             android:src="@drawable/toolbar_user_profile_logo" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/userDetails"
-        android:layout_width="354dp"
-        android:layout_height="182dp"
-        android:layout_marginTop="112dp"
-
-        android:textColor="@color/green"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="418dp"
-        android:layout_height="84dp"
+        android:layout_width="454dp"
+        android:layout_height="93dp"
         android:layout_marginTop="4dp"
         android:background="@drawable/button_bg_layout_ivory"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -101,52 +86,20 @@
             android:layout_height="40dp"
             android:layout_gravity="end"
             android:layout_marginEnd="16dp"
+            android:background="@color/green"
             android:src="@drawable/logout_new" />
     </androidx.appcompat.widget.Toolbar>
 
-    <EditText
-        android:id="@+id/name"
-        android:layout_width="399dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        android:hint="Name"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/userDetails" />
+    <androidx.constraintlayout.widget.Barrier
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="left" />
 
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="399dp"
-        android:layout_height="77dp"
-        android:layout_marginTop="36dp"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
+    <androidx.constraintlayout.widget.Barrier
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.416"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/name" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/phone"
-        android:layout_width="398dp"
-        android:layout_height="83dp"
-        android:layout_marginTop="36dp"
-        android:hint="Phone Number"
-        android:inputType="phone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.461"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/email" />
-
-    <EditText
-        android:id="@+id/blood_group"
-        android:layout_width="399dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="64dp"
-        android:hint="Blood Group"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/phone" />
 </androidx.constraintlayout.widget.ConstraintLayout>

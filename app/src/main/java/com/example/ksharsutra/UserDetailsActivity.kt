@@ -44,7 +44,5 @@ class UserDetailsActivity: AppCompatActivity(){
             val intent = Intent(this, HomePageActivity::class.java)
             startActivity(intent)
         }
-
-
     }
 }
