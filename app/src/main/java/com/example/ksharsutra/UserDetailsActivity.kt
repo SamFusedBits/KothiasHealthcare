@@ -26,8 +26,6 @@ class UserDetailsActivity: AppCompatActivity(){
         val password = sharedPreferences.getString("password", "")
         val phonenumber = sharedPreferences.getString("phone_number", "")
 
-
-
         userDetails.text = "Hello $username!!!\nEmail: $email\nPassword: $password\nPhone Number: $phonenumber"
 
         nativation_home.setOnClickListener {
@@ -44,7 +42,5 @@ class UserDetailsActivity: AppCompatActivity(){
             val intent = Intent(this, HomePageActivity::class.java)
             startActivity(intent)
         }
-
-
     }
 }
