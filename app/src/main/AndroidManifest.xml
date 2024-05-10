@@ -25,6 +25,7 @@
         <activity android:name=".UserDetailsActivity" />
         <activity android:name=".HomePageActivity" />
         <activity android:name=".PredictionActivity" />
+        <activity android:name=".DashboardActivity"/>
     </application>
 
 </manifest>

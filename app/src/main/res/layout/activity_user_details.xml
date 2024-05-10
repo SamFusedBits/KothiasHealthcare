@@ -10,7 +10,8 @@
 
     <LinearLayout
         android:id="@+id/bottom_toolbar"
-
+        android:layout_width="365dp"
+        android:layout_height="70dp"
         android:layout_width="0dp"
         android:layout_height="51dp"
         android:layout_marginStart="9dp"
@@ -33,12 +34,15 @@
             android:id="@+id/navigation_home"
             android:layout_width="0dp"
             android:layout_height="60dp"
-            android:layout_weight="0.5"
             android:layout_marginEnd="10dp"
+            android:layout_weight="0.5"
             android:src="@drawable/homepage" />
 
         <ImageView
             android:id="@+id/navigation_report"
+            android:layout_width="5dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="0.5"
@@ -49,16 +53,16 @@
             android:id="@+id/navigation_appointment"
             android:layout_width="0dp"
             android:layout_height="60dp"
-            android:layout_weight="0.5"
             android:layout_marginEnd="10dp"
+            android:layout_weight="0.5"
             android:src="@drawable/calendarplus" />
 
         <ImageView
             android:id="@+id/navigation_doctor"
             android:layout_width="0dp"
             android:layout_height="60dp"
-            android:layout_weight="0.5"
             android:layout_marginEnd="10dp"
+            android:layout_weight="0.5"
             android:src="@drawable/team" />
 
         <ImageView
