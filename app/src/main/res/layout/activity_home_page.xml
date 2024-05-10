@@ -1,267 +1,300 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/button_bg_layout_ivory">
+    android:background="#FFFFF0">
 
-    <LinearLayout
-        android:id="@+id/top_toolbar"
-        android:layout_width="374dp"
-        android:layout_height="72dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="9dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="764dp"
-        android:background="@drawable/button_bg_layout_ivory"
-        android:gravity="left"
-        android:orientation="horizontal"
-        android:padding="5dp">
-
-        <ImageView
-            android:id="@+id/search_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="42dp"
-            android:gravity="start"
-            android:src="@drawable/search_logo" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="258dp"
-            android:layout_height="wrap_content"
-            android:text="Search specific questions"
-            android:textSize="20dp" />
-    </LinearLayout>
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
-        android:layout_width="198dp"
-        android:layout_height="172dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="227dp"
-        android:layout_marginBottom="322dp"
-        android:background="@drawable/button_bg_layout_ivory"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="135dp"
-        android:layout_height="63dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="451dp"
-        android:text="Contact us"
-        android:textSize="19dp"
-        android:textStyle="bold" />
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar3"
-        android:layout_width="187dp"
-        android:layout_height="172dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="223dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginBottom="520dp"
-        android:background="@drawable/button_bg_layout_ivory"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="97dp"
-        android:layout_height="106dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="235dp"
-        android:layout_marginTop="238dp"
-        android:layout_marginEnd="63dp"
-        android:text="Analysis Score"
-        android:textSize="18dp"
-        android:textStyle="bold" />
-
+    <EditText
+        android:id="@+id/search_bar"
+        android:layout_width="369dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/green_border"
+        android:drawableStart="@drawable/search_logo"
+        android:drawablePadding="10dp"
+        android:hint="Search here..."
+        android:inputType="text"
+        android:padding="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/bottom_toolbar"
-        android:layout_width="wrap_content"
-        android:layout_height="78dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_width="365dp"
+        android:layout_height="70dp"
         android:layout_marginStart="9dp"
         android:layout_marginEnd="9dp"
         android:layout_marginBottom="9dp"
         android:background="@drawable/button_bg_layout_green"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="5dp">
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
             android:id="@+id/navigation_home"
             android:layout_width="0dp"
             android:layout_height="60dp"
+            android:layout_marginEnd="10dp"
             android:layout_weight="0.5"
-            android:background="@drawable/button_bg_layout_ivory"
-            android:src="@drawable/toolbar_home_logo" />
+            android:src="@drawable/homepage" />
 
         <ImageView
             android:id="@+id/navigation_report"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_width="5dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
             android:layout_weight="0.5"
-            android:background="@drawable/button_bg_layout_ivory"
-            android:src="@drawable/toolbar_report_logo" />
+            android:src="@drawable/reporticon" />
 
         <ImageView
             android:id="@+id/navigation_appointment"
             android:layout_width="0dp"
             android:layout_height="60dp"
+            android:layout_marginEnd="10dp"
             android:layout_weight="0.5"
-            android:background="@drawable/button_bg_layout_ivory"
-            android:src="@drawable/toolbar_appointment_logo" />
+            android:src="@drawable/calendarplus" />
 
         <ImageView
             android:id="@+id/navigation_doctor"
             android:layout_width="0dp"
             android:layout_height="60dp"
+            android:layout_marginEnd="10dp"
             android:layout_weight="0.5"
-            android:background="@drawable/button_bg_layout_ivory"
-            android:src="@drawable/toolbar_doctor_logo" />
+            android:src="@drawable/team" />
 
         <ImageView
             android:id="@+id/navigation_profile"
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_weight="0.5"
-            android:background="@drawable/button_bg_layout_ivory"
+            android:src="@drawable/user" />
             android:src="@drawable/toolbar_user_profile_logo" />
     </LinearLayout>
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="187dp"
-        android:layout_height="172dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="14dp"
-        android:layout_marginEnd="222dp"
-        android:layout_marginBottom="520dp"
-        android:background="@drawable/button_bg_layout_ivory"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar6"
-        android:layout_width="187dp"
-        android:layout_height="172dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="223dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="324dp"
-        android:background="@drawable/button_bg_layout_ivory"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="75dp"
-        android:layout_height="77dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="248dp"
-        android:layout_marginTop="354dp"
-        android:layout_marginEnd="72dp"
-        android:layout_marginBottom="401dp"
-        app:srcCompat="@drawable/health_logo" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="92dp"
-        android:layout_height="124dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="45dp"
-        android:layout_marginEnd="258dp"
-        android:layout_marginBottom="367dp"
-        app:srcCompat="@drawable/contact_logo" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="105dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="167dp"
-        android:layout_marginEnd="260dp"
-        app:srcCompat="@drawable/heart_logo" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="122dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="262dp"
-        android:text="Questionnaire"
-        android:textSize="17dp"
-        android:textStyle="bold" />
+        android:layout_marginTop="44dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/search_bar"
+        tools:layout_editor_absoluteX="0dp">
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="145dp"
-        android:layout_height="222dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="233dp"
-        android:layout_marginTop="445dp"
-        android:layout_marginEnd="17dp"
-        android:text="Health Advice"
-        android:textSize="19dp"
-        android:textStyle="bold" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/questionnaire_card"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_margin="8dp"
+            android:layout_weight="1">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="209dp"
-        android:layout_height="84dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="182dp"
-        android:layout_marginEnd="11dp"
-        android:layout_marginBottom="584dp"
-        app:srcCompat="@drawable/stethoscope_logo" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rounded_border"
+                android:gravity="center"
+                android:orientation="vertical">
 
-    <Button
-        android:id="@+id/proceed"
-        android:layout_width="57dp"
-        android:layout_height="29dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="21dp"
-        android:layout_marginBottom="656dp"
-        android:textColor="@color/ivory_white"
-        android:text="" />
+                <ImageView
+                    android:id="@+id/questionnaire_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/questionnaire" />
 
-</RelativeLayout>
+                <TextView
+                    android:id="@+id/questionnaire_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Questionnaire"
+                    android:textColor="@color/green"
+
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/analysisscore_card"
+            android:layout_width="15dp"
+            android:layout_height="150dp"
+            android:layout_margin="8dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rounded_border"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/analysisscore_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/analysisscore" />
+
+                <TextView
+                    android:id="@+id/analysisscore_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Analysis Score"
+                    android:textColor="@color/green"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="232dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/search_bar"
+        tools:layout_editor_absoluteX="0dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/contactus_card"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_margin="8dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rounded_border"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/contactus_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/contactus" />
+
+                <TextView
+                    android:id="@+id/contactus_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Contact Us"
+                    android:textColor="@color/green"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/healthadvice_card"
+            android:layout_width="15dp"
+            android:layout_height="150dp"
+            android:layout_margin="8dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rounded_border"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/healthadvice_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/healthadvice" />
+
+                <TextView
+                    android:id="@+id/healthadvice_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Health Advice"
+                    android:textColor="@color/green"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="432dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/search_bar"
+        tools:layout_editor_absoluteX="0dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/howtouse_card"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_margin="8dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rounded_border"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/howtouse_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/howtouse" />
+
+                <TextView
+                    android:id="@+id/howtouse_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="How to Use?"
+                    android:textColor="@color/green"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/aboutus_card"
+            android:layout_width="15dp"
+            android:layout_height="150dp"
+            android:layout_margin="8dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rounded_border"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/aboutus_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/aboutus" />
+
+                <TextView
+                    android:id="@+id/aboutus_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="About us"
+                    android:textColor="@color/green"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
