@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_blue">
+    android:background="@color/ivory_white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,71 +12,72 @@
         android:padding="16dp">
 
         <ImageView
-            android:id="@+id/logo_image"
-            android:layout_width="368dp"
-            android:layout_height="316dp"
+            android:id="@+id/logo"
+            android:layout_width="120dp"
+            android:layout_height="201dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="24dp"
             android:src="@drawable/logo" />
 
         <TextView
-            android:id="@+id/logo"
+            android:id="@+id/app_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="24dp"
-            android:text="KSHAR SUTRA"
-            android:textColor="@color/dark_black"
+            android:text="KsharSutra"
+            android:textColor="@color/green"
             android:textSize="32sp"
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/signin"
-            android:layout_width="match_parent"
+            android:id="@+id/login"
+            android:layout_width="359dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:background="@drawable/button_background_signin"
-            android:text="Sign in"
+            android:background="@drawable/button_bg_layout_green"
+            android:text="Login"
             android:textAllCaps="false"
-            android:textColor="@color/dark_black" />
+            android:textColor="@color/ivory_white" />
 
         <LinearLayout
             android:id="@+id/google_login"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/button_background_signup"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
+            android:layout_width="359dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/button_bg_layout_green"
             android:clickable="true"
             android:focusable="true"
-            android:layout_marginBottom="16dp"> <!-- To add space below the button -->
+            android:gravity="center_vertical"
+            android:orientation="horizontal"> <!-- To add space below the button -->
 
             <ImageView
                 android:layout_width="35dp"
                 android:layout_height="44dp"
                 android:layout_marginStart="16dp"
-                android:src="@drawable/google_logo"
-                android:scaleType="fitCenter" />
+                android:scaleType="fitCenter"
+                android:src="@drawable/google_logo" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="213dp"
+                android:layout_height="22dp"
                 android:layout_marginStart="8dp"
+                android:text="                Sign in with Google"
                 android:textAlignment="center"
-                android:text="                    Sign in with Google"
-                android:textColor="@color/dark_black" /> <!-- To increase or decrease the text size -->
+                android:textColor="@color/ivory_white"
+                android:textSize="15dp" /> <!-- To increase or decrease the text size -->
 
         </LinearLayout>
 
         <Button
             android:id="@+id/signup"
-            android:layout_width="match_parent"
+            android:layout_width="359dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/button_background_signup"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/button_bg_layout_green"
             android:textAllCaps="false"
             android:text="Sign up"
-            android:textColor="@color/dark_black" />
+            android:textColor="@color/ivory_white" />
 
     </LinearLayout>
 </ScrollView>

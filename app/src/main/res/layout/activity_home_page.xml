@@ -2,26 +2,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/button_bg_layout_ivory">
 
     <LinearLayout
         android:id="@+id/top_toolbar"
-        android:layout_width="wrap_content"
-        android:layout_height="61dp"
+        android:layout_width="374dp"
+        android:layout_height="72dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="9dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginBottom="794dp"
-        android:background="@drawable/rounded_home_widget_light_pink"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="764dp"
+        android:background="@drawable/button_bg_layout_ivory"
         android:gravity="left"
         android:orientation="horizontal"
         android:padding="5dp">
 
         <ImageView
-            android:id="@+id/search"
+            android:id="@+id/search_logo"
             android:layout_width="wrap_content"
             android:layout_height="42dp"
             android:gravity="start"
@@ -36,47 +37,6 @@
     </LinearLayout>
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar5"
-        android:layout_width="187dp"
-        android:layout_height="172dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="105dp"
-        android:layout_marginEnd="121dp"
-        android:layout_marginBottom="124dp"
-        android:background="@drawable/rounded_home_widget_light_pink"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
-
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="105dp"
-        android:layout_height="66dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="623dp"
-        android:layout_marginEnd="202dp"
-        app:srcCompat="@drawable/how_to_use_logo" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="126dp"
-        android:layout_height="75dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="152dp"
-        android:layout_marginTop="703dp"
-        android:text="Instructions: How to use"
-        android:textSize="19dp"
-        android:textStyle="bold" />
-
-    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
         android:layout_width="198dp"
         android:layout_height="172dp"
@@ -86,21 +46,21 @@
         android:layout_marginStart="15dp"
         android:layout_marginEnd="227dp"
         android:layout_marginBottom="322dp"
-        android:background="@drawable/rounded_toolbar_home_green"
+        android:background="@drawable/button_bg_layout_ivory"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="160dp"
-        android:layout_height="65dp"
+        android:layout_width="135dp"
+        android:layout_height="63dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="521dp"
-        android:text="Contact us today and   get a consultation!"
-        android:textSize="16dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="451dp"
+        android:text="Contact us"
+        android:textSize="19dp"
         android:textStyle="bold" />
 
     <androidx.appcompat.widget.Toolbar
@@ -113,23 +73,24 @@
         android:layout_marginStart="223dp"
         android:layout_marginEnd="14dp"
         android:layout_marginBottom="520dp"
-        android:background="@drawable/rounded_toolbar_home_green"
+        android:background="@drawable/button_bg_layout_ivory"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="186dp"
-        android:layout_height="81dp"
+        android:layout_width="97dp"
+        android:layout_height="106dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="230dp"
-        android:layout_marginTop="317dp"
-        android:layout_marginEnd="7dp"
-        android:text="Symptom Analysis Score"
+        android:layout_marginStart="235dp"
+        android:layout_marginTop="238dp"
+        android:layout_marginEnd="63dp"
+        android:text="Analysis Score"
         android:textSize="18dp"
         android:textStyle="bold" />
+
 
     <LinearLayout
         android:id="@+id/bottom_toolbar"
@@ -142,7 +103,7 @@
         android:layout_marginStart="9dp"
         android:layout_marginEnd="9dp"
         android:layout_marginBottom="9dp"
-        android:background="@drawable/rounded_toolbar_home_dark"
+        android:background="@drawable/button_bg_layout_green"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="5dp">
@@ -150,37 +111,41 @@
         <ImageView
             android:id="@+id/navigation_home"
             android:layout_width="0dp"
-            android:layout_height="44dp"
+            android:layout_height="60dp"
             android:layout_weight="0.5"
-            android:background="@drawable/toolbar_home_page_navigate_bg"
+            android:background="@drawable/button_bg_layout_ivory"
             android:src="@drawable/toolbar_home_logo" />
 
         <ImageView
             android:id="@+id/navigation_report"
             android:layout_width="0dp"
-            android:layout_height="44dp"
+            android:layout_height="60dp"
             android:layout_weight="0.5"
+            android:background="@drawable/button_bg_layout_ivory"
             android:src="@drawable/toolbar_report_logo" />
 
         <ImageView
             android:id="@+id/navigation_appointment"
             android:layout_width="0dp"
-            android:layout_height="44dp"
+            android:layout_height="60dp"
             android:layout_weight="0.5"
+            android:background="@drawable/button_bg_layout_ivory"
             android:src="@drawable/toolbar_appointment_logo" />
 
         <ImageView
             android:id="@+id/navigation_doctor"
             android:layout_width="0dp"
-            android:layout_height="44dp"
+            android:layout_height="60dp"
             android:layout_weight="0.5"
+            android:background="@drawable/button_bg_layout_ivory"
             android:src="@drawable/toolbar_doctor_logo" />
 
         <ImageView
             android:id="@+id/navigation_profile"
             android:layout_width="0dp"
-            android:layout_height="44dp"
+            android:layout_height="60dp"
             android:layout_weight="0.5"
+            android:background="@drawable/button_bg_layout_ivory"
             android:src="@drawable/toolbar_user_profile_logo" />
     </LinearLayout>
 
@@ -194,7 +159,7 @@
         android:layout_marginStart="14dp"
         android:layout_marginEnd="222dp"
         android:layout_marginBottom="520dp"
-        android:background="@drawable/rounded_toolbar_home_dark"
+        android:background="@drawable/button_bg_layout_ivory"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
 
@@ -208,82 +173,84 @@
         android:layout_marginStart="223dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="324dp"
-        android:background="@drawable/rounded_toolbar_home_dark"
+        android:background="@drawable/button_bg_layout_ivory"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="84dp"
-        android:layout_height="81dp"
+        android:layout_width="75dp"
+        android:layout_height="77dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="238dp"
-        android:layout_marginTop="429dp"
-        android:layout_marginEnd="101dp"
-        app:srcCompat="@drawable/health_articles_logo" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="248dp"
+        android:layout_marginTop="354dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginBottom="401dp"
+        app:srcCompat="@drawable/health_logo" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="86dp"
-        android:layout_height="79dp"
+        android:layout_width="92dp"
+        android:layout_height="124dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerVertical="true"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="305dp"
-        android:layout_marginBottom="395dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="258dp"
+        android:layout_marginBottom="367dp"
         app:srcCompat="@drawable/contact_logo" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="96dp"
-        android:layout_height="70dp"
+        android:layout_width="wrap_content"
+        android:layout_height="105dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="241dp"
-        android:layout_marginEnd="297dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="167dp"
+        android:layout_marginEnd="260dp"
         app:srcCompat="@drawable/heart_logo" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="159dp"
-        android:layout_height="43dp"
+        android:layout_width="122dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="319dp"
-        android:text="Anorectal Disease Questionnaire"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="262dp"
+        android:text="Questionnaire"
         android:textSize="17dp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="132dp"
-        android:layout_height="63dp"
+        android:layout_width="145dp"
+        android:layout_height="222dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="245dp"
-        android:layout_marginTop="524dp"
-        android:layout_marginEnd="46dp"
-        android:text="Health Articles"
+        android:layout_marginStart="233dp"
+        android:layout_marginTop="445dp"
+        android:layout_marginEnd="17dp"
+        android:text="Health Advice"
         android:textSize="19dp"
         android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="74dp"
+        android:layout_width="209dp"
+        android:layout_height="84dp"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="85dp"
-        android:layout_marginBottom="594dp"
+        android:layout_marginTop="182dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="584dp"
         app:srcCompat="@drawable/stethoscope_logo" />
 
     <Button
@@ -294,7 +261,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="21dp"
         android:layout_marginBottom="656dp"
-        android:background="@drawable/rounded_toolbar_home_green"
+        android:textColor="@color/ivory_white"
         android:text="" />
 
 </RelativeLayout>

@@ -21,7 +21,7 @@ class LoginActivity: AppCompatActivity() {
         val forgotPassword = findViewById<TextView>(R.id.forgot_password)
         val createAccount = findViewById<TextView>(R.id.create_account)
 
-        val signInButton = findViewById<Button>(R.id.signin)
+        val signInButton = findViewById<Button>(R.id.login)
 
         // Create a SharedPreferences instance
         val sharedPreferences = getSharedPreferences("MySharedPref", Context.MODE_PRIVATE)
