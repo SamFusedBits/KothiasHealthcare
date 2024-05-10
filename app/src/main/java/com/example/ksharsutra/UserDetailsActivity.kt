@@ -12,7 +12,7 @@ class UserDetailsActivity: AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_details)
-        val userDetails: TextView = findViewById(R.id.userDetails)
+        //val userDetails: TextView = findViewById(R.id.userDetails)
 
         val nativation_home = findViewById<ImageView>(R.id.navigation_home)
 
@@ -26,7 +26,7 @@ class UserDetailsActivity: AppCompatActivity(){
         val password = sharedPreferences.getString("password", "")
         val phonenumber = sharedPreferences.getString("phone_number", "")
 
-        userDetails.text = "Hello $username!!!\nEmail: $email\nPassword: $password\nPhone Number: $phonenumber"
+        //userDetails.text = "Hello $username!!!\nEmail: $email\nPassword: $password\nPhone Number: $phonenumber"
 
         nativation_home.setOnClickListener {
             val intent = Intent(this, HomePageActivity::class.java)
