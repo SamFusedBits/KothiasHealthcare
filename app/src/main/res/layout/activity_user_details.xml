@@ -16,13 +16,10 @@
         android:layout_marginStart="9dp"
         android:layout_marginEnd="9dp"
         android:layout_marginBottom="9dp"
-        android:layout_width="401dp"
-        android:layout_height="83dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="24dp"
         android:background="@drawable/button_bg_layout_green"
         android:gravity="center"
         android:orientation="horizontal"
@@ -39,16 +36,14 @@
             android:layout_weight="0.5"
             android:layout_marginEnd="10dp"
             android:src="@drawable/homepage" />
-            android:src="@drawable/toolbar_home_logo" />
 
         <ImageView
             android:id="@+id/navigation_report"
-            android:layout_width="7dp"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="10dp"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
             android:layout_weight="0.5"
+            android:layout_marginEnd="10dp"
             android:src="@drawable/reporticon" />
-            android:src="@drawable/toolbar_report_logo" />
 
         <ImageView
             android:id="@+id/navigation_appointment"
@@ -57,7 +52,6 @@
             android:layout_weight="0.5"
             android:layout_marginEnd="10dp"
             android:src="@drawable/calendarplus" />
-            android:src="@drawable/toolbar_appointment_logo" />
 
         <ImageView
             android:id="@+id/navigation_doctor"
@@ -66,7 +60,6 @@
             android:layout_weight="0.5"
             android:layout_marginEnd="10dp"
             android:src="@drawable/team" />
-            android:src="@drawable/toolbar_doctor_logo" />
 
         <ImageView
             android:id="@+id/navigation_profile"
@@ -74,7 +67,6 @@
             android:layout_height="60dp"
             android:layout_weight="0.5"
             android:src="@drawable/user" />
-            android:src="@drawable/toolbar_user_profile_logo" />
     </LinearLayout>
 
 
