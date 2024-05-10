@@ -26,6 +26,8 @@ class HomePageActivity: AppCompatActivity() {
         val questionnaire_card = findViewById<CardView>(R.id.questionnaire_card)
         val prediction_card = findViewById<CardView>(R.id.analysisscore_card)
 
+        val nativation_doctor = findViewById<ImageView>(R.id.navigation_doctor)
+
         navigation_profile.setOnClickListener {
             val intent = Intent(this, UserDetailsActivity::class.java)
             startActivity(intent)
@@ -33,6 +35,11 @@ class HomePageActivity: AppCompatActivity() {
 
         prediction_card.setOnClickListener {
             val intent = Intent(this, PredictionActivity::class.java)
+            startActivity(intent)
+        }
+
+        nativation_doctor.setOnClickListener {
+            val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
         }
     }
