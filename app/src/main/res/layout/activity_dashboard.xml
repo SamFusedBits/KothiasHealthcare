@@ -5,25 +5,43 @@
     android:layout_height="match_parent"
     android:background="#FFFFF0">
 
-    <!-- First CardView at the top -->
+
+
+    <EditText
+        android:id="@+id/search_bar"
+        android:layout_width="369dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/green_border"
+        android:drawableStart="@drawable/search_logo"
+        android:drawablePadding="10dp"
+        android:hint="Search here..."
+        android:inputType="text"
+        android:padding="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/hello_doctor_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        app:cardElevation="0dp"
         app:cardBackgroundColor="#FFFFF0"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/search_bar">
 
         <TextView
             android:id="@+id/hello_doctor_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:text="Hello Doctor"
+            android:text="Hello Dr."
             android:textColor="@color/green"
             android:textSize="40sp"
             android:textStyle="bold" />
     </androidx.cardview.widget.CardView>
+
 
 
     <androidx.cardview.widget.CardView
@@ -35,6 +53,52 @@
         app:cardBackgroundColor="@color/white"
         app:layout_constraintTop_toBottomOf="@id/hello_doctor_card">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_border"
+            android:padding="16dp">
+
+
+            <TextView
+                android:id="@+id/name1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name: Patient1"
+                android:textColor="@color/green"
+                android:textSize="20sp"
+
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/email1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email: abc@example.com"
+                android:textColor="@color/green"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/phone1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone: 9876543210"
+                android:textColor="@color/green"
+                android:textSize="20sp"
+
+                android:textStyle="bold"/>
+
+            <Button
+                android:id="@+id/download_button1"
+                android:layout_width="99dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:background="@drawable/rounded_button"
+                android:text="Download"
+                android:textColor="@color/white" />
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -45,6 +109,50 @@
         app:cardElevation="10dp"
         app:cardBackgroundColor="@color/white"
         app:layout_constraintTop_toBottomOf="@id/patient1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_border"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/name2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name: Patient2"
+                android:textColor="@color/green"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/email2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email: abc@example.com"
+                android:textColor="@color/green"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/phone2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone: 9876543210"
+                android:textColor="@color/green"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <Button
+                android:id="@+id/download_button2"
+                android:layout_width="99dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:background="@drawable/rounded_button"
+                android:text="Download"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
@@ -57,6 +165,51 @@
         app:cardBackgroundColor="@color/white"
         app:layout_constraintTop_toBottomOf="@id/patient2">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_border"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/name3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name: Patient3"
+                android:textColor="@color/green"
+                android:textSize="20sp"
+
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/email3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email: abc@example.com"
+                android:textColor="@color/green"
+                android:textSize="20sp"
+
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/phone3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone: 9876543210"
+                android:textColor="@color/green"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <Button
+                android:id="@+id/download_button3"
+                android:layout_width="99dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:background="@drawable/rounded_button"
+                android:text="Download"
+                android:textColor="@color/white" />
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
@@ -114,155 +267,7 @@
             android:src="@drawable/user" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="387dp"
-        android:layout_height="157dp"
-        android:background="@drawable/rounded_border"
-        android:orientation="vertical"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="567dp">
 
-        <TextView
-            android:id="@+id/name3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Name: Patient3"
-            android:textColor="@color/green"
-            android:textSize="20sp"
-
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/email3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email: abc@example.com"
-            android:textColor="@color/green"
-            android:textSize="20sp"
-
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/phone3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Phone: 9876543210"
-            android:textColor="@color/green"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/download_button3"
-            android:layout_width="99dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:background="@drawable/rounded_button"
-            android:text="Download"
-            android:textColor="@color/white" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="386dp"
-        android:layout_height="164dp"
-        android:layout_marginStart="12dp"
-        android:background="@drawable/rounded_border"
-        android:orientation="vertical"
-        android:padding="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="368dp">
-
-        <TextView
-            android:id="@+id/name2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Name: Patient2"
-            android:textColor="@color/green"
-            android:textSize="20sp"
-
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/phone2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Phone: 9876543210"
-            android:textColor="@color/green"
-            android:textSize="20sp"
-
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/email2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email: abc@example.com"
-            android:textColor="@color/green"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/download_button2"
-            android:layout_width="99dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:background="@drawable/rounded_button"
-            android:text="Download"
-            android:textColor="@color/white" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="392dp"
-        android:layout_height="152dp"
-        android:background="@drawable/rounded_border"
-        android:orientation="vertical"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="176dp">
-
-
-        <TextView
-            android:id="@+id/name1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Name: Patient1"
-            android:textColor="@color/green"
-            android:textSize="20sp"
-
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/email1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email: abc@example.com"
-            android:textColor="@color/green"
-            android:textSize="20sp"
-
-            android:textStyle="bold" /> <!-- Add this line to make the text bold -->
-
-        <TextView
-            android:id="@+id/phone1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Phone: 9876543210"
-            android:textColor="@color/green"
-            android:textSize="20sp"
-
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/download_button1"
-            android:layout_width="99dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:background="@drawable/rounded_button"
-            android:text="Download"
-            android:textColor="@color/white" />
-    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

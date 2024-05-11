@@ -13,12 +13,14 @@ class UserDetailsActivity: AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_details)
-        //val userDetails: TextView = findViewById(R.id.userDetails)
+        val userDetails: TextView = findViewById(R.id.userDetails)
 
         val nativation_home = findViewById<ImageView>(R.id.navigation_home)
+        val nativation_doctor = findViewById<ImageView>(R.id.navigation_doctor)
 
         val logout = findViewById<Button>(R.id.logout)
         val user = findViewById<TextView>(R.id.user_name)
+
 
         // Get the username, email, and password from SharedPreferences
         val sharedPreferences = getSharedPreferences("MySharedPref", Context.MODE_PRIVATE)
@@ -27,10 +29,17 @@ class UserDetailsActivity: AppCompatActivity(){
         val password = sharedPreferences.getString("password", "")
         val phonenumber = sharedPreferences.getString("phone_number", "")
 
-        //userDetails.text = "Hello $username!!!\nEmail: $email\nPassword: $password\nPhone Number: $phonenumber"
+
+        userDetails.text = "Hello $username!!!\nEmail: $email\nPassword: $password\nPhone Number: $phonenumber"
+
 
         nativation_home.setOnClickListener {
             val intent = Intent(this, HomePageActivity::class.java)
+            startActivity(intent)
+        }
+
+        nativation_doctor.setOnClickListener() {
+            val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
         }
 
