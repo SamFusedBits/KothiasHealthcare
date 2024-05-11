@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.media.Image
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -17,8 +18,8 @@ class UserDetailsActivity: AppCompatActivity(){
         val nativation_home = findViewById<ImageView>(R.id.navigation_home)
         val nativation_doctor = findViewById<ImageView>(R.id.navigation_doctor)
 
-        val logout = findViewById<ImageView>(R.id.logout)
-        val user = findViewById<ImageView>(R.id.user)
+        val logout = findViewById<Button>(R.id.logout)
+        val user = findViewById<TextView>(R.id.user_name)
 
 
         // Get the username, email, and password from SharedPreferences
@@ -30,6 +31,7 @@ class UserDetailsActivity: AppCompatActivity(){
 
 
         userDetails.text = "Hello $username!!!\nEmail: $email\nPassword: $password\nPhone Number: $phonenumber"
+
 
         nativation_home.setOnClickListener {
             val intent = Intent(this, HomePageActivity::class.java)
