@@ -13,7 +13,7 @@ class UserDetailsActivity: AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_details)
-        val userDetails: TextView = findViewById(R.id.userDetails)
+        val userDetails: TextView = findViewById(R.id.user_name)
 
         val nativation_home = findViewById<ImageView>(R.id.navigation_home)
         val nativation_doctor = findViewById<ImageView>(R.id.navigation_doctor)
