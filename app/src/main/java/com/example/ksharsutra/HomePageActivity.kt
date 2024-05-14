@@ -18,9 +18,6 @@ class HomePageActivity: AppCompatActivity() {
         val drawable = ResourcesCompat.getDrawable(resources, R.drawable.search_logo, null)
         val scaledDrawable = BitmapDrawable(resources, Bitmap.createScaledBitmap((drawable as BitmapDrawable).bitmap, 40, 40, true))
 
-        val search_bar = findViewById<EditText>(R.id.search_bar)
-        search_bar.setCompoundDrawablesWithIntrinsicBounds(scaledDrawable, null, null, null)
-
         val navigation_profile = findViewById<ImageView>(R.id.navigation_profile)
 
         val questionnaire_card = findViewById<CardView>(R.id.questionnaire_card)
