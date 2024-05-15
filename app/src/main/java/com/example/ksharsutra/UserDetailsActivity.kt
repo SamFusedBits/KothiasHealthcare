@@ -15,9 +15,9 @@ class UserDetailsActivity: AppCompatActivity(){
         setContentView(R.layout.activity_user_details)
         val userDetails: TextView = findViewById(R.id.user_name)
 
-        val nativation_home = findViewById<ImageView>(R.id.navigation_home)
-        val nativation_doctor = findViewById<ImageView>(R.id.navigation_doctor)
+        val navigation_home = findViewById<ImageView>(R.id.navigation_home)
 
+        val navigation_report = findViewById<ImageView>(R.id.navigation_report)
         val logout = findViewById<Button>(R.id.logout)
         val user = findViewById<TextView>(R.id.user_name)
 
@@ -33,13 +33,13 @@ class UserDetailsActivity: AppCompatActivity(){
         userDetails.text = "Hello $username!!!\nEmail: $email\nPassword: $password\nPhone Number: $phonenumber"
 
 
-        nativation_home.setOnClickListener {
+        navigation_home.setOnClickListener {
             val intent = Intent(this, HomePageActivity::class.java)
             startActivity(intent)
         }
 
-        nativation_doctor.setOnClickListener() {
-            val intent = Intent(this, DashboardActivity::class.java)
+        navigation_report.setOnClickListener{
+            val intent = Intent(this, PredictionActivity::class.java)
             startActivity(intent)
         }
 

@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     android:background="#FFFFF0">
 
+
+
     <EditText
         android:id="@+id/search_bar"
         android:layout_width="369dp"
@@ -111,8 +113,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:background="@drawable/rounded_border"
+            android:orientation="vertical"
             android:padding="16dp">
 
             <TextView
@@ -141,6 +143,7 @@
                 android:textColor="@color/green"
                 android:textSize="20sp"
                 android:textStyle="bold" />
+
             <Button
                 android:id="@+id/download_button2"
                 android:layout_width="99dp"
@@ -212,7 +215,7 @@
 
     <LinearLayout
         android:id="@+id/bottom_toolbar"
-        android:layout_width="365dp"
+        android:layout_width="345dp"
         android:layout_height="70dp"
         android:layout_marginStart="9dp"
         android:layout_marginEnd="9dp"
@@ -224,22 +227,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
-
-        <ImageView
-            android:id="@+id/navigation_home"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="0.5"
-            android:src="@drawable/homepage" />
-
-        <ImageView
-            android:id="@+id/navigation_report"
-            android:layout_width="5dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="0.5"
-            android:src="@drawable/reporticon" />
 
         <ImageView
             android:id="@+id/navigation_appointment"
@@ -257,12 +244,9 @@
             android:layout_weight="0.5"
             android:src="@drawable/team" />
 
-        <ImageView
-            android:id="@+id/navigation_profile"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_weight="0.5"
-            android:src="@drawable/user" />
     </LinearLayout>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
