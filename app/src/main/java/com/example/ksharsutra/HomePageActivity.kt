@@ -25,6 +25,12 @@ class HomePageActivity: AppCompatActivity() {
 
         val navigation_report = findViewById<ImageView>(R.id.navigation_report)
 
+        val contactus_card = findViewById<CardView>(R.id.contactus_card)
+        val healthadvice_card = findViewById<CardView>(R.id.healthadvice_card)
+
+        val feedback_card = findViewById<CardView>(R.id.feedback_card)
+
+
         navigation_profile.setOnClickListener {
             val intent = Intent(this, UserDetailsActivity::class.java)
             startActivity(intent)
@@ -39,5 +45,19 @@ class HomePageActivity: AppCompatActivity() {
             val intent = Intent(this, PredictionActivity::class.java)
             startActivity(intent)
         }
+
+        contactus_card.setOnClickListener {
+            val intent = Intent(this, ContactUSActivity::class.java)
+            startActivity(intent)
         }
+        healthadvice_card.setOnClickListener {
+            val intent = Intent(this, HealthAdviceActivity::class.java)
+            startActivity(intent)
+        }
+        feedback_card.setOnClickListener() {
+            val intent = Intent(this, FeedbackActivity::class.java)
+            startActivity(intent)
+        }
+
     }
+}

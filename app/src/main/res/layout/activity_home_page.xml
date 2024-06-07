@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="381dp"
-        android:layout_height="124dp"
+        android:layout_width="394dp"
+        android:layout_height="173dp"
         android:layout_marginStart="16dp"
         android:drawablePadding="10dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
@@ -233,7 +233,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/howtouse_card"
+            android:id="@+id/feedback_card"
             android:layout_width="0dp"
             android:layout_height="150dp"
             android:layout_margin="8dp"
@@ -247,17 +247,17 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/howtouse_image"
+                    android:id="@+id/feedback_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/howtouse" />
+                    android:src="@drawable/feedback" />
 
                 <TextView
                     android:id="@+id/howtouse_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="How to Use?"
+                    android:text="Feedback"
                     android:textColor="@color/green"
                     android:textSize="16sp"
                     android:textStyle="bold" />

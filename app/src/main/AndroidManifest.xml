@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -10,7 +11,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KsharSutra"
         tools:targetApi="31">
-
+        <activity
+            android:name=".FeedbackActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PrecationsTreatmentsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HealthAdviceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ContactUSActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -25,7 +37,7 @@
         <activity android:name=".UserDetailsActivity" />
         <activity android:name=".HomePageActivity" />
         <activity android:name=".PredictionActivity" />
-        <activity android:name=".DashboardActivity"/>
+        <activity android:name=".DashboardActivity" />
     </application>
 
 </manifest>
