@@ -2,7 +2,7 @@
     <string name="app_name">KsharSutra</string>
     <string name="emailID">abc@example.com</string>
     <string name="phoneno">9876543210</string>
-    <string name="address">123, XYZ Street, ABC City</string>
+    <string name="address">Kshara Sutra Hospital, near N.L. High School, Malad West, Mumbai, Maharashtra 400064</string>
     <string name="book_an_appointment">Book an appointment</string>
     <string name="piles_description">Swollen veins in the rectal area, causing discomfort, itching, and bleeding, often associated with straining during bowel movements.</string>
     <string name="fissure_description">A painful tear or crack in the lining of the anus, causing discomfort and bleeding during bowel movements.</string>
@@ -62,4 +62,5 @@
     <string name="edit_profile">Edit Profile</string>
     <string name="email">Email</string>
     <string name="phone_number">Phone Number</string>
+    <string name="clinic_timing">Monday - Saturday\n10:00 am - 1:00 pm \n04:30 pm - 06:00 pm</string>
 </resources>
