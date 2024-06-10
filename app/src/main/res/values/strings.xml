@@ -58,4 +58,8 @@
         • Seek medical attention if you experience persistent pain, swelling, or drainage from an opening near the anus, as prompt treatment can help prevent complications and promote healing.\n
         • Follow your healthcare providers recommendations for treatment, which may include antibiotics, surgical drainage, or surgical removal of the fistula tract, depending on the severity and complexity of the condition.
     </string>
+    <string name="logout">Logout</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="email">Email</string>
+    <string name="phone_number">Phone Number</string>
 </resources>

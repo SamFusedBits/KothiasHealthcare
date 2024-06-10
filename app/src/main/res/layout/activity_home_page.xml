@@ -7,10 +7,10 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="394dp"
-        android:layout_height="173dp"
-        android:layout_marginStart="16dp"
-        android:drawablePadding="10dp"
+        android:layout_width="@dimen/_290sdp"
+        android:layout_height="@dimen/_133sdp"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:drawablePadding="@dimen/_10sdp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -21,15 +21,15 @@
 
     <LinearLayout
         android:id="@+id/bottom_toolbar"
-        android:layout_width="345dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="9dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginBottom="9dp"
+        android:layout_width="@dimen/_300sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginStart="@dimen/_9sdp"
+        android:layout_marginEnd="@dimen/_9sdp"
+        android:layout_marginBottom="@dimen/_9sdp"
         android:background="@drawable/button_bg_layout_green"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="5dp"
+        android:padding="@dimen/_5sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -37,32 +37,32 @@
         <ImageView
             android:id="@+id/navigation_home"
             android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="10dp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:layout_weight="0.5"
             android:src="@drawable/homepage" />
 
         <ImageView
             android:id="@+id/navigation_report"
             android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="10dp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:layout_weight="0.5"
             android:src="@drawable/reporticon" />
 
         <ImageView
             android:id="@+id/navigation_appointment"
             android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="10dp"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:layout_weight="0.5"
             android:src="@drawable/calendarplus" />
 
         <ImageView
             android:id="@+id/navigation_profile"
             android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="10dp"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:layout_weight="0.5"
             android:src="@drawable/user" />
     </LinearLayout>
@@ -80,9 +80,9 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/questionnaire_card"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:layout_margin="8dp"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_margin="@dimen/_8sdp"
             android:layout_weight="1">
 
             <LinearLayout
@@ -102,11 +102,11 @@
                     android:id="@+id/questionnaire_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:text="Questionnaire"
                     android:textColor="@color/green"
 
-                    android:textSize="16sp"
+                    android:textSize="@dimen/_15sdp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -114,8 +114,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/analysisscore_card"
-            android:layout_width="15dp"
-            android:layout_height="150dp"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_100sdp"
             android:layout_margin="8dp"
             android:layout_weight="1">
 
@@ -136,10 +136,10 @@
                     android:id="@+id/analysisscore_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:text="Analysis Score"
                     android:textColor="@color/green"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/_16sdp"
                     android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -158,8 +158,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/contactus_card"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_100sdp"
             android:layout_margin="8dp"
             android:layout_weight="1">
 
@@ -180,18 +180,18 @@
                     android:id="@+id/contactus_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:text="Contact Us"
                     android:textColor="@color/green"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/_16sdp"
                     android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/healthadvice_card"
-            android:layout_width="15dp"
-            android:layout_height="150dp"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_100sdp"
             android:layout_margin="8dp"
             android:layout_weight="1">
 
@@ -215,7 +215,7 @@
                     android:layout_marginTop="8dp"
                     android:text="Health Advice"
                     android:textColor="@color/green"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/_16sdp"
                     android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -234,8 +234,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/feedback_card"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
+            android:layout_width="@dimen/_8sdp"
+            android:layout_height="@dimen/_100sdp"
             android:layout_margin="8dp"
             android:layout_weight="1">
 
@@ -253,21 +253,21 @@
                     android:src="@drawable/feedback" />
 
                 <TextView
-                    android:id="@+id/howtouse_text"
+                    android:id="@+id/feedback"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:text="Feedback"
                     android:textColor="@color/green"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/_16sdp"
                     android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/aboutus_card"
-            android:layout_width="15dp"
-            android:layout_height="150dp"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_100sdp"
             android:layout_margin="8dp"
             android:layout_weight="1">
 
@@ -288,10 +288,10 @@
                     android:id="@+id/aboutus_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:text="About us"
                     android:textColor="@color/green"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/_16sdp"
                     android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>

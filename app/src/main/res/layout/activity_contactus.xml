@@ -10,68 +10,74 @@
 
     <ImageView
         android:id="@+id/back_arrow"
-        android:layout_width="34dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="@dimen/_34sdp"
+        android:layout_height="@dimen/_42sdp"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_28sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/back_arrow" />
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_28sdp"
+        android:layout_marginEnd="@dimen/_16sdp"
         android:text="Contact Us"
         android:textColor="@color/green"
-        android:textSize="40sp"
+        android:textSize="@dimen/_30ssp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/back_arrow"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="520dp"
-        android:layout_height="250dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/rounded_image"
         android:src="@drawable/doctors"
+        app:layout_constraintDimensionRatio="H,2.08:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title" />
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintWidth_max="@dimen/_520sdp" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/contactus"
-        android:layout_width="383dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:cardBackgroundColor="@color/ivory_white"
-        app:cardElevation="10dp"
+        android:layout_margin="@dimen/_8sdp"
         android:background="@drawable/green_borders"
-        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:cardBackgroundColor="@color/ivory_white"
+        app:cardElevation="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:layout_constraintWidth_max="@dimen/_383sdp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@drawable/rounded_borders"
-            android:padding="16dp">
+            android:padding="@dimen/_16sdp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:id="@+id/email_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Email: "
-                    android:textStyle="bold"
                     android:textColor="@color/green"
-                    android:textSize="20sp"/>
+                    android:textSize="@dimen/_18ssp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/email"
@@ -79,7 +85,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/emailID"
                     android:textColor="@color/green"
-                    android:textSize="20sp"/>
+                    android:textSize="@dimen/_18ssp" />
             </LinearLayout>
 
             <LinearLayout
@@ -92,9 +98,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Phone No: "
-                    android:textStyle="bold"
                     android:textColor="@color/green"
-                    android:textSize="20sp"/>
+                    android:textSize="@dimen/_18ssp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/phoneno"
@@ -102,7 +108,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/phoneno"
                     android:textColor="@color/green"
-                    android:textSize="20sp"/>
+                    android:textSize="@dimen/_18ssp" />
             </LinearLayout>
 
             <LinearLayout
@@ -115,9 +121,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Address: "
-                    android:textStyle="bold"
                     android:textColor="@color/green"
-                    android:textSize="20sp"/>
+                    android:textSize="@dimen/_18ssp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/address"
@@ -125,16 +131,17 @@
                     android:layout_height="wrap_content"
                     android:text="@string/address"
                     android:textColor="@color/green"
-                    android:textSize="20sp"/>
+                    android:textSize="@dimen/_18ssp" />
             </LinearLayout>
+
             <Button
                 android:id="@+id/book_an_appointment"
-                android:layout_marginTop="20sp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_20sdp"
                 android:background="@drawable/rounded_button"
-                android:textColor="@color/ivory_white"
-                android:text="@string/book_an_appointment"/>
+                android:text="@string/book_an_appointment"
+                android:textColor="@color/ivory_white" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

@@ -11,10 +11,10 @@
 
     <ImageView
         android:id="@+id/back_arrow"
-        android:layout_width="34dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="@dimen/_34sdp"
+        android:layout_height="@dimen/_52sdp"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_28sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/back_arrow" />
@@ -23,9 +23,9 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="@dimen/_28sdp"
         android:textColor="@color/green"
-        android:textSize="40sp"
+        android:textSize="@dimen/_40ssp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,10 +42,10 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/_16sdp"
         app:layout_constraintTop_toBottomOf="@+id/title"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="8dp"
+        app:cardCornerRadius="@dimen/_16sdp"
+        app:cardElevation="@dimen/_8sdp"
         app:cardUseCompatPadding="true"
         app:cardBackgroundColor="@color/ivory_white">
 
@@ -53,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="@dimen/_16sdp">
 
             <TextView
                 android:id="@+id/precautions_label"
@@ -62,15 +62,14 @@
                 android:text="@string/precautions_label"
                 android:textStyle="bold"
                 android:textColor="@color/green"
-                android:textSize="30sp" />
+                android:textSize="@dimen/_30ssp" />
 
             <TextView
                 android:id="@+id/precautions_list"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:textColor="@color/green"
-                android:textSize="20sp" />
+                android:textSize="@dimen/_20ssp" />
 
             <TextView
                 android:id="@+id/treatment_label"
@@ -78,17 +77,17 @@
                 android:layout_height="wrap_content"
                 android:text="@string/treatment_label"
                 android:textStyle="bold"
-                android:layout_marginTop="25sp"
+                android:layout_marginTop="@dimen/_25ssp"
                 android:textColor="@color/green"
-                android:textSize="30sp" />
+                android:textSize="@dimen/_30ssp" />
 
             <TextView
                 android:id="@+id/treatment_list"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/green"
-                android:layout_marginBottom="45sp"
-                android:textSize="20sp" />
+                android:layout_marginBottom="@dimen/_45ssp"
+                android:textSize="@dimen/_20ssp" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
