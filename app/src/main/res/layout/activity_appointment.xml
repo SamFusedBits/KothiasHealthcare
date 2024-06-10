@@ -3,81 +3,439 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    tools:context=".MainActivity">
 
-    <LinearLayout
-        android:id="@+id/bottom_toolbar"
-        android:layout_width="365dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="9dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginBottom="9dp"
-        android:background="@drawable/button_bg_layout_green"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="5dp"
+    <!-- Header Background -->
+    <View
+        android:id="@+id/headerBackground"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:background="@color/light_green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!-- Back Button -->
+    <ImageView
+        android:id="@+id/back_arrow"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/back_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Header Title -->
+    <TextView
+        android:id="@+id/Title"
+        android:layout_width="133dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="16dp"
+        android:text="Details Doctor"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/rounded_background"
+        android:elevation="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Title">
 
+        <!-- Doctor Image -->
         <ImageView
-            android:id="@+id/navigation_home"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="0.5"
-            android:src="@drawable/homepage" />
+            android:id="@+id/doctorImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/doctor_image"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/circle_background"
+            android:padding="4dp"
+            android:elevation="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/navigation_report"
-            android:layout_width="5dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="0.5"
-            android:src="@drawable/reporticon" />
-
-        <ImageView
-            android:id="@+id/navigation_appointment"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="0.5"
-            android:src="@drawable/calendarplus" />
-
-        <ImageView
-            android:id="@+id/navigation_doctor"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="0.5"
-            android:src="@drawable/team" />
-
-        <ImageView
-            android:id="@+id/navigation_profile"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_weight="0.5"
-            android:src="@drawable/user" />
-    </LinearLayout>
-
-    <CalendarView
-        android:id="@+id/calendarView2"
+    <!-- Doctor Name -->
+    <TextView
+        android:id="@+id/doctorName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Dr. Manish Kothia"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="102dp" />
+        app:layout_constraintTop_toBottomOf="@+id/doctorImage" />
 
+    <!-- Doctor Specialty -->
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="259dp"
-        android:layout_height="50dp"
-        android:text="Check available dates and book an appointment"
-        android:textColor="@color/green"
-        android:textSize="20dp"
+        android:id="@+id/doctorSpecialty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ANORECTAL DISEASES Specialist"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="28dp" />
+        app:layout_constraintTop_toBottomOf="@+id/doctorName" />
 
+    <!-- Doctor Details -->
+    <LinearLayout
+        android:id="@+id/doctorDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/doctorSpecialty">
+
+        <!-- Patients Count -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginEnd="16dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"/>
+
+            <TextView
+                android:id="@+id/patientsCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1000+"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Patients"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- Reviews Count -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginEnd="16dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                 />
+
+            <TextView
+                android:id="@+id/reviewsCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="120"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reviews"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- Experience Years -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp" />
+
+            <TextView
+                android:id="@+id/experienceYears"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10+"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Years Experience"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Description -->
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="BEST LEADING DOCTOR IN MAHARASHTRA FOR ANORECTAL DISEASE PILES-FISSURE-FISTULA, PERIANAL ABSCESS , ISCHIO RECTAL ABSCESS"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/doctorDetails" />
+
+    <!-- Schedules Title -->
+    <TextView
+        android:id="@+id/scheduleTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Schedules"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description" />
+
+    <!-- Schedule Grid -->
+        <GridLayout
+            android:id="@+id/scheduleGrid"
+            android:layout_width="298dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="8dp"
+            android:columnCount="6"
+            android:rowCount="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scheduleTitle">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/day_background"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Mon" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/day_background"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Tue" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/selected_day_background"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Wed"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/day_background"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Thu" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/day_background"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Fri" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/day_background"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Sat" />
+        </GridLayout>
+
+    <!-- Time Slots Title -->
+    <TextView
+        android:id="@+id/timeSlotsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Time Splots"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scheduleGrid" />
+
+    <!-- Time Slots Grid -->
+        <GridLayout
+            android:id="@+id/timeSlotsGrid"
+            android:layout_width="308dp"
+            android:layout_height="124dp"
+            android:layout_marginTop="8dp"
+            android:columnCount="3"
+            android:rowCount="3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/timeSlotsTitle">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:background="@drawable/time_background"
+                android:gravity="center"
+                android:padding="12dp"
+                android:text="03:00PM" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:background="@drawable/time_background"
+                android:gravity="center"
+                android:padding="12dp"
+                android:text="06:00PM" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:background="@drawable/time_background"
+                android:gravity="center"
+                android:padding="12dp"
+                android:text="05:00PM"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:background="@drawable/time_background"
+                android:gravity="center"
+                android:padding="12dp"
+                android:text="07:00PM" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:background="@drawable/time_background"
+                android:gravity="center"
+                android:padding="12dp"
+                android:text="08:00PM" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:background="@drawable/time_background"
+                android:gravity="center"
+                android:padding="12dp"
+                android:text="10:00PM" />
+        </GridLayout>
+
+    <!-- Book Now Button -->
+        <Button
+            android:id="@+id/bookNowButton"
+            android:layout_width="397dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/rounded_border"
+            android:backgroundTint="@color/light_green"
+            android:text="Book Now"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/timeSlotsGrid" />
+
+        <LinearLayout
+            android:id="@+id/bottom_toolbar"
+            android:layout_width="@dimen/_300sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginStart="@dimen/_11sdp"
+            android:layout_marginEnd="@dimen/_9sdp"
+            android:layout_marginBottom="@dimen/_9sdp"
+            android:background="@drawable/button_bg_layout_green"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/_5sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/navigation_home"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_weight="0.5"
+                android:src="@drawable/homepage" />
+
+            <ImageView
+                android:id="@+id/navigation_report"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_weight="0.5"
+                android:src="@drawable/reporticon" />
+
+            <ImageView
+                android:id="@+id/navigation_appointment"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_weight="0.5"
+                android:src="@drawable/calendarplus" />
+
+            <ImageView
+                android:id="@+id/navigation_profile"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_weight="0.5"
+                android:src="@drawable/user" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

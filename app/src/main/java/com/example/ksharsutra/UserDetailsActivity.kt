@@ -45,6 +45,10 @@ class UserDetailsActivity: AppCompatActivity(){
 
         logout.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
+            val sharedPreferences = getSharedPreferences("MySharedPref", Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.clear()
+            editor.apply()
             startActivity(intent)
         }
 

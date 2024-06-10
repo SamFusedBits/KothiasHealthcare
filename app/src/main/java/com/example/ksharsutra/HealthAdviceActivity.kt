@@ -3,6 +3,7 @@ package com.example.ksharsutra
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -19,6 +20,7 @@ class HealthAdviceActivity : AppCompatActivity() {
         val learnmore_fissure = findViewById<Button>(R.id.learnmore_fissure)
         val learnmore_pilonidalsinus = findViewById<Button>(R.id.learnmore_pilonidalsinus)
         val learnmore_fistula = findViewById<Button>(R.id.learnmore_fistula)
+        val back_arrow = findViewById<ImageView>(R.id.back_arrow)
 
         learnmore_piles.setOnClickListener {
             val intent = Intent(this, PrecationsTreatmentsActivity::class.java)
@@ -39,6 +41,9 @@ class HealthAdviceActivity : AppCompatActivity() {
             val intent = Intent(this, PrecationsTreatmentsActivity::class.java)
             intent.putExtra("disease", "fistula")
             startActivity(intent)
+        }
+        back_arrow.setOnClickListener {
+            finish()
         }
     }
 }
