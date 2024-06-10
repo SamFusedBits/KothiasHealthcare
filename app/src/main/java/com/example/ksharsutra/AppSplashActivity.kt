@@ -46,6 +46,6 @@ class AppSplashActivity : AppCompatActivity() {
 
             startActivity(intent)
             finish()
-        }, 5000) // delay for 5 seconds (5000 ms)
+        }, 3000) // delay for 3 seconds (3000 ms)
     }
 }
