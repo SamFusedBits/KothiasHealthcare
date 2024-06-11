@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -10,9 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KsharSutra"
         tools:targetApi="31">
-
         <activity
-            android:name=".MainActivity"
+            android:name=".AppSplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,12 +20,30 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".FeedbackActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PrecationsTreatmentsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HealthAdviceActivity"
+            android:exported="false" />
+        <activity android:name=".AppointmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ContactUSActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+        </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".UserDetailsActivity" />
         <activity android:name=".HomePageActivity" />
         <activity android:name=".PredictionActivity" />
-        <activity android:name=".DashboardActivity"/>
+        <activity android:name=".DashboardActivity" />
     </application>
 
 </manifest>

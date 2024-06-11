@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ivory_white"
+    tools:context=".FeedbackActivity">
+
+    <ImageView
+        android:id="@+id/back_arrow"
+        android:layout_width="@dimen/_34sdp"
+        android:layout_height="@dimen/_52sdp"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_28sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back_arrow" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_28sdp"
+        android:text="FeedBack"
+        android:textColor="@color/green"
+        android:textSize="@dimen/_30ssp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        app:cardBackgroundColor="@color/ivory_white"
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:cardElevation="@dimen/_8sdp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintTop_toBottomOf="@+id/title">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/green_border"
+            android:orientation="vertical"
+            android:padding="@dimen/_10sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name:"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_18ssp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter name"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email:"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_18ssp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter email"
+                android:inputType="textEmailAddress" />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone Number:"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_18ssp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter phone number: "
+                android:inputType="textPersonName" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Message:"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_18ssp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter message"
+                android:inputType="textMultiLine"
+                android:lines="4" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:numStars="5" />
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="205dp"
+                android:layout_height="37dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:background="@drawable/rounded_button"
+                android:text="Submit"
+                android:textColor="@color/ivory_white"
+                android:textSize="@dimen/_18ssp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

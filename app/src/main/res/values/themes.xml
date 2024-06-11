@@ -6,4 +6,10 @@
     </style>
 
     <style name="Theme.KsharSutra" parent="Base.Theme.KsharSutra" />
+
+    <style name="splashScreenTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/logo</item>
+        <item name="android:statusBarColor">@color/ivory_white</item>
+        <item name="android:windowSplashScreenAnimationDuration" tools:ignore="NewApi">1000</item>
+    </style>
 </resources>

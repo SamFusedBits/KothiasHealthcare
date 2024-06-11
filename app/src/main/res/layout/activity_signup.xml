@@ -7,14 +7,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="@dimen/_16sdp">
 
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="326dp"
-            android:layout_height="124dp"
+            android:layout_width="346dp"
+            android:layout_height="150dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="@dimen/_24sdp"
             android:src="@drawable/logo" />
 
         <TextView
@@ -22,10 +22,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="@dimen/_20sdp"
             android:text="@string/app_name"
             android:textColor="@color/green"
-            android:textSize="32sp"
+            android:textSize="@dimen/_24ssp"
             android:textStyle="bold" />
 
         <EditText
@@ -36,11 +36,11 @@
             android:inputType="text"
             android:background="@drawable/button_bg_layout_ivory"
             android:gravity="center_vertical"
-            android:textSize="16sp"
-            android:layout_margin="8dp"
-            android:layout_marginBottom="16dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp" />
+            android:textSize="@dimen/_15ssp"
+            android:layout_margin="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_16sdp"
+            android:paddingLeft="@dimen/_16sdp"
+            android:paddingRight="@dimen/_16sdp" />
 
         <EditText
             android:id="@+id/email"
@@ -50,11 +50,11 @@
             android:inputType="textEmailAddress"
             android:background="@drawable/button_bg_layout_ivory"
             android:gravity="center_vertical"
-            android:textSize="16sp"
-            android:layout_margin="8dp"
-            android:layout_marginBottom="16dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp" />
+            android:textSize="@dimen/_15ssp"
+            android:layout_margin="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_16sdp"
+            android:paddingLeft="@dimen/_16sdp"
+            android:paddingRight="@dimen/_16sdp" />
 
         <EditText
             android:id="@+id/password"
@@ -64,11 +64,11 @@
             android:inputType="textPassword"
             android:background="@drawable/button_bg_layout_ivory"
             android:gravity="center_vertical"
-            android:textSize="16sp"
-            android:layout_margin="8dp"
-            android:layout_marginBottom="16dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp" />
+            android:textSize="@dimen/_15ssp"
+            android:layout_margin="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_16sdp"
+            android:paddingLeft="@dimen/_16sdp"
+            android:paddingRight="@dimen/_16sdp" />
 
         <EditText
             android:id="@+id/confirm_password"
@@ -78,32 +78,33 @@
             android:inputType="textPassword"
             android:background="@drawable/button_bg_layout_ivory"
             android:gravity="center_vertical"
-            android:textSize="16sp"
-            android:layout_margin="8dp"
-            android:layout_marginBottom="16dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp" />
+            android:textSize="@dimen/_15ssp"
+            android:layout_margin="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_16sdp"
+            android:paddingLeft="@dimen/_16sdp"
+            android:paddingRight="@dimen/_16sdp" />
 
 
         <EditText
             android:id="@+id/dob"
-            android:layout_width="360dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:layout_marginBottom="48dp"
+            android:layout_margin="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_48sdp"
             android:background="@drawable/button_bg_layout_ivory"
             android:gravity="center_vertical"
             android:hint="Date of Birth"
             android:inputType="date"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:textSize="16sp" />
+            android:paddingLeft="@dimen/_16sdp"
+            android:paddingRight="@dimen/_16sdp"
+            android:textSize="@dimen/_16ssp" />
 
         <Button
             android:id="@+id/signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_12sdp"
             android:background="@drawable/button_bg_layout_green"
             android:text="Sign up"
             android:textAllCaps="false"
