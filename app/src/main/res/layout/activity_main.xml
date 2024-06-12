@@ -32,7 +32,7 @@
 
         <Button
             android:id="@+id/login"
-            android:layout_width="@dimen/_269sdp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_12sdp"
             android:background="@drawable/button_bg_layout_green"
@@ -42,7 +42,7 @@
 
         <LinearLayout
             android:id="@+id/google_login"
-            android:layout_width="@dimen/_269sdp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_12sdp"
             android:background="@drawable/button_bg_layout_green"
@@ -61,8 +61,8 @@
             <TextView
                 android:layout_width="@dimen/_213sdp"
                 android:layout_height="@dimen/_22sdp"
-                android:layout_marginStart="@dimen/_8sdp"
-                android:text="  Sign in with Google"
+                android:layout_marginStart="@dimen/_35sdp"
+                android:text="Sign in with Google"
                 android:textColor="@color/ivory_white"
                 android:textSize="@dimen/_13sdp" /> <!-- To increase or decrease the text size -->
 
@@ -70,7 +70,7 @@
 
         <Button
             android:id="@+id/signup"
-            android:layout_width="@dimen/_269sdp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_12sdp"
             android:background="@drawable/button_bg_layout_green"
