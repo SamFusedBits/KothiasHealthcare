@@ -61,7 +61,7 @@
             <TextView
                 android:layout_width="@dimen/_213sdp"
                 android:layout_height="@dimen/_22sdp"
-                android:layout_marginStart="@dimen/_35sdp"
+                android:layout_marginStart="@dimen/_40sdp"
                 android:text="Sign in with Google"
                 android:textColor="@color/ivory_white"
                 android:textSize="@dimen/_13sdp" /> <!-- To increase or decrease the text size -->

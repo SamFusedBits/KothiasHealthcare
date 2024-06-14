@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_5sdp"
+    android:background="@color/green"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="@dimen/_3sdp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    android:maxWidth="@dimen/_300sdp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/navigation_home"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_30sdp"
+            android:src="@drawable/homepage"
+            android:contentDescription="@string/home" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/home"
+            android:textSize="@dimen/_10ssp"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/navigation_report"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_30sdp"
+            android:src="@drawable/reporticon"
+            android:contentDescription="@string/report" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/report"
+            android:textSize="@dimen/_10ssp"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/navigation_appointment"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_30sdp"
+            android:src="@drawable/calendarplus"
+            android:contentDescription="@string/appointment" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/appointment"
+            android:textSize="@dimen/_10ssp"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/navigation_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_30sdp"
+            android:src="@drawable/user"
+            android:contentDescription="@string/profile" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile"
+            android:textSize="@dimen/_10ssp"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+
+</LinearLayout>

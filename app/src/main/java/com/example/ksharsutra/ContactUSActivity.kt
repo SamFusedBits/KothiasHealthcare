@@ -26,7 +26,6 @@ class ContactUSActivity : AppCompatActivity() {
         val back = findViewById<ImageView>(R.id.back_arrow)
 
         val titleTextView = findViewById<TextView>(R.id.title)
-        titleTextView.paintFlags = titleTextView.paintFlags or Paint.UNDERLINE_TEXT_FLAG
 
         email.setOnClickListener {
             val emailIntent = Intent(Intent.ACTION_SENDTO).apply {

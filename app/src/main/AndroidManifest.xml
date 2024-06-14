@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,7 +14,7 @@
         android:theme="@style/Theme.KsharSutra"
         tools:targetApi="31">
         <activity
-            android:name=".AppSplashActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,30 +22,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".FeedbackActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PrecationsTreatmentsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".HealthAdviceActivity"
-            android:exported="false" />
-        <activity android:name=".AppointmentActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ContactUSActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-        </activity>
         <activity android:name=".LoginActivity" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".UserDetailsActivity" />
+        <activity android:name=".SignupActivity" />
         <activity android:name=".HomePageActivity" />
         <activity android:name=".PredictionActivity" />
+        <activity android:name=".HealthAdviceActivity" />
+        <activity android:name=".NavigationReportActivity" />
+        <activity android:name=".PrecautionsTreatmentsActivity" />
+        <activity android:name=".ContactUSActivity" />
+        <activity android:name=".FeedbackActivity" />
+        <activity android:name=".UserDetailsActivity" />
         <activity android:name=".DashboardActivity" />
+
     </application>
 
 </manifest>

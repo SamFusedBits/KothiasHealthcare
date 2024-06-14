@@ -1,71 +1,85 @@
 package com.example.ksharsutra
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 
-class LoginActivity: AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
+    private lateinit var mAuth: FirebaseAuth
+    private lateinit var emailEditText: EditText
+    private lateinit var passwordEditText: EditText
+    private lateinit var loginButton: Button
+    private lateinit var forgotPasswordTextView: TextView
+    private lateinit var signupTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val username = findViewById<EditText>(R.id.username)
-        val email = findViewById<EditText>(R.id.email)
-        val password = findViewById<EditText>(R.id.password)
-        val phoneNumber = findViewById<EditText>(R.id.phone_number)
-        val forgotPassword = findViewById<TextView>(R.id.forgot_password)
-        val createAccount = findViewById<TextView>(R.id.create_account)
+        mAuth = FirebaseAuth.getInstance()
+        emailEditText = findViewById(R.id.email)
+        passwordEditText = findViewById(R.id.password)
+        loginButton = findViewById(R.id.login)
+        forgotPasswordTextView = findViewById(R.id.forgot_password)
+        signupTextView = findViewById(R.id.create_account)
 
-        val signInButton = findViewById<Button>(R.id.login)
-
-        // Create a SharedPreferences instance
-        val sharedPreferences = getSharedPreferences("MySharedPref", Context.MODE_PRIVATE)
-
-        signInButton.setOnClickListener {
-            if(username.text.toString().isEmpty()){
-                username.error = "Please enter username"
-                return@setOnClickListener
-            }
-            else if(email.text.toString().isEmpty()){
-                email.error = "Please enter email"
-                return@setOnClickListener
-            }
-            else if(password.text.toString().isEmpty()){
-                password.error = "Please enter password"
-                return@setOnClickListener
-            }
-            else if(phoneNumber.text.toString().isEmpty()){
-                phoneNumber.error = "Please enter phone number"
-                return@setOnClickListener
-            }
-            else{
-                // Store the username, email, and password in SharedPreferences
-                val editor = sharedPreferences.edit()
-                editor.putString("username", username.text.toString())
-                editor.putString("email", email.text.toString())
-                editor.putString("password", password.text.toString())
-                editor.putString("phone_number", phoneNumber.text.toString())
-                editor.apply()
-
-                val intent = Intent(this, HomePageActivity::class.java)
-                startActivity(intent)
-            }
+        loginButton.setOnClickListener {
+            loginUser()
         }
 
-        forgotPassword.setOnClickListener {
-            val intent = Intent(this, SignUpActivity::class.java)
-            startActivity(intent)
+        forgotPasswordTextView.setOnClickListener {
+            val email = emailEditText.text.toString().trim()
+
+            if (TextUtils.isEmpty(email)) {
+                emailEditText.error = "Email is required."
+                return@setOnClickListener
+            }
+
+            mAuth.sendPasswordResetEmail(email)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(this, "Password reset email sent.", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this, "Failed to send password reset email.", Toast.LENGTH_SHORT).show()
+                    }
+                }
         }
 
-        createAccount.setOnClickListener {
-            val intent = Intent(this, SignUpActivity::class.java)
-            startActivity(intent)
+        signupTextView.setOnClickListener {
+            startActivity(Intent(this, SignupActivity::class.java))
+        }
+    }
+
+    private fun loginUser() {
+        val email = emailEditText.text.toString().trim()
+        val password = passwordEditText.text.toString().trim()
+
+        if (TextUtils.isEmpty(email)) {
+            emailEditText.error = "Email is required."
+            return
         }
 
+        if (TextUtils.isEmpty(password)) {
+            passwordEditText.error = "Password is required."
+            return
+        }
+
+        mAuth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val user = mAuth.currentUser
+                    Toast.makeText(this, "Authentication succeeded.", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, HomePageActivity::class.java))
+                    finish()
+                } else {
+                    Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                }
+            }
     }
 }

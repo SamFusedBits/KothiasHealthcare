@@ -6,8 +6,6 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class HealthAdviceActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,22 +21,22 @@ class HealthAdviceActivity : AppCompatActivity() {
         val back_arrow = findViewById<ImageView>(R.id.back_arrow)
 
         learnmore_piles.setOnClickListener {
-            val intent = Intent(this, PrecationsTreatmentsActivity::class.java)
+            val intent = Intent(this, PrecautionsTreatmentsActivity::class.java)
             intent.putExtra("disease", "piles")
             startActivity(intent)
         }
         learnmore_fissure.setOnClickListener {
-            val intent = Intent(this, PrecationsTreatmentsActivity::class.java)
+            val intent = Intent(this, PrecautionsTreatmentsActivity::class.java)
             intent.putExtra("disease", "fissure")
             startActivity(intent)
         }
         learnmore_pilonidalsinus.setOnClickListener {
-            val intent = Intent(this, PrecationsTreatmentsActivity::class.java)
+            val intent = Intent(this, PrecautionsTreatmentsActivity::class.java)
             intent.putExtra("disease", "pilonidalsinus")
             startActivity(intent)
         }
         learnmore_fistula.setOnClickListener {
-            val intent = Intent(this, PrecationsTreatmentsActivity::class.java)
+            val intent = Intent(this, PrecautionsTreatmentsActivity::class.java)
             intent.putExtra("disease", "fistula")
             startActivity(intent)
         }
