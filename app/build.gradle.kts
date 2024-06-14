@@ -76,4 +76,5 @@ dependencies {
     implementation("com.google.firebase:firebase-storage:20.0.0")
     implementation("com.google.android.material:material:1.6.0")
 
+    implementation("com.google.firebase:firebase-appcheck:17.0.0")
 }
