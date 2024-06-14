@@ -23,30 +23,35 @@ class PrecationsTreatmentsActivity : AppCompatActivity() {
 
         val disease = intent.getStringExtra("disease")
 
-        if(disease == "piles") {
-            title.text = "Piles"
-            val styledPrecationsText = getString(R.string.piles_precautions)
-            precautions_list.text = Html.fromHtml(styledPrecationsText, Html.FROM_HTML_MODE_LEGACY)
-            val styledTreatmentText = getString(R.string.piles_treatment)
-            treatment_list.text = Html.fromHtml(styledTreatmentText, Html.FROM_HTML_MODE_LEGACY)
-        } else if(disease == "fissure") {
-            title.text = "Fissure"
-            val styledPrecationsText = getString(R.string.fissure_precautions)
-            precautions_list.text = Html.fromHtml(styledPrecationsText, Html.FROM_HTML_MODE_LEGACY)
-            val styledTreatmentText = getString(R.string.fissure_treatment)
-            treatment_list.text = Html.fromHtml(styledTreatmentText, Html.FROM_HTML_MODE_LEGACY)
-        } else if(disease == "pilonidalsinus") {
-            title.text = "Pilonidal Sinus"
-            val styledPrecationsText = getString(R.string.pilonidalsinus_precautions)
-            precautions_list.text = Html.fromHtml(styledPrecationsText, Html.FROM_HTML_MODE_LEGACY)
-            val styledTreatmentText = getString(R.string.pilonidalsinus_treatment)
-            treatment_list.text = Html.fromHtml(styledTreatmentText, Html.FROM_HTML_MODE_LEGACY)
-        } else if(disease == "fistula") {
-            title.text = "Fistula"
-            val styledPrecationsText = getString(R.string.fistula_precautions)
-            precautions_list.text = Html.fromHtml(styledPrecationsText, Html.FROM_HTML_MODE_LEGACY)
-            val styledTreatmentText = getString(R.string.fistula_treatment)
-            treatment_list.text = Html.fromHtml(styledTreatmentText, Html.FROM_HTML_MODE_LEGACY)
+        when (disease) {
+            "piles" -> {
+                title.text = "Piles"
+                val styledPrecationsText = getString(R.string.piles_precautions)
+                precautions_list.text = Html.fromHtml(styledPrecationsText, Html.FROM_HTML_MODE_LEGACY)
+                val styledTreatmentText = getString(R.string.piles_treatment)
+                treatment_list.text = Html.fromHtml(styledTreatmentText, Html.FROM_HTML_MODE_LEGACY)
+            }
+            "fissure" -> {
+                title.text = "Fissure"
+                val styledPrecationsText = getString(R.string.fissure_precautions)
+                precautions_list.text = Html.fromHtml(styledPrecationsText, Html.FROM_HTML_MODE_LEGACY)
+                val styledTreatmentText = getString(R.string.fissure_treatment)
+                treatment_list.text = Html.fromHtml(styledTreatmentText, Html.FROM_HTML_MODE_LEGACY)
+            }
+            "pilonidalsinus" -> {
+                title.text = "Pilonidal Sinus"
+                val styledPrecationsText = getString(R.string.pilonidalsinus_precautions)
+                precautions_list.text = Html.fromHtml(styledPrecationsText, Html.FROM_HTML_MODE_LEGACY)
+                val styledTreatmentText = getString(R.string.pilonidalsinus_treatment)
+                treatment_list.text = Html.fromHtml(styledTreatmentText, Html.FROM_HTML_MODE_LEGACY)
+            }
+            "fistula" -> {
+                title.text = "Fistula"
+                val styledPrecationsText = getString(R.string.fistula_precautions)
+                precautions_list.text = Html.fromHtml(styledPrecationsText, Html.FROM_HTML_MODE_LEGACY)
+                val styledTreatmentText = getString(R.string.fistula_treatment)
+                treatment_list.text = Html.fromHtml(styledTreatmentText, Html.FROM_HTML_MODE_LEGACY)
+            }
         }
         back_arrow.setOnClickListener {
             finish()
