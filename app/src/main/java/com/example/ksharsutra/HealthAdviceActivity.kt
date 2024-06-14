@@ -16,8 +16,6 @@ class HealthAdviceActivity : AppCompatActivity() {
         setContentView(R.layout.activity_healthadvice)
 
 
-
-
         val learnmore_piles = findViewById<Button>(R.id.learnmore_piles)
         val learnmore_fissure = findViewById<Button>(R.id.learnmore_fissure)
         val learnmore_pilonidalsinus = findViewById<Button>(R.id.learnmore_pilonidalsinus)

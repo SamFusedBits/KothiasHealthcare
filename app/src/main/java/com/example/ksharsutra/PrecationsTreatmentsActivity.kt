@@ -1,7 +1,6 @@
 package com.example.ksharsutra
 
 import android.os.Bundle
-import android.text.Html
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -52,7 +51,6 @@ class PrecationsTreatmentsActivity : AppCompatActivity() {
                 val styledTreatmentText = getString(R.string.fistula_treatment)
                 treatment_list.text = Html.fromHtml(styledTreatmentText, Html.FROM_HTML_MODE_LEGACY)
             }
-        }
         back_arrow.setOnClickListener {
             finish()
         }
