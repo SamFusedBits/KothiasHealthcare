@@ -46,7 +46,7 @@ class HomePageActivity: AppCompatActivity() {
         }
 
         navigation_report.setOnClickListener{
-            val intent = Intent(this, DashboardActivity::class.java)
+            val intent = Intent(this, PredictionActivity::class.java)
             startActivity(intent)
         }
 
