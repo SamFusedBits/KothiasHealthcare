@@ -1,9 +1,14 @@
 <resources>
+    // Google Sign In
+    <string name="default_web_client_id">256519567139-jfafgthdookh34pr0tq6k0lfr354dvbk.apps.googleusercontent.com</string>
+
     <string name="app_name">KsharSutra</string>
     <string name="emailID">abc@example.com</string>
-    <string name="phoneno">9876543210</string>
-    <string name="address">Kshara Sutra Hospital, near N.L. High School, Malad West, Mumbai, Maharashtra 400064</string>
+    <string name="phoneno">+91 9876543210</string>
+    <string name="address">Kshara Sutra Hospital, near N.L. High School, Malad West, Mumbai, Maharashtra - 400064</string>
     <string name="book_an_appointment">Book an appointment</string>
+
+
     <string name="piles_description">Swollen veins in the rectal area, causing discomfort, itching, and bleeding, often associated with straining during bowel movements.</string>
     <string name="fissure_description">A painful tear or crack in the lining of the anus, causing discomfort and bleeding during bowel movements.</string>
     <string name="PilonidalSinus_description">A small tunnel-like cavity in the skin, often near the tailbone, prone to infection.</string>
@@ -66,4 +71,11 @@
     <string name="email">Email</string>
     <string name="phone_number">Phone Number</string>
     <string name="clinic_timing">Monday - Saturday\n10:00 am - 1:00 pm \n04:30 pm - 06:00 pm</string>
+
+
+    <!-- Content Descriptions for Bottom Toolbar Icons -->
+    <string name="home">Home</string>
+    <string name="report">Report</string>
+    <string name="appointment">Appointment</string>
+    <string name="profile">Profile</string>
 </resources>
