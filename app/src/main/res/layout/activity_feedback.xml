@@ -23,10 +23,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_28sdp"
-        android:text="FeedBack"
+        android:text="Feedback"
         android:textColor="@color/green"
         android:textSize="@dimen/_30ssp"
         android:textStyle="bold"
+        android:layout_marginStart="@dimen/_25sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -123,6 +124,7 @@
                 android:layout_marginTop="@dimen/_16sdp"
                 android:background="@drawable/rounded_button"
                 android:text="Submit"
+                android:textAllCaps="false"
                 android:textColor="@color/ivory_white"
                 android:textSize="@dimen/_18ssp" />
 
