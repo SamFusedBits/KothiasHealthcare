@@ -33,7 +33,12 @@
         <activity android:name=".FeedbackActivity" />
         <activity android:name=".UserDetailsActivity" />
         <activity android:name=".DashboardActivity" />
-
+        <activity android:name=".AppointmentActivity" />
+        <activity android:name=".AppointmentBookingActivity" />
+        <activity android:name=".ManageReportsActivity" />
+        <activity android:name=".ManageAppointmentsActivity" />
+        <activity android:name=".ManageAppointment" />
+        <activity android:name=".ManageAppointmentAdapter" />
     </application>
 
 </manifest>
