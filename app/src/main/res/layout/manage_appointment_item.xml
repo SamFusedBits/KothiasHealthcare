@@ -1,0 +1,61 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/ivory_white">
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/green"
+        android:paddingBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/tvContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contact"
+        android:textSize="16sp"
+        android:textColor="@color/green"
+        android:paddingBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/tvSchedule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Schedule"
+        android:textSize="16sp"
+        android:textColor="@color/green"
+        android:paddingBottom="8dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <Button
+            android:id="@+id/btnApprove"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Approve"
+            android:backgroundTint="@color/light_green"
+            android:textColor="@color/ivory_white"
+            android:layout_marginEnd="8dp"/>
+
+        <Button
+            android:id="@+id/btnDecline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Decline"
+            android:backgroundTint="@color/green"
+            android:textColor="@color/ivory_white"/>
+    </LinearLayout>
+</LinearLayout>
