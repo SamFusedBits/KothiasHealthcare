@@ -74,11 +74,16 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     val user = mAuth.currentUser
-                    Toast.makeText(this, "Authentication succeeded.", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, HomePageActivity::class.java))
-                    finish()
+                    if (user?.isEmailVerified == true) {
+                        Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this, HomePageActivity::class.java))
+                        finish()
+                    } else {
+                        Toast.makeText(this, "Please verify your email first.", Toast.LENGTH_SHORT).show()
+                        mAuth.signOut() // Sign out unverified user
+                    }
                 } else {
-                    Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Login failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
     }
