@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ivory_white">
+
+    <!-- Search Bar -->
+    <EditText
+        android:id="@+id/search_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_16sdp"
+        android:hint="Search by patient name or email"
+        android:inputType="text"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_edit_text"
+        android:layout_alignParentEnd="true"
+        android:text="Search"
+        android:textColor="@color/green"
+        android:onClick="onSearchButtonClick"
+        android:background="@color/light_green"/>
+
+    <!-- Header -->
+    <TextView
+        android:id="@+id/dashboard_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_16sdp"
+        android:text="Patient Reports"
+        android:textColor="@color/green"
+        android:textSize="@dimen/_20ssp"
+        android:textStyle="bold"
+        android:layout_below="@id/search_edit_text"/>
+
+    <!-- Reports Container -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/dashboard_title"
+        android:layout_above="@id/bottom_toolbar_dr"
+        android:padding="@dimen/_16sdp">
+
+        <LinearLayout
+            android:id="@+id/reports_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!-- Reports will be dynamically added here -->
+        </LinearLayout>
+
+    </ScrollView>
+    <include android:id="@+id/bottom_toolbar_dr"
+        layout="@layout/bottom_toolbar_dr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/_5sdp"/>
+</RelativeLayout>
