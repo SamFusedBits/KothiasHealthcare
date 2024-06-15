@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class SignupActivity : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
@@ -66,12 +67,37 @@ class SignupActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     val user = mAuth.currentUser
-                    Toast.makeText(this, "Registration succeeded.", Toast.LENGTH_SHORT).show()
-                    // Navigate to main activity or perform additional action
-                    startActivity(Intent(this, HomePageActivity::class.java))
-                    finish()
+                    user?.sendEmailVerification()
+                        ?.addOnCompleteListener { verificationTask ->
+                            if (verificationTask.isSuccessful) {
+                                // Save user details to Firestore
+                                user?.let {
+                                    val userId = it.uid
+                                    val userMap = hashMapOf(
+                                        "username" to username,
+                                        "email" to email,
+                                        "dob" to dob
+                                    )
+                                    FirebaseFirestore.getInstance().collection("users").document(userId)
+                                        .set(userMap)
+                                        .addOnSuccessListener {
+                                            Toast.makeText(this, "Registration succeeded. Please check your email for verification.", Toast.LENGTH_SHORT).show()
+                                            // Sign out user to prevent unverified access
+                                            mAuth.signOut()
+                                            // Navigate to login screen
+                                            startActivity(Intent(this, LoginActivity::class.java))
+                                            finish()
+                                        }
+                                        .addOnFailureListener {
+                                            Toast.makeText(this, "Failed to save user details: ${it.message}", Toast.LENGTH_SHORT).show()
+                                        }
+                                }
+                            } else {
+                                Toast.makeText(this, "Failed to send verification email: ${verificationTask.exception?.message}", Toast.LENGTH_SHORT).show()
+                            }
+                        }
                 } else {
-                    Toast.makeText(this, "Registration failed.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Registration failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
     }
