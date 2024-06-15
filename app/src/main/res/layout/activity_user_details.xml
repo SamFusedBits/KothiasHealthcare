@@ -21,58 +21,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.238" />
 
-    <LinearLayout
-        android:id="@+id/bottom_toolbar"
-        android:layout_width="365dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="9dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginBottom="9dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/button_bg_layout_green"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageView
-            android:id="@+id/navigation_home"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="0.5"
-            android:src="@drawable/homepage" />
-
-        <ImageView
-            android:id="@+id/navigation_report"
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="0.5"
-            android:src="@drawable/reporticon" />
-
-        <ImageView
-            android:id="@+id/navigation_appointment"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="0.5"
-            android:src="@drawable/calendarplus" />
-
-        <ImageView
-            android:id="@+id/navigation_profile"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_weight="0.5"
-            android:src="@drawable/user" />
-    </LinearLayout>
-
 
     <androidx.constraintlayout.widget.Barrier
         android:layout_width="wrap_content"
@@ -153,4 +101,19 @@
         app:layout_constraintTop_toBottomOf="@+id/phone_number"
         app:layout_constraintVertical_bias="0.253" />
 
+    <Button
+        android:id="@+id/temp_button"
+        android:background="@drawable/button_bg_layout_green"
+        android:layout_width="@dimen/_211sdp"
+        android:layout_height="@dimen/_32sdp"
+        android:text="Temp. Button"
+        android:textAllCaps="false"
+        android:textColor="@color/ivory_white"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logout"
+        app:layout_constraintVertical_bias="0.253" />
+
+    <include layout="@layout/bottom_toolbar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
