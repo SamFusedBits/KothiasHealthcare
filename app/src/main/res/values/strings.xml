@@ -2,7 +2,7 @@
     // Google Sign In
     <string name="default_web_client_id">256519567139-jfafgthdookh34pr0tq6k0lfr354dvbk.apps.googleusercontent.com</string>
 
-    <string name="app_name">KsharSutra</string>
+    <string name="app_name">Kothias Clinic</string>
     <string name="emailID">abc@example.com</string>
     <string name="phoneno">+91 9876543210</string>
     <string name="address">Kshara Sutra Hospital, near N.L. High School, Malad West, Mumbai, Maharashtra - 400064</string>
