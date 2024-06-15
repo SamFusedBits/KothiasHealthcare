@@ -112,12 +112,24 @@ class NavigationReportActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PICK_FILE_REQUEST && resultCode == Activity.RESULT_OK) {
             data?.data?.let { uri ->
-                uploadFileToFirebase(uri)
+                // Prompt user for additional details before uploading file
+                fetchUserDetailsAndUpload(uri)
             }
         }
     }
 
-    private fun uploadFileToFirebase(fileUri: Uri) {
+    private fun fetchUserDetailsAndUpload(fileUri: Uri) {
+        val user = FirebaseAuth.getInstance().currentUser
+        user?.let {
+            val name = it.displayName ?: "Unknown"
+            val email = it.email ?: "Unknown"
+            val phoneNumber = it.phoneNumber ?: "Unknown"
+
+            uploadFileToFirebase(fileUri, name, email, phoneNumber)
+        }
+    }
+
+    private fun uploadFileToFirebase(fileUri: Uri, name: String, email: String, phoneNumber: String) {
         val fileName = getFileName(fileUri) ?: UUID.randomUUID().toString()
         val storageReference = FirebaseStorage.getInstance().reference.child("uploads/$fileName")
         val uploadTask = storageReference.putFile(fileUri)
@@ -129,7 +141,7 @@ class NavigationReportActivity : AppCompatActivity() {
         uploadTask.addOnSuccessListener { taskSnapshot ->
             storageReference.downloadUrl.addOnSuccessListener { uri ->
                 val downloadUrl = uri.toString()
-                saveFileMetadataToFirestore(fileName, downloadUrl)
+                saveFileMetadataToFirestore(fileName, downloadUrl, name, email, phoneNumber)
                 // Hide progress bar
                 progressBar.visibility = ProgressBar.GONE
             }
@@ -143,7 +155,7 @@ class NavigationReportActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveFileMetadataToFirestore(fileName: String, downloadUrl: String) {
+    private fun saveFileMetadataToFirestore(fileName: String, downloadUrl: String, name: String, email: String, phoneNumber: String) {
         val firestore = FirebaseFirestore.getInstance()
         val userId = FirebaseAuth.getInstance().currentUser?.uid
 
@@ -152,7 +164,10 @@ class NavigationReportActivity : AppCompatActivity() {
                 "name" to fileName,
                 "url" to downloadUrl,
                 "timestamp" to System.currentTimeMillis(),
-                "userId" to uid
+                "userId" to uid,
+                "patientName" to name,
+                "patientEmail" to email,
+                "patientPhoneNumber" to phoneNumber
             )
 
             firestore.collection("uploads")
@@ -169,6 +184,7 @@ class NavigationReportActivity : AppCompatActivity() {
             Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show()
         }
     }
+
 
     private fun addFileToUI(fileName: String, fileUrl: String) {
         val fileView = layoutInflater.inflate(R.layout.item_uploaded_file, null)
