@@ -18,8 +18,8 @@ class UserDetailsActivity: AppCompatActivity(){
         val navigation_home = findViewById<ImageView>(R.id.navigation_home)
 
         val navigation_report = findViewById<ImageView>(R.id.navigation_report)
+        val navigation_appointment = findViewById<ImageView>(R.id.navigation_appointment)
         val logout = findViewById<Button>(R.id.logout)
-        val user = findViewById<TextView>(R.id.user_name)
 
 
         // Get the username, email, and password from SharedPreferences
@@ -43,17 +43,27 @@ class UserDetailsActivity: AppCompatActivity(){
             startActivity(intent)
         }
 
-        logout.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            val sharedPreferences = getSharedPreferences("MySharedPref", Context.MODE_PRIVATE)
-            val editor = sharedPreferences.edit()
-            editor.clear()
-            editor.apply()
+        navigation_appointment.setOnClickListener{
+            val intent = Intent(this, AppointmentActivity::class.java)
             startActivity(intent)
         }
 
-        user.setOnClickListener {
-            val intent = Intent(this, HomePageActivity::class.java)
+        logout.setOnClickListener {
+            val editor = sharedPreferences.edit()
+            editor.clear()
+            editor.apply()
+
+            // Clear all activities in the stack and start MainActivity
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()  // Finish UserDetailsActivity to prevent going back to it with back button
+        }
+
+        // Navigation to ManageAppointments Page
+        val navigation_appointments = findViewById<Button>(R.id.temp_button)
+        navigation_appointments.setOnClickListener{
+            val intent = Intent(this, ManageAppointmentsActivity::class.java)
             startActivity(intent)
         }
     }
