@@ -13,7 +13,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
@@ -23,6 +25,18 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // Initialize FirebaseAuth instance
+        mAuth = FirebaseAuth.getInstance()
+
+        // Check if user is already logged in
+        val currentUser = mAuth.currentUser
+        if (currentUser != null) {
+            // User is logged in, navigate to HomePageActivity
+            startActivity(Intent(this, HomePageActivity::class.java))
+            finish()  // Close MainActivity
+            return  // Exit onCreate to prevent initializing the login buttons
+        }
 
         val signInButton = findViewById<Button>(R.id.login)
         val signUpButton = findViewById<Button>(R.id.signup)
@@ -35,9 +49,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, SignupActivity::class.java)
             startActivity(intent)
         }
-
-        // Initialize FirebaseAuth instance
-        mAuth = FirebaseAuth.getInstance()
 
         // Configure Google Sign-In
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -81,17 +92,39 @@ class MainActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     val user = mAuth.currentUser
-                    Toast.makeText(this, "Google sign in successful", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, HomePageActivity::class.java))
-                    finish()
-                    // Navigate to next activity or perform other actions
+                    if (user != null) {
+                        saveGoogleUserToFirestore(user)
+                    } else {
+                        Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show()
+                    }
                 } else {
                     // If sign in fails, display a message to the user.
                     Toast.makeText(this, "Authentication failed", Toast.LENGTH_SHORT).show()
                 }
             }
     }
+    private fun saveGoogleUserToFirestore(user: FirebaseUser) {
+        val userId = user.uid
+        val username = user.displayName ?: "Unknown"
+        val email = user.email ?: "Unknown"
 
+        val userMap = hashMapOf(
+            "username" to username,
+            "email" to email
+            // Add other fields as needed
+        )
+
+        FirebaseFirestore.getInstance().collection("users").document(userId)
+            .set(userMap)
+            .addOnSuccessListener {
+                Toast.makeText(this, "User details saved", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, HomePageActivity::class.java))
+                finish()
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "Failed to save user details: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
     companion object {
         private const val RC_SIGN_IN = 9001
     }
