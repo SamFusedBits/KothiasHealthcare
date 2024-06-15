@@ -1,0 +1,50 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/_13sdp"
+    android:background="@color/ivory_white">
+
+    <!-- Patient Name -->
+    <TextView
+        android:id="@+id/username_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Patient Name"
+        android:textStyle="bold"
+        android:textColor="@color/green"
+        android:textSize="@dimen/_16ssp" />
+
+    <!-- Patient Email -->
+    <TextView
+        android:id="@+id/email_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Patient Email"
+        android:textColor="@color/green"
+        android:textSize="@dimen/_14ssp" />
+
+    <!-- File Name -->
+    <TextView
+        android:id="@+id/file_name_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="File Name"
+        android:textColor="@color/green"
+        android:textSize="@dimen/_14ssp"
+        android:layout_marginTop="@dimen/_8sdp" />
+
+    <!-- View Button -->
+    <Button
+        android:id="@+id/view_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View"
+        android:textColor="@color/ivory_white"
+        android:background="@color/light_green"
+        android:onClick="onViewButtonClick"
+        android:textAllCaps="false"
+        android:layout_marginTop="@dimen/_14sdp" />
+
+</LinearLayout>
