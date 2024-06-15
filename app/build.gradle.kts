@@ -27,6 +27,11 @@ android {
             )
         }
     }
+    packaging {
+        resources {
+            excludes.add("META-INF/DEPENDENCIES")
+        }
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -57,6 +62,7 @@ dependencies {
     implementation("de.hdodenhof:circleimageview:3.1.0")
 
 
+
     implementation("androidx.gridlayout:gridlayout:1.0.0")
     implementation("com.intuit.sdp:sdp-android:1.1.1")
     implementation("com.intuit.ssp:ssp-android:1.1.1")
@@ -74,7 +80,9 @@ dependencies {
     implementation("com.firebaseui:firebase-ui-storage:7.2.0")
     implementation("com.firebaseui:firebase-ui-firestore:7.2.0")
     implementation("com.google.firebase:firebase-storage:20.0.0")
-    implementation("com.google.android.material:material:1.6.0")
 
     implementation("com.google.firebase:firebase-appcheck:17.0.0")
+
+    // SendGrid Email API
+    implementation("com.sendgrid:sendgrid-java:4.8.3")
 }
