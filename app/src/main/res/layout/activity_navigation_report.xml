@@ -8,24 +8,23 @@
     android:background="@color/ivory_white"
     tools:context=".NavigationReportActivity">
 
-    <!-- Your existing content -->
-
     <ImageView
         android:id="@+id/select_file_icon"
         android:layout_width="@dimen/_140sdp"
         android:layout_height="@dimen/_130sdp"
-        android:layout_marginTop="148dp"
+        android:layout_marginTop="@dimen/_137sdp"
         android:src="@drawable/upload_file"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="Upload File Icon"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/select_file_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="@dimen/_25sdp"
         android:text="Select a file to upload"
         android:textColor="@color/green"
         android:textSize="@dimen/_18ssp"
@@ -41,6 +40,8 @@
         android:layout_height="wrap_content"
         android:visibility="gone"
         android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginEnd="@dimen/_25sdp"
         app:layout_constraintTop_toBottomOf="@id/select_file_text"
         style="?android:attr/progressBarStyleHorizontal"/>
 
@@ -64,11 +65,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginEnd="@dimen/_25sdp"
         app:layout_constraintTop_toBottomOf="@id/browse_file_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
-        <!-- This will hold dynamically added file views -->
         <!-- This will hold dynamically added file views -->
 
     </LinearLayout>
