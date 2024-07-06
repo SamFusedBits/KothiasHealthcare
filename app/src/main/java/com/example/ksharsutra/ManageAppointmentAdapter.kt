@@ -36,11 +36,34 @@ class ManageAppointmentAdapter(
         private val tvSchedule: TextView = itemView.findViewById(R.id.tvSchedule)
         private val btnApprove: Button = itemView.findViewById(R.id.btnApprove)
         private val btnDecline: Button = itemView.findViewById(R.id.btnDecline)
+        private val tvStatus: TextView = itemView.findViewById(R.id.tvStatus)
 
         fun bind(appointment: ManageAppointment) {
             tvName.text = appointment.name
             tvContact.text = if (appointment.email.isNotEmpty()) appointment.email else appointment.phone
             tvSchedule.text = appointment.schedule
+            tvStatus.text = appointment.status ?: ""
+
+            // Adjust visibility based on appointment status
+            when (appointment.status) {
+                "Approved" -> {
+                    btnApprove.visibility = View.GONE
+                    btnDecline.visibility = View.GONE
+                    tvStatus.visibility = View.VISIBLE
+                    tvStatus.text = "Approved"
+                }
+                "Declined" -> {
+                    btnApprove.visibility = View.GONE
+                    btnDecline.visibility = View.GONE
+                    tvStatus.visibility = View.VISIBLE
+                    tvStatus.text = "Declined"
+                }
+                else -> {
+                    btnApprove.visibility = View.VISIBLE
+                    btnDecline.visibility = View.VISIBLE
+                    tvStatus.visibility = View.GONE
+                }
+            }
 
             btnApprove.setOnClickListener { onActionClick(appointment, "approve") }
             btnDecline.setOnClickListener { onActionClick(appointment, "decline") }
