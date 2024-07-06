@@ -1,61 +1,100 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@color/ivory_white">
+    android:padding="@dimen/_8sdp">
 
+    <!-- Name TextView -->
     <TextView
         android:id="@+id/tvName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Name"
-        android:textSize="18sp"
+        android:textSize="@dimen/_16ssp"
         android:textStyle="bold"
-        android:textColor="@color/green"
-        android:paddingBottom="8dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        android:layout_marginBottom="@dimen/_4sdp"/>
 
+    <!-- Contact TextView -->
     <TextView
         android:id="@+id/tvContact"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Contact"
-        android:textSize="16sp"
-        android:textColor="@color/green"
-        android:paddingBottom="8dp"/>
+        android:textSize="@dimen/_14ssp"
+        app:layout_constraintStart_toStartOf="@+id/tvName"
+        app:layout_constraintTop_toBottomOf="@+id/tvName"
+        android:layout_marginTop="@dimen/_4sdp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        android:layout_marginBottom="@dimen/_4sdp"/>
 
+    <!-- Schedule TextView -->
     <TextView
         android:id="@+id/tvSchedule"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Schedule"
-        android:textSize="16sp"
-        android:textColor="@color/green"
-        android:paddingBottom="8dp"/>
+        android:textSize="@dimen/_14ssp"
+        app:layout_constraintStart_toStartOf="@+id/tvName"
+        app:layout_constraintTop_toBottomOf="@+id/tvContact"
+        android:layout_marginTop="@dimen/_4sdp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        android:layout_marginBottom="@dimen/_8sdp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <!-- Status TextView (Initially Invisible) -->
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:text="Approved"
+        android:textSize="@dimen/_14ssp"
+        android:textColor="@color/green"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/tvName"
+        app:layout_constraintTop_toBottomOf="@+id/tvSchedule"
+        android:layout_marginTop="@dimen/_4sdp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        android:layout_marginBottom="@dimen/_8sdp"/>
 
-        <Button
-            android:id="@+id/btnApprove"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Approve"
-            android:backgroundTint="@color/light_green"
-            android:textColor="@color/ivory_white"
-            android:layout_marginEnd="8dp"/>
+    <!-- Guideline for Center Alignment -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="303dp" />
 
-        <Button
-            android:id="@+id/btnDecline"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Decline"
-            android:backgroundTint="@color/green"
-            android:textColor="@color/ivory_white"/>
-    </LinearLayout>
-</LinearLayout>
+    <!-- Approve Button -->
+    <Button
+        android:id="@+id/btnApprove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Approve"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/tvName"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"/>
+
+    <!-- Decline Button -->
+    <Button
+        android:id="@+id/btnDecline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Decline"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/btnApprove"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
