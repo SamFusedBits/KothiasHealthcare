@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:text="Name"
         android:textSize="@dimen/_16ssp"
+        android:textColor="@color/green"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -28,6 +29,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Contact"
+        android:textColor="@color/green"
         android:textSize="@dimen/_14ssp"
         app:layout_constraintStart_toStartOf="@+id/tvName"
         app:layout_constraintTop_toBottomOf="@+id/tvName"
@@ -41,6 +43,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Schedule"
+        android:textColor="@color/green"
         android:textSize="@dimen/_14ssp"
         app:layout_constraintStart_toStartOf="@+id/tvName"
         app:layout_constraintTop_toBottomOf="@+id/tvContact"
@@ -69,7 +72,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="303dp" />
+        app:layout_constraintGuide_end="103dp" />
 
     <!-- Approve Button -->
     <Button
@@ -77,7 +80,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Approve"
-        android:visibility="visible"
+        android:textAllCaps="false"
+        android:background="@drawable/rounded_button"
+        android:textColor="@color/ivory_white"
         app:layout_constraintStart_toEndOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/tvName"
         android:layout_marginStart="@dimen/_8sdp"
@@ -90,7 +95,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Decline"
-        android:visibility="visible"
+        android:textColor="@color/ivory_white"
+        android:textAllCaps="false"
+        android:background="@drawable/rounded_button"
         app:layout_constraintStart_toEndOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/btnApprove"
         android:layout_marginTop="@dimen/_4sdp"
