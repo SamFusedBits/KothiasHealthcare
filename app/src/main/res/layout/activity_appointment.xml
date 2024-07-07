@@ -18,19 +18,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Header Title -->
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/hospitalDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_20sdp"
-        android:text="Book Appointment"
+        android:text="Hi-TECH Centre for Piles-Fissure-Fistula and Pilonidal Sinus | Ischiorectal | Perianal Abscess"
         android:textColor="@color/green"
-        android:textSize="@dimen/_18ssp"
+        android:textSize="@dimen/_13ssp"
+        android:textAlignment="center"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+<!--    &lt;!&ndash; Header Title &ndash;&gt;
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:text="Book Appointment"
+        android:textColor="@color/green"
+        android:textSize="@dimen/_16ssp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hospitalDetails"/>-->
 
     <!-- Main Content -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -43,7 +57,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title">
+        app:layout_constraintTop_toBottomOf="@+id/hospitalDetails">
 
         <!-- Doctor Image -->
         <ImageView
@@ -64,7 +78,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_8sdp"
-            android:text="Dr. Manish M. Kothia"
+            android:text="Dr. Manish Kothia"
             android:textColor="@color/green"
             android:textSize="@dimen/_16ssp"
             android:textStyle="bold"
@@ -77,13 +91,25 @@
             android:id="@+id/doctorSpecialty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:text="Mullet specialist"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:text="M.S.(Ayu.) Surgeon"
             android:textColor="@color/green"
-            android:textSize="@dimen/_16ssp"
+            android:textSize="@dimen/_12ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/doctorName" />
+
+        <TextView
+            android:id="@+id/doctorDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="Specialist in Piles-Fissure-Fistula"
+            android:textColor="@color/light_green"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/doctorSpecialty" />
 
         <!-- Doctor Details -->
         <LinearLayout
@@ -93,7 +119,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/doctorSpecialty">
+            app:layout_constraintTop_toBottomOf="@+id/doctorDescription">
 
             <!-- Patients Count -->
             <LinearLayout
@@ -190,9 +216,10 @@
             android:layout_marginTop="@dimen/_16sdp"
             android:layout_marginStart="@dimen/_16sdp"
             android:layout_marginEnd="@dimen/_16sdp"
-            android:text="Best leading doctor in Maharashtra for anorectal disease piles-fissure-fistula, perianal abscess, ischio rectal abscess"
+            android:text="Best leading doctor in Maharashtra for treatment of Anorectal Diseases."
             android:textColor="@color/green"
             android:textAllCaps="false"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/doctorDetails" />
