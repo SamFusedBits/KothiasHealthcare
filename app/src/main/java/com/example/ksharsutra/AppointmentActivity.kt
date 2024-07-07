@@ -40,10 +40,13 @@ class AppointmentActivity : AppCompatActivity() {
         findViewById<View>(R.id.bookNowButton).setOnClickListener {
             // Handle booking process
             if (selectedSchedule != null && selectedTimeSlot != null) {
+                val selectedDate = selectedScheduleTextView?.tag.toString() // Get the date in database format
                 val intent = Intent(this, AppointmentBookingActivity::class.java).apply {
-                    putExtra("selected_schedule", "$selectedSchedule | $selectedTimeSlot")
+                    putExtra("selected_schedule", "$selectedDate | $selectedTimeSlot")
                 }
                 startActivity(intent)
+            } else if (selectedSchedule == null) {
+                Toast.makeText(this, "Please select a schedule", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "Please select schedule and a time slot", Toast.LENGTH_SHORT).show()
             }
@@ -53,7 +56,8 @@ class AppointmentActivity : AppCompatActivity() {
     // Function to set up schedule grid
     private fun setupScheduleGrid() {
         val calendar = Calendar.getInstance()
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()) // Adjust date format to match Firestore
+        val databaseDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()) // Format for saving in Firestore
+        val displayDateFormat = SimpleDateFormat("MMMM, dd", Locale.getDefault()) // Format for displaying to the user
 
         for (i in 0..5) {
             // Skip Sundays
@@ -67,7 +71,10 @@ class AppointmentActivity : AppCompatActivity() {
                     height = GridLayout.LayoutParams.WRAP_CONTENT
                     setMargins(4.dpToPx(), 4.dpToPx(), 4.dpToPx(), 4.dpToPx())
                 }
-                text = dateFormat.format(calendar.time)
+                val dateForDatabase = databaseDateFormat.format(calendar.time)
+                val dateForDisplay = displayDateFormat.format(calendar.time)
+                text = dateForDisplay
+                tag = dateForDatabase // Store the database format date as tag
                 setBackgroundResource(R.drawable.day_background)
                 gravity = Gravity.CENTER
                 setPadding(8.dpToPx(), 8.dpToPx(), 8.dpToPx(), 8.dpToPx())
@@ -162,7 +169,8 @@ class AppointmentActivity : AppCompatActivity() {
         selectedSchedule = scheduleTextView.text.toString()
         selectedScheduleTextView = scheduleTextView
 
-        setupTimeSlotsGrid(selectedSchedule!!)
+        val selectedDateForDatabase = scheduleTextView.tag.toString() // Get the date in database format
+        setupTimeSlotsGrid(selectedDateForDatabase)
     }
 
     private fun selectTimeSlot(timeSlotTextView: TextView) {
