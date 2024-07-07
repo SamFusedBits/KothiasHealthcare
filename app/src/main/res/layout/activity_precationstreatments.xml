@@ -8,24 +8,13 @@
     android:background="@color/ivory_white"
     tools:context=".PrecautionsTreatmentsActivity">
 
-
-    <ImageView
-        android:id="@+id/back_arrow"
-        android:layout_width="@dimen/_34sdp"
-        android:layout_height="@dimen/_52sdp"
-        android:layout_marginStart="@dimen/_16sdp"
-        android:layout_marginTop="@dimen/_28sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back_arrow" />
-
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_28sdp"
         android:textColor="@color/green"
-        android:textSize="@dimen/_40ssp"
+        android:textSize="@dimen/_35ssp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,14 +57,15 @@
                         android:text="@string/precautions_label"
                         android:textStyle="bold"
                         android:textColor="@color/green"
-                        android:textSize="@dimen/_30ssp" />
+                        android:textSize="@dimen/_25ssp" />
 
                     <TextView
                         android:id="@+id/precautions_list"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
                         android:textColor="@color/green"
-                        android:textSize="@dimen/_20ssp" />
+                        android:textSize="@dimen/_18ssp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -102,15 +92,15 @@
                         android:text="@string/treatment_label"
                         android:textStyle="bold"
                         android:textColor="@color/green"
-                        android:textSize="@dimen/_30ssp" />
+                        android:textSize="@dimen/_25ssp" />
 
                     <TextView
                         android:id="@+id/treatment_list"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/green"
-                        android:layout_marginBottom="@dimen/_45ssp"
-                        android:textSize="@dimen/_20ssp" />
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:textSize="@dimen/_18ssp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
