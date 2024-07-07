@@ -12,8 +12,6 @@ class PrecautionsTreatmentsActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_precationstreatments)
 
-        val back_arrow = findViewById<ImageView>(R.id.back_arrow)
-
         val title = findViewById<TextView>(R.id.title)
         val precautions_list = findViewById<TextView>(R.id.precautions_list)
         val treatment_list = findViewById<TextView>(R.id.treatment_list)
@@ -37,9 +35,5 @@ class PrecautionsTreatmentsActivity : AppCompatActivity() {
             precautions_list.text = getString(R.string.fistula_precautions)
             treatment_list.text = getString(R.string.fistula_treatment)
         }
-        back_arrow.setOnClickListener {
-            finish()
-        }
-
     }
 }
