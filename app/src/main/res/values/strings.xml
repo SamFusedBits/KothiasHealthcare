@@ -9,62 +9,62 @@
     <string name="book_an_appointment">Book an appointment</string>
 
 
-    <string name="piles_description">Swollen veins in the rectal area, causing discomfort, itching, and bleeding, often associated with straining during bowel movements.</string>
+    <string name="piles_description">Swollen veins in the rectal area, causing discomfort, itching, and bleeding.</string>
     <string name="fissure_description">A painful tear or crack in the lining of the anus, causing discomfort and bleeding during bowel movements.</string>
     <string name="PilonidalSinus_description">A small tunnel-like cavity in the skin, often near the tailbone, prone to infection.</string>
-    <string name="fistula_description">An abnormal tunnel that forms between the anal canal and the skin near the anus, often resulting from an untreated abscess.</string>
+    <string name="fistula_description">An abnormal tunnel that forms between the anal canal and the skin near the anus.</string>
     <string name="learn_more">Learn More</string>
-    <string name="precautions_label"><u>Precautions :</u></string>
-    <string name="treatment_label"><u>Treatment :</u></string>
-    <string name="piles_treatment">• Dietary changes: Increasing fiber intake to soften stools and prevent straining during bowel movements.\n• Topical treatments: Over-the-counter creams, ointments, or suppositories to reduce pain, itching, and inflammation.\n• Sclerotherapy or banding: In-office procedures to shrink hemorrhoids by cutting off their blood supply.\n• Rubber band ligation: A procedure where a rubber band is placed around the base of the hemorrhoid to cut off its blood supply, causing it to shrink and fall off.\n• Hemorrhoidectomy: Surgical removal of hemorrhoids, usually reserved for severe cases that do not respond to other treatments.</string>
-    <string name="piles_precautions">• Eat a high-fiber diet to soften stools and reduce straining during bowel movements.\n• Stay hydrated and maintain regular exercise to promote bowel regularity.\n• Avoid sitting or standing for long periods and take breaks to relieve pressure on the rectal area.\n• Use gentle, fragrance-free wipes or soft toilet paper to clean the area after bowel movements.</string>
+    <string name="precautions_label">Precautions</string>
+    <string name="treatment_label">Treatment</string>
+    <string name="piles_treatment">- Dietary changes: Increasing fiber intake to soften stools and prevent straining during bowel movements.\n \n- Topical treatments: Over-the-counter creams, ointments, or suppositories to reduce pain, itching, and inflammation.\n\n- Sclerotherapy or banding: In-office procedures to shrink hemorrhoids by cutting off their blood supply.\n\n- Rubber band ligation: A procedure where a rubber band is placed around the base of the hemorrhoid to cut off its blood supply, causing it to shrink and fall off.\n\n- Hemorrhoidectomy: Surgical removal of hemorrhoids, usually reserved for severe cases that do not respond to other treatments.</string>
+    <string name="piles_precautions">- Eat a high-fiber diet to soften stools and reduce straining during bowel movements.\n \n- Stay hydrated and maintain regular exercise to promote bowel regularity.\n \n- Avoid sitting or standing for long periods and take breaks to relieve pressure on the rectal area.\n \n- Use gentle, fragrance-free wipes or soft toilet paper to clean the area after bowel movements.</string>
     <string name="fissure_treatment">
-        • Topical ointments or creams: Over-the-counter or prescription creams containing calcium channel blockers or nitroglycerin to relax the anal sphincter and promote healing.\n
-        • Sitz baths: Soaking the anal area in warm water for 10-15 minutes several times a day to relieve pain and promote healing.\n
-        • Dietary changes: Increasing fiber intake and drinking plenty of water to soften stools and reduce strain during bowel movements.\n
-        • Botulinum toxin injection: Injections into the anal sphincter to relax the muscle and promote healing in chronic fissures.\n
-        • Surgical sphincterotomy: In severe or chronic cases, a surgical procedure to cut the internal anal sphincter muscle to reduce spasm and promote healing.
+        - Topical ointments or creams: Over-the-counter or prescription creams containing calcium channel blockers or nitroglycerin to relax the anal sphincter and promote healing.\n\n
+        - Sitz baths: Soaking the anal area in warm water for 10-15 minutes several times a day to relieve pain and promote healing.\n\n
+        - Dietary changes: Increasing fiber intake and drinking plenty of water to soften stools and reduce strain during bowel movements.\n\n
+        - Botulinum toxin injection: Injections into the anal sphincter to relax the muscle and promote healing in chronic fissures.\n\n
+        - Surgical sphincterotomy: In severe or chronic cases, a surgical procedure to cut the internal anal sphincter muscle to reduce spasm and promote healing.
     </string>
 
     <string name="fissure_precautions">
-        • Maintain a high-fiber diet and drink plenty of water to prevent constipation.\n
-        • Practice good anal hygiene, and avoid excessive wiping or harsh cleansers.\n
-        • Use stool softeners or topical ointments as recommended by a healthcare professional to promote healing.\n
-        • Avoid straining during bowel movements and consider using a stool or footstool to elevate your feet while on the toilet to ease passage.
+        - Maintain a high-fiber diet and drink plenty of water to prevent constipation.\n\n
+        - Practice good anal hygiene, and avoid excessive wiping or harsh cleansers.\n\n
+        - Use stool softeners or topical ointments as recommended by a healthcare professional to promote healing.\n\n
+        - Avoid straining during bowel movements and consider using a stool or footstool to elevate your feet while on the toilet to ease passage.
     </string>
     <string name="pilonidalsinus_treatment">
-        • Incision and drainage: If the sinus is infected, a healthcare provider may need to make an incision to drain pus and debris from the abscess.\n
-        • Antibiotics: In cases of infection, antibiotics may be prescribed to treat the bacterial infection.\n
-        • Laser hair removal or shaving: To prevent recurrence, hair removal methods may be used to reduce hair in the affected area.\n
-        • Surgical excision: For recurrent or chronic cases, surgical removal of the sinus tract and surrounding tissue may be necessary.
+        - Incision and drainage: If the sinus is infected, a healthcare provider may need to make an incision to drain pus and debris from the abscess.\n\n
+        - Antibiotics: In cases of infection, antibiotics may be prescribed to treat the bacterial infection.\n\n
+        - Laser hair removal or shaving: To prevent recurrence, hair removal methods may be used to reduce hair in the affected area.\n\n
+        - Surgical excision: For recurrent or chronic cases, surgical removal of the sinus tract and surrounding tissue may be necessary.
     </string>
 
     <string name="doctor_image">Doctor Image</string>
 
 
     <string name="pilonidalsinus_precautions">
-        • Maintain good hygiene, especially in the buttock area.\n
-        • Keep the area clean and dry to prevent bacterial growth.\n
-        • Avoid prolonged sitting or pressure on the affected area.\n
-        • Seek medical attention if symptoms persist or worsen.
+        - Maintain good hygiene, especially in the buttock area.\n\n
+        - Keep the area clean and dry to prevent bacterial growth.\n\n
+        - Avoid prolonged sitting or pressure on the affected area.\n\n
+        - Seek medical attention if symptoms persist or worsen.
     </string>
     <string name="fistula_treatment">
-        • Incision and Drainage: If there is an associated abscess, the first step is often to drain the abscess surgically to relieve pain and prevent further infection.\n
-        • Seton Placement: A seton is a thread-like material (often made of silk or rubber) that is inserted into the fistula tract to keep it open and allow for continuous drainage. This helps prevent the formation of new abscesses and promotes healing.\n
-        • Fistulotomy: This surgical procedure involves cutting open the entire length of the fistula tract to remove it completely. It is usually reserved for simple, superficial fistulas that do not involve the sphincter muscles.\n
-        • Fistulectomy: Similar to fistulotomy, fistulectomy involves surgically removing the entire fistula tract. However, this procedure may be more extensive and involve removing surrounding tissue as well.\n
-        • LIFT Procedure (Ligation of the Intersphincteric Fistula Tract): This minimally invasive procedure involves identifying and ligating (tying off) the internal opening of the fistula tract while preserving the anal sphincter muscles.\n
-        • Advancement Flap Repair: In this procedure, tissue from the inside of the rectum is used to cover and close the internal opening of the fistula, promoting healing.\n
-        • Fibrin Glue Injection: Fibrin glue is injected into the fistula tract to seal it off and promote healing. This is typically used for low-risk, superficial fistulas.\n
-        • Biological Plugs: Biological plugs made from materials such as porcine collagen are sometimes used to seal the internal opening of the fistula and promote healing.\n
-        • Antibiotics: Antibiotics may be prescribed to treat or prevent infection, particularly if there is an associated abscess or if surgery is performed.
+        - Incision and Drainage: If there is an associated abscess, the first step is often to drain the abscess surgically to relieve pain and prevent further infection.\n\n
+        - Seton Placement: A seton is a thread-like material (often made of silk or rubber) that is inserted into the fistula tract to keep it open and allow for continuous drainage. This helps prevent the formation of new abscesses and promotes healing.\n\n
+        - Fistulotomy: This surgical procedure involves cutting open the entire length of the fistula tract to remove it completely. It is usually reserved for simple, superficial fistulas that do not involve the sphincter muscles.\n\n
+        - Fistulectomy: Similar to fistulotomy, fistulectomy involves surgically removing the entire fistula tract. However, this procedure may be more extensive and involve removing surrounding tissue as well.\n\n
+        - LIFT Procedure (Ligation of the Intersphincteric Fistula Tract): This minimally invasive procedure involves identifying and ligating (tying off) the internal opening of the fistula tract while preserving the anal sphincter muscles.\n\n
+        - Advancement Flap Repair: In this procedure, tissue from the inside of the rectum is used to cover and close the internal opening of the fistula, promoting healing.\n\n
+        - Fibrin Glue Injection: Fibrin glue is injected into the fistula tract to seal it off and promote healing. This is typically used for low-risk, superficial fistulas.\n\n
+        - Biological Plugs: Biological plugs made from materials such as porcine collagen are sometimes used to seal the internal opening of the fistula and promote healing.\n\n
+        - Antibiotics: Antibiotics may be prescribed to treat or prevent infection, particularly if there is an associated abscess or if surgery is performed.
     </string>
 
     <string name="fistula_precautions">
-        • Maintain good anal hygiene by keeping the area clean and dry to prevent infection and irritation.\n
-        • Avoid prolonged sitting or pressure on the anal region to reduce discomfort and prevent exacerbation of symptoms.\n
-        • Seek medical attention if you experience persistent pain, swelling, or drainage from an opening near the anus, as prompt treatment can help prevent complications and promote healing.\n
-        • Follow your healthcare providers recommendations for treatment, which may include antibiotics, surgical drainage, or surgical removal of the fistula tract, depending on the severity and complexity of the condition.
+        - Maintain good anal hygiene by keeping the area clean and dry to prevent infection and irritation.\n\n
+        - Avoid prolonged sitting or pressure on the anal region to reduce discomfort and prevent exacerbation of symptoms.\n\n
+        - Seek medical attention if you experience persistent pain, swelling, or drainage from an opening near the anus, as prompt treatment can help prevent complications and promote healing.\n\n
+        - Follow your healthcare providers recommendations for treatment, which may include antibiotics, surgical drainage, or surgical removal of the fistula tract, depending on the severity and complexity of the condition.
     </string>
     <string name="logout">Logout</string>
     <string name="edit_profile">Edit Profile</string>
