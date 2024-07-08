@@ -1,0 +1,1102 @@
+<!-- activity_medical_questionnaire.xml -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ivory_white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Heading -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="@dimen/_8sdp">
+
+            <ImageView
+                android:layout_width="@dimen/_72sdp"
+                android:layout_height="@dimen/_72sdp"
+                android:background="@drawable/logo"
+                android:textColor="@color/light_green"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/questionnaire_heading"
+                android:textSize="@dimen/_22ssp"
+                android:textStyle="bold"
+                android:textColor="@color/light_green"/>
+
+        </LinearLayout>
+
+        <!-- Enter your name -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/enter_name"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp"/>
+
+        <EditText
+            android:id="@+id/editTextName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="@string/enter_name_hint"
+            android:layout_marginBottom="@dimen/_8sdp"/>
+
+        <!-- Enter your age -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/enter_age"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp"/>
+
+        <EditText
+            android:id="@+id/editTextAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="@string/enter_age_hint"
+            android:layout_marginBottom="@dimen/_8sdp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/enter_gender"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp"/>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/male" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/female" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/other"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Are you working question -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/are_you_working"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp"/>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Duty timings question -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/duty_timings"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp"/>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/day" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/night"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Nature of your job question -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nature_of_job"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp"/>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/standing" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sitting" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/combined" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/travelling" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/all"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Lifting heavy weights / Gym recently question -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lifting_weights_gym"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp"/>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Corporate job question -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/corporate_job"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp"/>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Hours spent sitting question -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hours_sitting"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp"/>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/less_than_4hrs" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/between4_6hrs" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/between6_8hrs" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/between8_10hrs" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/more_than_10hrs"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Outside / junk food question -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/outside_food"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp"/>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/daily" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/twice_a_week" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/thrice_a_week" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/only_weekends" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rarely"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Oily / spicy food question -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/oily_spicy_food"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp"/>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Dinner time question -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dinner_time"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp"/>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/before_7pm" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/between_7_9pm" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/after_10pm"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Digestion-related problems question -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/digestion_problems"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp"/>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/constipation" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no_constipation"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Type of constipation question -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/type_of_constipation"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp"/>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/completely_stopped" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/approx2_times_a_day" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/approx3_to_4_times"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Symptomatic Questions -->
+        <!-- Do you endure pain while passing stool? -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/do_you_endure_pain"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp"/>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/while_passing_stool" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/throughout_the_day"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Cutting pain at the anal region during passing stools -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cutting_pain"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp"/>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Burning pain at the anal region -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/burning_pain"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Itching pain at the anal region -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/itching_pain"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Pile mass coming out while passing stool -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pile_mass_coming_out"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Pile mass condition -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pile_mass_condition"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pile_mass_outside" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pile_mass_inside"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Bleeding issue while passing stool -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bleeding_issue"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- How is the bleeding? -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bleeding_type"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bleeding_drops" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bleeding_continuous" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bleeding_with_stool"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Amount of bleeding -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/amount_of_bleeding"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bleeding_less_than_1_spoon" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bleeding_more_than_1_spoon"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Color of the blood -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/color_of_blood"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/red_blood" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/brown_blood"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Pus discharge while passing stool -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pus_discharge"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Boils around the anus area -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/boils_around_anus"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Swelling in the area -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/swelling_in_area"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Swelling occurrence -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/swelling_occurrence"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Kind of body hair -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/kind_of_body_hair"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/scanty_hair" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/moderate_hair" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/stiff_thick_hair"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Suffering from diabetes -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/suffering_from_diabetes"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Redness or swelling in the buttock area -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/redness_or_swelling"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Suffering from Fever -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/suffering_from_fever"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Undergone treatment for PiloNidal Sinus -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/undergone_treatment"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/allopathic" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/homoeopathic" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ayurvedic" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/none"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Mention the type of treatment - -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/please_mention_the_type_of_the_treatment"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/surgical" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/medicinal" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/both" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/none_t"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Is there any recurrence of PiloNidal Sinus/ Fistula after treatment? -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/recurrence_of_pilonidal"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Recurrence of PiloNidal Sinus -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/relapse_in_this_disease"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no_recurrence" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/once" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/twice" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/thrice" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/more_than_three"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Pain while sitting -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pain_while_sitting"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Pain while defecation -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pain_while_defecation"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Losing weight -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/losing_weight"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp"/>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Just delivered a baby -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/just_delivered_a_baby"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Family history of anal cancer -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/family_history_of_cancer"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- First visit to the doctor -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/first_visit_to_doctor"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes_t" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no_t"
+                android:layout_marginBottom="@dimen/_8sdp"/>
+        </RadioGroup>
+
+        <!-- Diagnosed with which diseases -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/diagnosed_with_diseases"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/piles" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pilonidal_sinus" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fissure" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fistula"
+            android:layout_marginBottom="@dimen/_8sdp"/>
+
+        <!-- Submit button -->
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/submit"
+            android:background="@drawable/button_bg_layout_green"
+            android:textColor="@color/ivory_white"
+            android:textAllCaps="false"/>
+
+    </LinearLayout>
+</ScrollView>
