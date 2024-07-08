@@ -35,6 +35,11 @@ class HomePageActivity: AppCompatActivity() {
         val appointment  = findViewById<ImageView>(R.id.navigation_appointment)
 
 
+        questionnaire_card.setOnClickListener {
+            val intent = Intent(this, Questionnaire::class.java)
+            startActivity(intent)
+        }
+
         navigation_profile.setOnClickListener {
             val intent = Intent(this, UserDetailsActivity::class.java)
             startActivity(intent)
