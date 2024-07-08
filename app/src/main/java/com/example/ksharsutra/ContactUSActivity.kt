@@ -48,8 +48,7 @@ class ContactUSActivity : AppCompatActivity() {
             startActivity(mapIntent)
         }
         appointment.setOnClickListener {
-            //When the appointment page is ready, then add the binding accordingly
-            val intent = Intent(this, DashboardActivity::class.java)
+            val intent = Intent(this, AppointmentActivity::class.java)
             startActivity(intent)
         }
         back.setOnClickListener {
