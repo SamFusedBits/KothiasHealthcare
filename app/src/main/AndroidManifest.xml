@@ -32,7 +32,7 @@
         <activity android:name=".ContactUSActivity" />
         <activity android:name=".FeedbackActivity" />
         <activity android:name=".UserDetailsActivity" />
-        <activity android:name=".DashboardActivity" />
+        <activity android:name=".Questionnaire" />
         <activity android:name=".AppointmentActivity" />
         <activity android:name=".AppointmentBookingActivity" />
         <activity android:name=".ManageReportsActivity" />
