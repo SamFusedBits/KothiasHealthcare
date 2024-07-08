@@ -30,6 +30,9 @@ class NavigationReportActivity : AppCompatActivity() {
     private val PICK_FILE_REQUEST = 1
     private val READ_EXTERNAL_STORAGE_PERMISSION_CODE = 100
 
+    // Cache for storing file metadata
+    private val fileCache = mutableListOf<FileMetadata>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_navigation_report)
@@ -55,6 +58,14 @@ class NavigationReportActivity : AppCompatActivity() {
     }
 
     private fun fetchUserFiles() {
+        // Check cache first
+        if (fileCache.isNotEmpty()) {
+            fileCache.forEach { fileMetadata ->
+                addFileToUI(fileMetadata.name, fileMetadata.url)
+            }
+            return
+        }
+
         val firestore = FirebaseFirestore.getInstance()
         val userId = FirebaseAuth.getInstance().currentUser?.uid
 
@@ -67,6 +78,8 @@ class NavigationReportActivity : AppCompatActivity() {
                         val fileName = document.getString("name")
                         val fileUrl = document.getString("url")
                         if (fileName != null && fileUrl != null) {
+                            val fileMetadata = FileMetadata(fileName, fileUrl)
+                            fileCache.add(fileMetadata)
                             addFileToUI(fileName, fileUrl)
                         }
                     }
@@ -138,20 +151,22 @@ class NavigationReportActivity : AppCompatActivity() {
         progressBar.visibility = ProgressBar.VISIBLE
         progressBar.progress = 0
 
-        uploadTask.addOnSuccessListener { taskSnapshot ->
+        uploadTask.addOnProgressListener { taskSnapshot ->
+            val progress = (100.0 * taskSnapshot.bytesTransferred / taskSnapshot.totalByteCount).toInt()
+            progressBar.progress = progress
+        }.addOnSuccessListener { taskSnapshot ->
             storageReference.downloadUrl.addOnSuccessListener { uri ->
                 val downloadUrl = uri.toString()
                 saveFileMetadataToFirestore(fileName, downloadUrl, name, email, phoneNumber)
-                // Hide progress bar
+            }.addOnFailureListener { exception ->
+                Toast.makeText(this, "Failed to retrieve file URL: ${exception.message}", Toast.LENGTH_SHORT).show()
+                // Hide progress bar if retrieving the URL fails
                 progressBar.visibility = ProgressBar.GONE
             }
         }.addOnFailureListener { exception ->
             Toast.makeText(this, "Upload failed: ${exception.message}", Toast.LENGTH_SHORT).show()
             // Hide progress bar
             progressBar.visibility = ProgressBar.GONE
-        }.addOnProgressListener { taskSnapshot ->
-            val progress = (100.0 * taskSnapshot.bytesTransferred / taskSnapshot.totalByteCount).toInt()
-            progressBar.progress = progress
         }
     }
 
@@ -174,17 +189,21 @@ class NavigationReportActivity : AppCompatActivity() {
                 .add(fileMetadata)
                 .addOnSuccessListener {
                     Toast.makeText(this, "File uploaded successfully", Toast.LENGTH_SHORT).show()
+                    // Add to cache
+                    fileCache.add(FileMetadata(fileName, downloadUrl))
                     // Optionally, update UI or perform additional tasks
                     addFileToUI(fileName, downloadUrl)
+                    progressBar.visibility = ProgressBar.GONE
                 }
                 .addOnFailureListener {
                     Toast.makeText(this, "Failed to upload file: ${it.message}", Toast.LENGTH_SHORT).show()
+                    progressBar.visibility = ProgressBar.GONE
                 }
         } ?: run {
             Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show()
+            progressBar.visibility = ProgressBar.GONE
         }
     }
-
 
     private fun addFileToUI(fileName: String, fileUrl: String) {
         val fileView = layoutInflater.inflate(R.layout.item_uploaded_file, null)
@@ -234,4 +253,6 @@ class NavigationReportActivity : AppCompatActivity() {
         }
         return result
     }
+
+    data class FileMetadata(val name: String, val url: String)
 }
