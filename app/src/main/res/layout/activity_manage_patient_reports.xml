@@ -20,7 +20,8 @@
         android:layout_below="@id/search_edit_text"
         android:layout_alignParentEnd="true"
         android:text="Search"
-        android:textColor="@color/green"
+        android:textColor="@color/ivory_white"
+        android:textAllCaps="false"
         android:onClick="onSearchButtonClick"
         android:background="@color/light_green"/>
 

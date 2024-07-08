@@ -124,11 +124,12 @@
             <Button
                 android:id="@+id/submit"
                 android:layout_width="205dp"
-                android:layout_height="37dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/_16sdp"
-                android:background="@drawable/rounded_button"
+                android:background="@drawable/button_bg_layout_green"
                 android:text="Submit"
+                android:layout_marginBottom="@dimen/_10sdp"
                 android:textAllCaps="false"
                 android:textColor="@color/ivory_white"
                 android:textSize="@dimen/_18ssp" />

@@ -181,7 +181,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_20sdp"
-                android:background="@drawable/rounded_button"
+                android:background="@drawable/button_bg_layout_green"
                 android:text="@string/book_an_appointment"
                 android:textColor="@color/ivory_white"
                 android:textSize="@dimen/_18ssp"
