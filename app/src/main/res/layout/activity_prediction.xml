@@ -18,8 +18,8 @@
 
     <ImageView
         android:id="@+id/prediction_logo"
-        android:layout_width="@dimen/_179sdp"
-        android:layout_height="@dimen/_156sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_136sdp"
         android:layout_marginTop="@dimen/_88sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
