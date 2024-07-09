@@ -78,6 +78,7 @@
             android:textColor="@color/green"
             android:layout_marginBottom="@dimen/_5sdp"/>
         <RadioGroup
+            android:id="@+id/radioGroupGender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -104,6 +105,7 @@
             android:textColor="@color/green"
             android:layout_marginBottom="@dimen/_5sdp"/>
         <RadioGroup
+            android:id="@+id/radioGroupWorking"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -126,6 +128,7 @@
             android:textColor="@color/green"
             android:layout_marginBottom="@dimen/_5sdp"/>
         <RadioGroup
+            android:id="@+id/radioGroupDutyTimings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -148,6 +151,7 @@
             android:textColor="@color/green"
             android:layout_marginBottom="@dimen/_5sdp"/>
         <RadioGroup
+            android:id="@+id/radioGroupNatureOfJob"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -182,6 +186,7 @@
             android:textColor="@color/green"
             android:layout_marginBottom="@dimen/_5sdp"/>
         <RadioGroup
+            android:id="@+id/radioGroupLiftingWeights"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -204,6 +209,7 @@
             android:textColor="@color/green"
             android:layout_marginBottom="@dimen/_5sdp"/>
         <RadioGroup
+            android:id="@+id/radioGroupCorporateJob"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -226,6 +232,7 @@
             android:textColor="@color/green"
             android:layout_marginBottom="@dimen/_5sdp"/>
         <RadioGroup
+            android:id="@+id/radioGroupHoursSitting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -260,6 +267,7 @@
             android:textColor="@color/green"
             android:layout_marginBottom="@dimen/_5sdp"/>
         <RadioGroup
+            android:id="@+id/radioGroupOutsideFood"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -294,6 +302,7 @@
             android:textColor="@color/green"
             android:layout_marginBottom="@dimen/_5sdp"/>
         <RadioGroup
+            android:id="@+id/radioGroupOilySpicyFood"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -316,6 +325,7 @@
             android:textColor="@color/green"
             android:layout_marginBottom="@dimen/_5sdp"/>
         <RadioGroup
+            android:id="@+id/radioGroupDinnerTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -342,6 +352,7 @@
             android:textColor="@color/green"
             android:layout_marginBottom="@dimen/_5sdp"/>
         <RadioGroup
+            android:id="@+id/radioGroupDigestionProblems"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -364,6 +375,7 @@
             android:textColor="@color/green"
             android:layout_marginBottom="@dimen/_5sdp"/>
         <RadioGroup
+            android:id="@+id/radioGroupTypeOfConstipation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -392,6 +404,7 @@
             android:layout_marginBottom="@dimen/_5sdp"/>
 
         <RadioGroup
+            android:id="@+id/radioGroupPainWhilePassingStool"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -415,6 +428,7 @@
             android:layout_marginBottom="@dimen/_5sdp"/>
 
         <RadioGroup
+            android:id="@+id/radioGroupCuttingPain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -438,6 +452,7 @@
             android:layout_marginBottom="@dimen/_5sdp" />
 
         <RadioGroup
+            android:id="@+id/radioGroupBurningPain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -461,6 +476,7 @@
             android:layout_marginBottom="@dimen/_5sdp" />
 
         <RadioGroup
+            android:id="@+id/radioGroupItchingPain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -476,6 +492,7 @@
 
         <!-- Pile mass coming out while passing stool -->
         <TextView
+            android:id="@+id/pile_mass_coming_out"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/pile_mass_coming_out"
@@ -484,6 +501,7 @@
             android:layout_marginBottom="@dimen/_5sdp" />
 
         <RadioGroup
+            android:id="@+id/radioGroupPileMassComingOut"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -507,6 +525,7 @@
             android:layout_marginBottom="@dimen/_5sdp" />
 
         <RadioGroup
+            android:id="@+id/radioGroupPileMassCondition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -530,6 +549,7 @@
             android:layout_marginBottom="@dimen/_5sdp" />
 
         <RadioGroup
+            android:id="@+id/radioGroupBleedingIssue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -553,6 +573,7 @@
             android:layout_marginBottom="@dimen/_5sdp" />
 
         <RadioGroup
+            android:id="@+id/radioGroupBleedingType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -580,6 +601,7 @@
             android:layout_marginBottom="@dimen/_5sdp" />
 
         <RadioGroup
+            android:id="@+id/radioGroupAmountOfBleeding"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -603,6 +625,7 @@
             android:layout_marginBottom="@dimen/_5sdp" />
 
         <RadioGroup
+            android:id="@+id/radioGroupColorOfBlood"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -626,6 +649,7 @@
             android:layout_marginBottom="@dimen/_5sdp" />
 
         <RadioGroup
+            android:id="@+id/radioGroupPusDischarge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -649,6 +673,7 @@
             android:layout_marginBottom="@dimen/_5sdp" />
 
         <RadioGroup
+            android:id="@+id/radioGroupBoilsAroundAnus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -672,6 +697,7 @@
             android:layout_marginBottom="@dimen/_5sdp" />
 
         <RadioGroup
+            android:id="@+id/radioGroupSwellingInArea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -695,6 +721,7 @@
             android:layout_marginBottom="@dimen/_5sdp" />
 
         <RadioGroup
+            android:id="@+id/radioGroupSwellingOccurrence"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -718,6 +745,7 @@
             android:layout_marginBottom="@dimen/_5sdp" />
 
         <RadioGroup
+            android:id="@+id/radioGroupKindOfBodyHair"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -745,6 +773,7 @@
             android:layout_marginBottom="@dimen/_5sdp" />
 
         <RadioGroup
+            android:id="@+id/radioGroupSufferingFromDiabetes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -768,6 +797,7 @@
             android:layout_marginBottom="@dimen/_5sdp" />
 
         <RadioGroup
+            android:id="@+id/radioGroupRednessOrSwelling"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -791,6 +821,7 @@
             android:layout_marginBottom="@dimen/_5sdp" />
 
         <RadioGroup
+            android:id="@+id/radioGroupSufferingFromFever"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -814,6 +845,7 @@
             android:layout_marginBottom="@dimen/_5sdp" />
 
         <RadioGroup
+            android:id="@+id/radioGroupUndergoneTreatment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -845,6 +877,7 @@
             android:layout_marginBottom="@dimen/_5sdp" />
 
         <RadioGroup
+            android:id="@+id/radioGroupTypeOfTreatment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -866,8 +899,32 @@
                 android:layout_marginBottom="@dimen/_8sdp"/>
         </RadioGroup>
 
+        <!-- Mention the type of treatment - -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Blood color during treatment"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/green"
+            android:layout_marginBottom="@dimen/_5sdp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupBloodColorDuringTreatment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Red" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Brown" />
+        </RadioGroup>
+
         <!-- Is there any recurrence of PiloNidal Sinus/ Fistula after treatment? -->
         <TextView
+            android:id="@+id/recurrence_of_pilonidal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/recurrence_of_pilonidal"
@@ -876,6 +933,7 @@
             android:layout_marginBottom="@dimen/_5sdp" />
 
         <RadioGroup
+            android:id="@+id/radioGroupRecurrenceOfPiloNidal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -899,6 +957,7 @@
             android:layout_marginBottom="@dimen/_5sdp" />
 
         <RadioGroup
+            android:id="@+id/radioGroupRelapseInThisDisease"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -934,6 +993,7 @@
             android:layout_marginBottom="@dimen/_5sdp" />
 
         <RadioGroup
+            android:id="@+id/radioGroupPainWhileSitting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -957,6 +1017,7 @@
             android:layout_marginBottom="@dimen/_5sdp" />
 
         <RadioGroup
+            android:id="@+id/radioGroupPainWhileDefecation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -980,6 +1041,7 @@
             android:layout_marginBottom="@dimen/_5sdp"/>
 
         <RadioGroup
+            android:id="@+id/radioGroupLosingWeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -1003,6 +1065,7 @@
             android:layout_marginBottom="@dimen/_5sdp" />
 
         <RadioGroup
+            android:id="@+id/radioGroupJustDeliveredABaby"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -1026,6 +1089,7 @@
             android:layout_marginBottom="@dimen/_5sdp" />
 
         <RadioGroup
+            android:id="@+id/radioGroupFamilyHistoryOfCancer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -1049,6 +1113,7 @@
             android:layout_marginBottom="@dimen/_5sdp" />
 
         <RadioGroup
+            android:id="@+id/radioGroupFirstTimeDoctorVisit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
@@ -1062,35 +1127,9 @@
                 android:layout_marginBottom="@dimen/_8sdp"/>
         </RadioGroup>
 
-        <!-- Diagnosed with which diseases -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/diagnosed_with_diseases"
-            android:textSize="@dimen/_14sdp"
-            android:textColor="@color/green"
-            android:layout_marginBottom="@dimen/_5sdp" />
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/piles" />
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/pilonidal_sinus" />
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/fissure" />
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/fistula"
-            android:layout_marginBottom="@dimen/_8sdp"/>
-
         <!-- Submit button -->
         <Button
+            android:id="@+id/submit_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/submit"
