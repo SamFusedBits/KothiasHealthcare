@@ -9,6 +9,151 @@
     <string name="book_an_appointment">Book an appointment</string>
 
 
+        <string name="questionnaire_heading">Assess Your Health</string>
+
+        <string name="enter_name">Name:</string>
+        <string name="enter_name_hint">E.g., Mayank Sharma</string>
+
+        <string name="enter_age">Enter your age:</string>
+        <string name="enter_age_hint">E.g., 25</string>
+
+        <string name="enter_gender">Gender:</string>
+        <string name="male">Male</string>
+        <string name="female">Female</string>
+        <string name="other">Other</string>
+
+        <!-- Are you working? -->
+        <string name="are_you_working">Are you working?</string>
+        <string name="yes">Yes</string>
+        <string name="no">No</string>
+
+        <!-- Duty timings -->
+        <string name="duty_timings">Duty timings?</string>
+        <string name="day">Day</string>
+        <string name="night">Night</string>
+
+        <!-- Nature of job -->
+        <string name="nature_of_job">What is the nature of your job?</string>
+        <string name="standing">Standing</string>
+        <string name="sitting">Sitting</string>
+        <string name="combined">Combined</string>
+        <string name="travelling">Travelling</string>
+        <string name="all">All</string>
+
+        <!-- Lifting weights / Gym -->
+        <string name="lifting_weights_gym">Do you lift heavy weights / have you joined a Gym recently?</string>
+
+        <!-- Corporate job -->
+        <string name="corporate_job">Do you have a corporate job (work on PC / Laptop)?</string>
+
+        <!-- Hours spent sitting -->
+        <string name="hours_sitting">How many hours do you spend sitting in your workplace / home?</string>
+        <string name="less_than_4hrs">Less than 4 hrs</string>
+        <string name="between4_6hrs">4 - 6 hrs</string>
+        <string name="between6_8hrs">6 - 8 hrs</string>
+        <string name="between8_10hrs">8 - 10 hrs</string>
+        <string name="more_than_10hrs">More than 10 hrs</string>
+
+        <!-- Outside / junk food -->
+        <string name="outside_food">During or after working hours, do you prefer outside / junk food?</string>
+        <string name="daily">Daily</string>
+        <string name="twice_a_week">Twice a week</string>
+        <string name="thrice_a_week">Thrice a week</string>
+        <string name="only_weekends">Only on weekends</string>
+        <string name="rarely">Rarely</string>
+
+        <!-- Oily / spicy food -->
+        <string name="oily_spicy_food">Do you consume oily / spicy food?</string>
+
+        <!-- Dinner time -->
+        <string name="dinner_time">At what time do you have your dinner?</string>
+        <string name="before_7pm">Before 7 pm</string>
+        <string name="between_7_9pm">Between 7 to 9 pm</string>
+        <string name="after_10pm">After 10 pm</string>
+
+        <!-- Digestion-related problems -->
+        <string name="digestion_problems">Do you face any digestion-related problems like Constipation (hard stool)?</string>
+        <string name="constipation">Yes</string>
+        <string name="no_constipation">No</string>
+
+        <!-- Type of constipation -->
+        <string name="type_of_constipation">What kind of constipation are you suffering from?</string>
+        <string name="completely_stopped">Completely stopped</string>
+        <string name="approx2_times_a_day">2 times a day</string>
+        <string name="approx3_to_4_times">3 to 4 times</string>
+        <string name="after_section_2">After section 2</string>
+        <string name="section_3">Section 3 of 3</string>
+
+        <!-- Symptomatic Questions -->
+    <string name="do_you_endure_pain">Do you endure pain?</string>
+    <string name="while_passing_stool">While passing stool</string>
+    <string name="throughout_the_day">Throughout the day</string>
+    <string name="cutting_pain">Cutting pain at the anal region during passing stools.</string>
+    <string name="burning_pain">Burning pain at the anal region during passing stools or after defecation.</string>
+    <string name="itching_pain">Itching pain at the anal region during passing stools or after defecation.</string>
+    <string name="pile_mass_coming_out">While passing stool, is the pile mass coming out?</string>
+    <string name="pile_mass_condition">How is the Pile mass condition?</string>
+    <string name="bleeding_issue">While passing stool, is there any bleeding issue?</string>
+    <string name="bleeding_type">How is the bleeding?</string>
+    <string name="amount_of_bleeding">Approximately what is the amount of bleeding?</string>
+    <string name="color_of_blood">What is the color of the blood?</string>
+    <string name="pus_discharge">Is there any pus (Sticky white color) discharge while passing the stool / from the anus or from boils around the anus?</string>
+    <string name="boils_around_anus">Are there boils around the anus area?</string>
+    <string name="swelling_in_area">Is there swelling in the area?</string>
+    <string name="swelling_occurrence">Has the swelling occurred prior also or is it the first time?</string>
+    <string name="kind_of_body_hair">Kind of body hair?</string>
+    <string name="scanty_hair">Scanty Hair</string>
+    <string name="moderate_hair">Moderate hair</string>
+    <string name="stiff_thick_hair">Stiff and Thick hair</string>
+    <string name="suffering_from_diabetes">Are you suffering from diabetes?</string>
+    <string name="redness_or_swelling">Is there any redness or swelling in the buttock area and pain around the anus?</string>
+    <string name="suffering_from_fever">Are you suffering from Fever?</string>
+    <string name="undergone_treatment">Have you undergone treatment for PiloNidal Sinus?</string>
+    <string name="allopathic">Allopathic</string>
+    <string name="homoeopathic">Homoeopathic</string>
+    <string name="ayurvedic">Ayurvedic</string>
+    <string name="none">No</string>
+    <string name="please_mention_the_type_of_the_treatment">Please mention the type of the treatment</string>
+    <string name="surgical">Surgical Treatment</string>
+    <string name="medicinal">Medicinal Treatment</string>
+    <string name="both">Both</string>
+    <string name="none_t">None</string>
+    <string name="recurrence_of_pilonidal">Is there any recurrence of PiloNidal Sinus/ Fistula after treatment?</string>
+    <string name="relapse_in_this_disease">How many times does relapse occur in this disease?</string>
+    <string name="no_recurrence">None</string>
+    <string name="once">Once</string>
+    <string name="twice">Twice</string>
+    <string name="thrice">Thrice</string>
+    <string name="more_than_three">More than three times</string>
+    <string name="pain_while_sitting">Are you suffering from pain while sitting?</string>
+    <string name="pain_while_defecation">Is there pain while defecation?</string>
+    <string name="losing_weight">Do you feel that you are losing weight?</string>
+    <string name="just_delivered_a_baby">Just delivered a baby?</string>
+    <string name="family_history_of_cancer">Does anyone in your family have anal cancer, especially from the maternal side?</string>
+    <string name="first_visit_to_doctor">Are you visiting to the Doctor first time?</string>
+    <string name="diagnosed_with_diseases">You are diagnosed with which of the following disease/s?</string>
+    <string name="piles">Piles</string>
+    <string name="pilonidal_sinus">PiloNidal Sinus</string>
+    <string name="fissure">Fissure</string>
+    <string name="fistula">Fistula</string>
+
+    <!-- Options -->
+    <string name="yes_t">Yes</string>
+    <string name="no_t">No</string>
+    <string name="pile_mass_outside">Is it lying outside</string>
+    <string name="pile_mass_inside">Going inside after a while</string>
+    <string name="bleeding_drops">In the form of drops</string>
+    <string name="bleeding_continuous">Continuous flow</string>
+    <string name="bleeding_with_stool">Sticking with stool</string>
+    <string name="bleeding_less_than_1_spoon">Less than 1 spoon</string>
+    <string name="bleeding_more_than_1_spoon">More than 1 spoon</string>
+    <string name="red_blood">Red</string>
+    <string name="brown_blood">Brown</string>
+    <string name="color_of_blood_during_treatment">Color of blood during treatment</string>
+        <!-- Submit Button -->
+        <string name="submit">Submit</string>
+
+
     <string name="piles_description">Swollen veins in the rectal area, causing discomfort, itching, and bleeding.</string>
     <string name="fissure_description">A painful tear or crack in the lining of the anus, causing discomfort and bleeding during bowel movements.</string>
     <string name="PilonidalSinus_description">A small tunnel-like cavity in the skin, often near the tailbone, prone to infection.</string>
@@ -16,13 +161,12 @@
     <string name="learn_more">Learn More</string>
     <string name="precautions_label">Precautions</string>
     <string name="treatment_label">Treatment</string>
-    <string name="piles_treatment">- Dietary changes: Increasing fiber intake to soften stools and prevent straining during bowel movements.\n \n- Topical treatments: Over-the-counter creams, ointments, or suppositories to reduce pain, itching, and inflammation.\n\n- Sclerotherapy or banding: In-office procedures to shrink hemorrhoids by cutting off their blood supply.\n\n- Rubber band ligation: A procedure where a rubber band is placed around the base of the hemorrhoid to cut off its blood supply, causing it to shrink and fall off.\n\n- Hemorrhoidectomy: Surgical removal of hemorrhoids, usually reserved for severe cases that do not respond to other treatments.</string>
+    <string name="piles_treatment">- Dietary changes: Increasing fiber intake to soften stools and prevent straining during bowel movements.\n\n- Sclerotherapy or banding: In-office procedures to shrink hemorrhoids by cutting off their blood supply.\n\n- Rubber band ligation: A procedure where a rubber band is placed around the base of the hemorrhoid to cut off its blood supply, causing it to shrink and fall off.\n\n- Hemorrhoidectomy: Surgical removal of hemorrhoids, usually reserved for severe cases that do not respond to other treatments.</string>
     <string name="piles_precautions">- Eat a high-fiber diet to soften stools and reduce straining during bowel movements.\n \n- Stay hydrated and maintain regular exercise to promote bowel regularity.\n \n- Avoid sitting or standing for long periods and take breaks to relieve pressure on the rectal area.\n \n- Use gentle, fragrance-free wipes or soft toilet paper to clean the area after bowel movements.</string>
     <string name="fissure_treatment">
         - Topical ointments or creams: Over-the-counter or prescription creams containing calcium channel blockers or nitroglycerin to relax the anal sphincter and promote healing.\n\n
         - Sitz baths: Soaking the anal area in warm water for 10-15 minutes several times a day to relieve pain and promote healing.\n\n
         - Dietary changes: Increasing fiber intake and drinking plenty of water to soften stools and reduce strain during bowel movements.\n\n
-        - Botulinum toxin injection: Injections into the anal sphincter to relax the muscle and promote healing in chronic fissures.\n\n
         - Surgical sphincterotomy: In severe or chronic cases, a surgical procedure to cut the internal anal sphincter muscle to reduce spasm and promote healing.
     </string>
 
@@ -50,26 +194,22 @@
     </string>
     <string name="fistula_treatment">
         - Incision and Drainage: If there is an associated abscess, the first step is often to drain the abscess surgically to relieve pain and prevent further infection.\n\n
-        - Seton Placement: A seton is a thread-like material (often made of silk or rubber) that is inserted into the fistula tract to keep it open and allow for continuous drainage. This helps prevent the formation of new abscesses and promotes healing.\n\n
-        - Fistulotomy: This surgical procedure involves cutting open the entire length of the fistula tract to remove it completely. It is usually reserved for simple, superficial fistulas that do not involve the sphincter muscles.\n\n
-        - Fistulectomy: Similar to fistulotomy, fistulectomy involves surgically removing the entire fistula tract. However, this procedure may be more extensive and involve removing surrounding tissue as well.\n\n
-        - LIFT Procedure (Ligation of the Intersphincteric Fistula Tract): This minimally invasive procedure involves identifying and ligating (tying off) the internal opening of the fistula tract while preserving the anal sphincter muscles.\n\n
-        - Advancement Flap Repair: In this procedure, tissue from the inside of the rectum is used to cover and close the internal opening of the fistula, promoting healing.\n\n
+        - Seton Placement: A seton is a thread-like material (often made of silk or rubber) that is inserted into the fistula tract to keep it open and allow for continuous drainage. This promotes healing.\n\n
         - Fibrin Glue Injection: Fibrin glue is injected into the fistula tract to seal it off and promote healing. This is typically used for low-risk, superficial fistulas.\n\n
-        - Biological Plugs: Biological plugs made from materials such as porcine collagen are sometimes used to seal the internal opening of the fistula and promote healing.\n\n
         - Antibiotics: Antibiotics may be prescribed to treat or prevent infection, particularly if there is an associated abscess or if surgery is performed.
     </string>
 
     <string name="fistula_precautions">
         - Maintain good anal hygiene by keeping the area clean and dry to prevent infection and irritation.\n\n
         - Avoid prolonged sitting or pressure on the anal region to reduce discomfort and prevent exacerbation of symptoms.\n\n
-        - Seek medical attention if you experience persistent pain, swelling, or drainage from an opening near the anus, as prompt treatment can help prevent complications and promote healing.\n\n
-        - Follow your healthcare providers recommendations for treatment, which may include antibiotics, surgical drainage, or surgical removal of the fistula tract, depending on the severity and complexity of the condition.
+        - Seek medical attention if you experience persistent pain, swelling, or drainage from an opening near the anus.\n\n
+        - Prompt treatment can help prevent complications and promote healing.\n\n
     </string>
     <string name="logout">Logout</string>
+    <string name="username">Username</string>
     <string name="edit_profile">Edit Profile</string>
-    <string name="email">Email</string>
-    <string name="phone_number">Phone Number</string>
+    <string name="email">example@gmail.com</string>
+    <string name="phone_number">9867541287</string>
     <string name="clinic_timing">Monday - Saturday\n10:00 am - 1:00 pm \n04:30 pm - 06:00 pm</string>
 
 
