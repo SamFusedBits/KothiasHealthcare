@@ -67,13 +67,12 @@ dependencies {
     implementation("com.intuit.sdp:sdp-android:1.1.1")
     implementation("com.intuit.ssp:ssp-android:1.1.1")
 
-
     implementation("com.google.firebase:firebase-auth:23.0.0")
     implementation("com.google.firebase:firebase-firestore:25.0.0")
     // Import the BoM for the Firebase platform
     implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
     implementation("com.google.android.gms:play-services-auth:21.2.0")
-    implementation("com.google.firebase:firebase-firestore-ktx:23.0.3")
+    implementation("com.google.firebase:firebase-firestore-ktx:24.0.0")
     // Firebase Storage
     implementation("com.google.firebase:firebase-storage-ktx")
 
@@ -85,4 +84,7 @@ dependencies {
 
     // SendGrid Email API
     implementation("com.sendgrid:sendgrid-java:4.8.3")
+
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 }
