@@ -6,8 +6,6 @@ import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.widget.ImageView
-import android.widget.Button
-import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
@@ -36,7 +34,7 @@ class HomePageActivity: AppCompatActivity() {
 
 
         questionnaire_card.setOnClickListener {
-            val intent = Intent(this, Questionnaire::class.java)
+            val intent = Intent(this, QuestionnaireActivity::class.java)
             startActivity(intent)
         }
 
@@ -71,16 +69,5 @@ class HomePageActivity: AppCompatActivity() {
             val intent = Intent(this, AppointmentActivity::class.java)
             startActivity(intent)
         }
-    }
-    @SuppressLint("MissingSuperCall")
-    override fun onBackPressed() {
-        AlertDialog.Builder(this)
-            .setTitle("Exit App")
-            .setMessage("Are you sure you want to quit the app?")
-            .setPositiveButton("Yes") { _, _ ->
-                finishAffinity() // This will close the app
-            }
-            .setNegativeButton("No", null)
-            .show()
     }
 }
