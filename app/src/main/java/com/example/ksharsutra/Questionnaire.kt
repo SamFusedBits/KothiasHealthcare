@@ -1,11 +1,45 @@
 package com.example.ksharsutra
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-
-class Questionnaire : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_questionnaire)
-    }
-}
+data class Questionnaire(
+    val age: String,
+    val gender: String,
+    val working: String,
+    val work_shift: String,
+    val job_nature: String,
+    val lift_heavy_weights: String,
+    val use_devices_often: String,
+    val sitting_hours: String,
+    val fast_food_frequency: String,
+    val consume_oily_spicy_food: String,
+    val dinner_time: String,
+    val digestion_problems: String,
+    val stool_frequency: String,
+    val buttock_pain: String,
+    val cutting_pain: String,
+    val burning_sensation: String,
+    val itching: String,
+    val pile_mass_coming_out: String,
+    val pile_mass_condition: String,
+    val bleeding_issue: String,
+    val bleeding_type: String,
+    val bleeding_amount: String,
+    val blood_color: String,
+    val pus_discharge: String,
+    val boils_around_anus: String,
+    val anus_swelling: String,
+    val first_time_swelling: String,
+    val body_hair_type: String,
+    val diabetes: String,
+    val redness_swelling: String,
+    val treatment_type: String,
+    val treatment_kind: String,
+    val blood_color_during_treatment: String,
+    val recurrence: String,
+    val relapse_frequency: String,
+    val pain_while_sitting: String,
+    val pain_while_defecation: String,
+    val weight_loss: String,
+    val just_delivered_baby: String,
+    val family_anal_cancer: String,
+    val first_time_doctor_visit: String
+)
