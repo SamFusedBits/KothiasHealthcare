@@ -39,29 +39,31 @@ class ManageAppointmentAdapter(
         private val tvStatus: TextView = itemView.findViewById(R.id.tvStatus)
 
         fun bind(appointment: ManageAppointment) {
-            tvName.text = appointment.name
-            tvContact.text = if (appointment.email.isNotEmpty()) appointment.email else appointment.phone
-            tvSchedule.text = appointment.schedule
-            tvStatus.text = appointment.status ?: ""
+            tvName.text = "Name: ${appointment.name}"
+            tvContact.text = "Contact: ${if (appointment.email.isNotEmpty()) appointment.email else appointment.phone}"
+            tvSchedule.text = "Schedule: ${appointment.schedule}"
+
+            // Handle status text display
+            if (appointment.status.isNullOrEmpty()) {
+                tvStatus.visibility = View.GONE
+            } else {
+                tvStatus.visibility = View.VISIBLE
+                tvStatus.text = "Status: ${appointment.status}"
+            }
 
             // Adjust visibility based on appointment status
             when (appointment.status) {
                 "Approved" -> {
                     btnApprove.visibility = View.GONE
                     btnDecline.visibility = View.GONE
-                    tvStatus.visibility = View.VISIBLE
-                    tvStatus.text = "Approved"
                 }
                 "Declined" -> {
                     btnApprove.visibility = View.GONE
                     btnDecline.visibility = View.GONE
-                    tvStatus.visibility = View.VISIBLE
-                    tvStatus.text = "Declined"
                 }
                 else -> {
                     btnApprove.visibility = View.VISIBLE
                     btnDecline.visibility = View.VISIBLE
-                    tvStatus.visibility = View.GONE
                 }
             }
 
