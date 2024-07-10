@@ -36,23 +36,6 @@
 
         </LinearLayout>
 
-        <!-- Enter your name -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/enter_name"
-            android:textSize="@dimen/_14sdp"
-            android:textColor="@color/green"
-            android:layout_marginBottom="@dimen/_5sdp"/>
-
-        <EditText
-            android:id="@+id/editTextName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:hint="@string/enter_name_hint"
-            android:layout_marginBottom="@dimen/_8sdp"/>
-
         <!-- Enter your age -->
         <TextView
             android:layout_width="wrap_content"
@@ -903,7 +886,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Blood color during treatment"
+            android:text="@string/color_of_blood_during_treatment"
             android:textSize="@dimen/_14sdp"
             android:textColor="@color/green"
             android:layout_marginBottom="@dimen/_5sdp" />
@@ -915,11 +898,11 @@
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Red" />
+                android:text="@string/red_blood" />
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Brown" />
+                android:text="@string/brown_blood" />
         </RadioGroup>
 
         <!-- Is there any recurrence of PiloNidal Sinus/ Fistula after treatment? -->
