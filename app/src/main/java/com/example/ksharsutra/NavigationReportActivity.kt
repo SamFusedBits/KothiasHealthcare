@@ -1,10 +1,12 @@
 package com.example.ksharsutra
 
 import android.app.Activity
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.OpenableColumns
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -18,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import java.util.*
+import com.google.firebase.firestore.Query
 
 class NavigationReportActivity : AppCompatActivity() {
 
@@ -46,43 +49,48 @@ class NavigationReportActivity : AppCompatActivity() {
 
         // Set listeners
         selectFileIcon.setOnClickListener {
+            Log.d(TAG, "Select file icon clicked")
             openFilePicker()
         }
 
         browseFileButton.setOnClickListener {
+            Log.d(TAG, "Browse file button clicked")
             openFilePicker()
         }
 
-        // Retrieve stored file metadata and add to UI
+        // Fetch and display last 3 uploaded files from fileCache
+        displayLast3UploadedFiles()
+
+        // Optional: Fetch files from Firestore initially if needed
         fetchUserFiles()
+
     }
 
     private fun fetchUserFiles() {
-        // Check cache first
-        if (fileCache.isNotEmpty()) {
-            fileCache.forEach { fileMetadata ->
-                addFileToUI(fileMetadata.name, fileMetadata.url)
-            }
-            return
-        }
-
         val firestore = FirebaseFirestore.getInstance()
         val userId = FirebaseAuth.getInstance().currentUser?.uid
 
         userId?.let { uid ->
             firestore.collection("uploads")
                 .whereEqualTo("userId", uid)
+                .orderBy("timestamp", Query.Direction.DESCENDING)
+                .limit(3)
                 .get()
                 .addOnSuccessListener { querySnapshot ->
+                    fileCache.clear()  // Clear the cache before adding new data
                     for (document in querySnapshot.documents) {
                         val fileName = document.getString("name")
                         val fileUrl = document.getString("url")
+                        val timestamp = document.getLong("timestamp") ?: 0
+
                         if (fileName != null && fileUrl != null) {
-                            val fileMetadata = FileMetadata(fileName, fileUrl)
+                            val fileMetadata = FileMetadata(fileName, fileUrl, timestamp)
                             fileCache.add(fileMetadata)
-                            addFileToUI(fileName, fileUrl)
                         }
                     }
+
+                    // Display last 3 uploaded files
+                    displayLast3UploadedFiles()
                 }
                 .addOnFailureListener { exception ->
                     Toast.makeText(this, "Failed to fetch user files: ${exception.message}", Toast.LENGTH_SHORT).show()
@@ -90,7 +98,22 @@ class NavigationReportActivity : AppCompatActivity() {
         }
     }
 
+    private fun displayLast3UploadedFiles() {
+        // Clear existing views in filesContainer
+        filesContainer.removeAllViews()
+
+        // Sort the cache by timestamp in descending order
+        val sortedCache = fileCache.sortedByDescending { it.timestamp }
+
+        // Display the last 3 files from sortedCache
+        val last3Files = sortedCache.take(3)
+        last3Files.forEach { fileMetadata ->
+            addFileToUI(fileMetadata.name, fileMetadata.url, fileMetadata.timestamp)
+        }
+    }
+
     private fun openFilePicker() {
+        Log.d(TAG, "Opening file picker")
         if (ContextCompat.checkSelfPermission(
                 this,
                 android.Manifest.permission.READ_EXTERNAL_STORAGE
@@ -114,8 +137,10 @@ class NavigationReportActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == READ_EXTERNAL_STORAGE_PERMISSION_CODE) {
             if ((grantResults.isNotEmpty() && grantResults[0] == android.content.pm.PackageManager.PERMISSION_GRANTED)) {
+                Log.d(TAG, "Permission granted")
                 openFilePicker()
             } else {
+                Log.d(TAG, "Permission denied")
                 Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
             }
         }
@@ -125,9 +150,13 @@ class NavigationReportActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PICK_FILE_REQUEST && resultCode == Activity.RESULT_OK) {
             data?.data?.let { uri ->
+                Log.d(TAG, "File selected: $uri")
                 // Prompt user for additional details before uploading file
                 fetchUserDetailsAndUpload(uri)
             }
+        }else{
+            Log.d(TAG, "No file selected")
+            Toast.makeText(this, "No file selected", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -143,6 +172,7 @@ class NavigationReportActivity : AppCompatActivity() {
     }
 
     private fun uploadFileToFirebase(fileUri: Uri, name: String, email: String, phoneNumber: String) {
+        Log.d(TAG, "Uploading file to Firebase Storage")
         val fileName = getFileName(fileUri) ?: UUID.randomUUID().toString()
         val storageReference = FirebaseStorage.getInstance().reference.child("uploads/$fileName")
         val uploadTask = storageReference.putFile(fileUri)
@@ -157,7 +187,20 @@ class NavigationReportActivity : AppCompatActivity() {
         }.addOnSuccessListener { taskSnapshot ->
             storageReference.downloadUrl.addOnSuccessListener { uri ->
                 val downloadUrl = uri.toString()
+                val timestamp = System.currentTimeMillis()
+
+                // Show file immediately in UI
+                addFileToUI(fileName, downloadUrl, timestamp)
+
+                // Add to cache
+                fileCache.add(FileMetadata(fileName, downloadUrl, timestamp))
+
+                // Save metadata to Firestore in background
                 saveFileMetadataToFirestore(fileName, downloadUrl, name, email, phoneNumber)
+
+                // Hide progress bar
+                progressBar.visibility = ProgressBar.GONE
+                Toast.makeText(this, "File uploaded successfully", Toast.LENGTH_SHORT).show()
             }.addOnFailureListener { exception ->
                 Toast.makeText(this, "Failed to retrieve file URL: ${exception.message}", Toast.LENGTH_SHORT).show()
                 // Hide progress bar if retrieving the URL fails
@@ -188,12 +231,8 @@ class NavigationReportActivity : AppCompatActivity() {
             firestore.collection("uploads")
                 .add(fileMetadata)
                 .addOnSuccessListener {
-                    Toast.makeText(this, "File uploaded successfully", Toast.LENGTH_SHORT).show()
-                    // Add to cache
-                    fileCache.add(FileMetadata(fileName, downloadUrl))
-                    // Optionally, update UI or perform additional tasks
-                    addFileToUI(fileName, downloadUrl)
                     progressBar.visibility = ProgressBar.GONE
+                    Log.d(TAG, "File metadata saved to Firestore")
                 }
                 .addOnFailureListener {
                     Toast.makeText(this, "Failed to upload file: ${it.message}", Toast.LENGTH_SHORT).show()
@@ -205,7 +244,7 @@ class NavigationReportActivity : AppCompatActivity() {
         }
     }
 
-    private fun addFileToUI(fileName: String, fileUrl: String) {
+    private fun addFileToUI(fileName: String, fileUrl: String, timestamp: Long) {
         val fileView = layoutInflater.inflate(R.layout.item_uploaded_file, null)
         val fileNameTextView = fileView.findViewById<TextView>(R.id.file_name_text_view)
         val viewFileButton = fileView.findViewById<Button>(R.id.view_file_button)
@@ -254,5 +293,5 @@ class NavigationReportActivity : AppCompatActivity() {
         return result
     }
 
-    data class FileMetadata(val name: String, val url: String)
+    data class FileMetadata(val name: String, val url: String, val timestamp: Long)
 }
