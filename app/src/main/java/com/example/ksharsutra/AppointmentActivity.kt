@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -33,6 +34,25 @@ class AppointmentActivity : AppCompatActivity() {
 
         scheduleGrid = findViewById(R.id.scheduleGrid)
         timeSlotsGrid = findViewById(R.id.timeSlotsGrid)
+
+        val navigation_profile = findViewById<ImageView>(R.id.navigation_profile)
+        val navigation_report = findViewById<ImageView>(R.id.navigation_report)
+        val navigation_home = findViewById<ImageView>(R.id.navigation_home)
+
+        navigation_profile.setOnClickListener {
+            val intent = Intent(this, UserDetailsActivity::class.java)
+            startActivity(intent)
+        }
+
+        navigation_report.setOnClickListener {
+            val intent = Intent(this, NavigationReportActivity::class.java)
+            startActivity(intent)
+        }
+
+        navigation_home.setOnClickListener {
+            val intent = Intent(this, HomePageActivity::class.java)
+            startActivity(intent)
+        }
 
         // Setup schedule grid
         setupScheduleGrid()
