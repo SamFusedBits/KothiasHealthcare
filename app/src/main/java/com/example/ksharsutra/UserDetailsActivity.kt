@@ -66,6 +66,25 @@ class UserDetailsActivity : AppCompatActivity() {
         saveProfileButton = findViewById(R.id.save_profile_button)
         logoutButton = findViewById(R.id.logout_button)
 
+        val navigation_report = findViewById<ImageView>(R.id.navigation_report)
+        val navigation_appointment = findViewById<ImageView>(R.id.navigation_appointment)
+        val navigation_home = findViewById<ImageView>(R.id.navigation_home)
+
+        navigation_report.setOnClickListener{
+            val intent = Intent(this, NavigationReportActivity::class.java)
+            startActivity(intent)
+        }
+
+        navigation_appointment.setOnClickListener {
+            val intent = Intent(this, AppointmentActivity::class.java)
+            startActivity(intent)
+        }
+
+        navigation_home.setOnClickListener {
+            val intent = Intent(this, HomePageActivity::class.java)
+            startActivity(intent)
+        }
+
         // Fetch and display user details
         fetchUserDetails()
 
