@@ -34,7 +34,8 @@
             android:layout_width="@dimen/_15sdp"
             android:layout_height="@dimen/_100sdp"
             android:layout_margin="@dimen/_8sdp"
-            android:background="@color/ivory_white"
+            app:cardBackgroundColor="@color/ivory_white"
+            app:cardCornerRadius="@dimen/_10sdp"
             android:layout_weight="1">
 
             <LinearLayout
@@ -55,9 +56,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:text="Questionnaire"
+                    android:text="Health Assessment"
                     android:textColor="@color/green"
-                    android:textSize="@dimen/_15sdp"
+                    android:textSize="@dimen/_14sdp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -68,7 +69,8 @@
             android:layout_width="@dimen/_15sdp"
             android:layout_height="@dimen/_100sdp"
             android:layout_margin="@dimen/_8sdp"
-            android:background="@color/ivory_white"
+            app:cardBackgroundColor="@color/ivory_white"
+            app:cardCornerRadius="@dimen/_10sdp"
             android:layout_weight="1">
 
             <LinearLayout
@@ -112,8 +114,9 @@
             android:id="@+id/contactus_card"
             android:layout_width="@dimen/_15sdp"
             android:layout_height="@dimen/_100sdp"
-            android:layout_margin="8dp"
-            android:background="@color/ivory_white"
+            android:layout_margin="@dimen/_8sdp"
+            app:cardBackgroundColor="@color/ivory_white"
+            app:cardCornerRadius="@dimen/_10sdp"
             android:layout_weight="1">
 
             <LinearLayout
@@ -146,7 +149,8 @@
             android:layout_width="@dimen/_15sdp"
             android:layout_height="@dimen/_100sdp"
             android:layout_margin="@dimen/_6sdp"
-            android:background="@color/ivory_white"
+            app:cardBackgroundColor="@color/ivory_white"
+            app:cardCornerRadius="@dimen/_10sdp"
             android:layout_weight="1">
 
             <LinearLayout
@@ -191,7 +195,8 @@
             android:layout_width="@dimen/_8sdp"
             android:layout_height="@dimen/_100sdp"
             android:layout_margin="@dimen/_8sdp"
-            android:background="@color/ivory_white"
+            app:cardBackgroundColor="@color/ivory_white"
+            app:cardCornerRadius="@dimen/_10sdp"
             android:layout_weight="1">
 
             <LinearLayout
@@ -224,7 +229,8 @@
             android:layout_width="@dimen/_15sdp"
             android:layout_height="@dimen/_100sdp"
             android:layout_margin="@dimen/_8sdp"
-            android:background="@color/ivory_white"
+            app:cardBackgroundColor="@color/ivory_white"
+            app:cardCornerRadius="@dimen/_10sdp"
             android:layout_weight="1">
 
             <LinearLayout
