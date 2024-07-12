@@ -30,11 +30,6 @@ class NavigationReportActivity : AppCompatActivity() {
     private lateinit var filesContainer: LinearLayout
     private lateinit var progressBar: ProgressBar
 
-    val navigation_profile = findViewById<ImageView>(R.id.navigation_profile)
-    val navigation_report = findViewById<ImageView>(R.id.navigation_report)
-    val navigation_appointment = findViewById<ImageView>(R.id.navigation_appointment)
-    val navigation_home = findViewById<ImageView>(R.id.navigation_home)
-
     private val PICK_FILE_REQUEST = 1
     private val READ_EXTERNAL_STORAGE_PERMISSION_CODE = 100
 
@@ -52,18 +47,22 @@ class NavigationReportActivity : AppCompatActivity() {
         filesContainer = findViewById(R.id.files_container)
         progressBar = findViewById(R.id.progress_bar)
 
+        val navigation_profile = findViewById<ImageView>(R.id.navigation_profile)
+        val navigation_home = findViewById<ImageView>(R.id.navigation_home)
+        val navigation_appointment = findViewById<ImageView>(R.id.navigation_appointment)
+
         navigation_profile.setOnClickListener {
             val intent = Intent(this, UserDetailsActivity::class.java)
             startActivity(intent)
         }
 
-        navigation_appointment.setOnClickListener {
-            val intent = Intent(this, AppointmentActivity::class.java)
+        navigation_home.setOnClickListener {
+            val intent = Intent(this, HomePageActivity::class.java)
             startActivity(intent)
         }
 
-        navigation_home.setOnClickListener {
-            val intent = Intent(this, HomePageActivity::class.java)
+        navigation_appointment.setOnClickListener {
+            val intent = Intent(this, ManageAppointmentsActivity::class.java)
             startActivity(intent)
         }
 
@@ -83,7 +82,6 @@ class NavigationReportActivity : AppCompatActivity() {
 
         // Optional: Fetch files from Firestore initially if needed
         fetchUserFiles()
-
 
     }
 
