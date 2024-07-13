@@ -3,6 +3,7 @@ package com.example.ksharsutra
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.Button
@@ -28,14 +29,11 @@ import java.util.*
 
 class ManageAppointmentsActivity() : AppCompatActivity() {
 
-    private lateinit var rvTodayAppointments: RecyclerView
-    private lateinit var rvFutureAppointments: RecyclerView
-    private lateinit var tvTodayAppointmentsEmpty: TextView
-    private lateinit var tvFutureAppointmentsEmpty: TextView
+    private lateinit var rvAppointments: RecyclerView
+    private lateinit var tvAppointmentsEmpty: TextView
     private lateinit var tvTimeSlotsEmpty: TextView
 
-    private lateinit var todayAdapter: ManageAppointmentAdapter
-    private lateinit var futureAdapter: ManageAppointmentAdapter
+    private lateinit var AppointmentsAdapter: ManageAppointmentAdapter
 
     private lateinit var timeSlotAdapter: TimeSlotAdapter
     private lateinit var timeSlots: MutableList<Pair<String, String>>
@@ -50,16 +48,14 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
 
     private val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
 
-    private lateinit var progressBarTodayAppointments: ProgressBar
-    private lateinit var progressBarFutureAppointments: ProgressBar
+    private lateinit var progressBarAppointments: ProgressBar
     private lateinit var progressBarTimeSlots: ProgressBar
 
     private val calendar = Calendar.getInstance()
     private var selectedDate: String = "" // Track selected date
 
     // Cached lists for appointments and time slots
-    private var cachedTodayAppointments: MutableList<ManageAppointment>? = null
-    private var cachedFutureAppointments: MutableList<ManageAppointment>? = null
+    private var cachedAllAppointments: MutableList<ManageAppointment>? = null
     private var cachedTimeSlots: MutableMap<String, MutableList<Pair<String, String>>> = mutableMapOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,13 +76,10 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
 
         db.firestoreSettings = settings
 
-        rvTodayAppointments = findViewById(R.id.rvTodayAppointments)
-        rvFutureAppointments = findViewById(R.id.rvFutureAppointments)
-        progressBarTodayAppointments = findViewById(R.id.progressBarTodayAppointments)
-        progressBarFutureAppointments = findViewById(R.id.progressBarFutureAppointments)
+        rvAppointments = findViewById(R.id.rvAppointments)
+        progressBarAppointments = findViewById(R.id.progressBarAppointments)
         progressBarTimeSlots = findViewById(R.id.progressBarTimeSlots)
-        tvTodayAppointmentsEmpty = findViewById(R.id.tvTodayAppointmentsEmpty)
-        tvFutureAppointmentsEmpty = findViewById(R.id.tvFutureAppointmentsEmpty)
+        tvAppointmentsEmpty = findViewById(R.id.tvAppointmentsEmpty)
         tvTimeSlotsEmpty = findViewById(R.id.tvTimeSlotsEmpty)
 
         // Initialize checkboxes and button
@@ -101,14 +94,10 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
         timeSlotAdapter = TimeSlotAdapter(timeSlots) { position -> removeSelectedSlot(position) }
         rvTimeSlots.adapter = timeSlotAdapter
 
-        rvTodayAppointments.layoutManager = LinearLayoutManager(this)
-        rvFutureAppointments.layoutManager = LinearLayoutManager(this)
+        rvAppointments.layoutManager = LinearLayoutManager(this)
 
-        todayAdapter = ManageAppointmentAdapter() { appointment, action -> handleAppointmentAction(appointment, action) }
-        futureAdapter = ManageAppointmentAdapter() { appointment, action -> handleAppointmentAction(appointment, action) }
-
-        rvTodayAppointments.adapter = todayAdapter
-        rvFutureAppointments.adapter = futureAdapter
+        AppointmentsAdapter = ManageAppointmentAdapter() { appointment, action -> handleAppointmentAction(appointment, action) }
+        rvAppointments.adapter = AppointmentsAdapter
 
         // Initialize RecyclerView for time slots
         val rvTimeSlots = findViewById<RecyclerView>(R.id.rvTimeSlots)
@@ -123,6 +112,9 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
 
         loadAppointments()
         loadTimeSlots(selectedDate)
+
+        // Remove past appointments when activity starts
+        removePastAppointments()
 
         // Navigation to ManageReports Page
         val navigation_report = findViewById<ImageView>(R.id.navigation_reports)
@@ -224,75 +216,49 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
 
     // Function to load appointments
     private fun loadAppointments() {
-        progressBarTodayAppointments.visibility = View.VISIBLE
-        progressBarFutureAppointments.visibility = View.VISIBLE
-
-        val todayDate = dateFormat.format(Date())
+        progressBarAppointments.visibility = View.VISIBLE
 
         // Use cached data if available
-        cachedTodayAppointments?.let { todayAppointments ->
-            cachedFutureAppointments?.let { futureAppointments ->
-                todayAdapter.submitList(todayAppointments)
-                futureAdapter.submitList(futureAppointments)
-                updateEmptyStateViews(todayAppointments.isEmpty(), futureAppointments.isEmpty())
-                progressBarTodayAppointments.visibility = View.GONE
-                progressBarFutureAppointments.visibility = View.GONE
-                return
-            }
+        cachedAllAppointments?.let {
+            AppointmentsAdapter.submitList(it)
+            updateEmptyStateViews(it.isEmpty())
+            progressBarAppointments.visibility = View.GONE
+            return
         }
 
         // Otherwise, fetch from Firestore
         db.collection("appointments")
             .get()
             .addOnSuccessListener { result ->
-                val todayAppointments = mutableListOf<ManageAppointment>()
-                val futureAppointments = mutableListOf<ManageAppointment>()
+                val allAppointments = mutableListOf<ManageAppointment>()
 
                 for (document in result) {
                     val appointment = document.toObject(ManageAppointment::class.java)
                     appointment.id = document.id
-
-                    if (appointment.schedule.startsWith(todayDate)) {
-                        todayAppointments.add(appointment)
-                    } else {
-                        futureAppointments.add(appointment)
-                    }
+                    allAppointments.add(appointment)
                 }
 
                 // Update cached data
-                cachedTodayAppointments = todayAppointments
-                cachedFutureAppointments = futureAppointments
+                cachedAllAppointments = allAppointments
 
-                todayAdapter.submitList(todayAppointments)
-                futureAdapter.submitList(futureAppointments)
+                AppointmentsAdapter.submitList(allAppointments)
+                updateEmptyStateViews(allAppointments.isEmpty())
 
-                updateEmptyStateViews(todayAppointments.isEmpty(), futureAppointments.isEmpty())
-
-                progressBarTodayAppointments.visibility = View.GONE
-                progressBarFutureAppointments.visibility = View.GONE
+                progressBarAppointments.visibility = View.GONE
             }
             .addOnFailureListener { exception ->
-                progressBarTodayAppointments.visibility = View.GONE
-                progressBarFutureAppointments.visibility = View.GONE
+                progressBarAppointments.visibility = View.GONE
                 Toast.makeText(this, "Error loading appointments: ${exception.message}", Toast.LENGTH_SHORT).show()
             }
     }
 
-    private fun updateEmptyStateViews(todayAppointmentsEmpty: Boolean, futureAppointmentsEmpty: Boolean) {
-        if (todayAppointmentsEmpty) {
-            tvTodayAppointmentsEmpty.visibility = View.VISIBLE
-            rvTodayAppointments.visibility = View.GONE
+    private fun updateEmptyStateViews(appointmentsEmpty: Boolean) {
+        if (appointmentsEmpty) {
+            tvAppointmentsEmpty.visibility = View.VISIBLE
+            rvAppointments.visibility = View.GONE
         } else {
-            tvTodayAppointmentsEmpty.visibility = View.GONE
-            rvTodayAppointments.visibility = View.VISIBLE
-        }
-
-        if (futureAppointmentsEmpty) {
-            tvFutureAppointmentsEmpty.visibility = View.VISIBLE
-            rvFutureAppointments.visibility = View.GONE
-        } else {
-            tvFutureAppointmentsEmpty.visibility = View.GONE
-            rvFutureAppointments.visibility = View.VISIBLE
+            tvAppointmentsEmpty.visibility = View.GONE
+            rvAppointments.visibility = View.VISIBLE
         }
     }
 
@@ -336,8 +302,7 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
     }
 
     private fun refreshData() {
-        cachedTodayAppointments = null
-        cachedFutureAppointments = null
+        cachedAllAppointments = null
         cachedTimeSlots.clear()
         loadAppointments()
         loadTimeSlots(selectedDate)
@@ -454,6 +419,32 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
                     Toast.makeText(this, "Failed to check existing slots: ${exception.message}", Toast.LENGTH_SHORT).show()
                 }
         }
+    }
+
+    private fun removePastAppointments() {
+        val todayDate = dateFormat.format(Date())
+
+        db.collection("appointments")
+            .whereLessThan("schedule", todayDate)
+            .get()
+            .addOnSuccessListener { result ->
+                val batch = db.batch()
+                for (document in result) {
+                    batch.delete(document.reference)
+                }
+                batch.commit()
+                    .addOnSuccessListener {
+                        // Refresh data after deletion
+                        refreshData()
+                        Log.d("ManageAppointments", "Past appointments removed successfully.")
+                    }
+                    .addOnFailureListener { exception ->
+                        Log.e("ManageAppointments", "Failed to remove past appointments: ${exception.message}")
+                    }
+            }
+            .addOnFailureListener { exception ->
+                Log.e("ManageAppointments", "Failed to fetch past appointments: ${exception.message}")
+            }
     }
 
     private fun handleAppointmentAction(appointment: ManageAppointment, action: String) {
