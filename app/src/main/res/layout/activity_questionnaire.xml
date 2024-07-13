@@ -30,6 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/questionnaire_heading"
+                android:textAlignment="center"
                 android:textSize="@dimen/_22ssp"
                 android:textStyle="bold"
                 android:textColor="@color/light_green"/>
