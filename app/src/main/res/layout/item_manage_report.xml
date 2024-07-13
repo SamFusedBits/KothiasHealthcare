@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="@dimen/_13sdp"
-    android:background="@drawable/button_bg_layout_ivory">
+    android:background="@drawable/button_bg_layout_ivory"
+    android:layout_marginBottom="@dimen/_10sdp">
 
     <!-- Patient Name -->
     <TextView
