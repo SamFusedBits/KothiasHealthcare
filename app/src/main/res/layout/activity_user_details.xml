@@ -7,171 +7,183 @@
     android:background="#F9F9E5"
     tools:context=".UserDetailsActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="16dp"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/_13sdp"
+        android:fillViewport="true"
         app:layout_constraintBottom_toTopOf="@+id/bottom_toolbar"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <ImageView
-            android:id="@+id/profile_image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/toolbar_user_profile_logo"
-            android:scaleType="centerCrop"
-            android:backgroundTint="#0A5B02" />
-
-        <Button
-            android:id="@+id/edit_profile_button"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="#0A5B02"
-            android:textAllCaps="false"
-            android:text="@string/edit_profile"
-            android:background="@drawable/button_bg_layout_green"
-            android:textColor="#FFFFFF" />
+            android:orientation="vertical"
+            android:padding="@dimen/_13sdp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:text="Username"
-            android:textStyle="bold"
-            android:textColor="@color/green"
-            android:textSize="@dimen/_13ssp" />
+            <ImageView
+                android:id="@+id/profile_image"
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:background="@drawable/toolbar_user_profile_logo"
+                android:scaleType="centerCrop"
+                android:backgroundTint="#0A5B02" />
 
-        <TextView
-            android:id="@+id/username_textview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:hint="@string/username"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:background="@drawable/button_bg_layout_ivory"
-            android:textColorHint="@color/green"
-            android:textColor="@color/green"
-            android:visibility="visible"/>
+            <Button
+                android:id="@+id/edit_profile_button"
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#0A5B02"
+                android:textAllCaps="false"
+                android:text="@string/edit_profile"
+                android:background="@drawable/button_bg_layout_green"
+                android:textColor="#FFFFFF" />
 
-        <EditText
-            android:id="@+id/username_edittext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/username"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:background="@drawable/button_bg_layout_ivory"
-            android:textColorHint="@color/green"
-            android:textColor="@color/green"
-            android:inputType="text"
-            android:visibility="gone"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:text="Username"
+                android:textStyle="bold"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_13ssp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:text="Email"
-            android:textStyle="bold"
-            android:textColor="@color/green"
-            android:textSize="@dimen/_13ssp" />
+            <TextView
+                android:id="@+id/username_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:hint="@string/username"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@drawable/button_bg_layout_ivory"
+                android:textColorHint="@color/green"
+                android:textColor="@color/green"
+                android:visibility="visible"/>
 
-        <TextView
-            android:id="@+id/email_textview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:layout_marginTop="16dp"
-            android:hint="@string/email"
-            android:textColorHint="@color/green"
-            android:background="@drawable/button_bg_layout_ivory"
-            android:textColor="@color/green"
-            android:inputType="textEmailAddress" />
+            <EditText
+                android:id="@+id/username_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/username"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@drawable/button_bg_layout_ivory"
+                android:textColorHint="@color/green"
+                android:textColor="@color/green"
+                android:inputType="text"
+                android:visibility="gone"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:text="Phone Number"
-            android:textStyle="bold"
-            android:textColor="@color/green"
-            android:textSize="@dimen/_13ssp"
-            android:visibility="visible" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:text="Email"
+                android:textStyle="bold"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_13ssp" />
 
-        <TextView
-            android:id="@+id/phone_textview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:layout_marginTop="16dp"
-            android:hint="Not Specified"
-            android:background="@drawable/button_bg_layout_ivory"
-            android:textColor="@color/green"
-            android:inputType="phone"
-            android:visibility="visible"/>
+            <TextView
+                android:id="@+id/email_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="16dp"
+                android:hint="@string/email"
+                android:textColorHint="@color/green"
+                android:background="@drawable/button_bg_layout_ivory"
+                android:textColor="@color/green"
+                android:inputType="textEmailAddress" />
 
-        <EditText
-            android:id="@+id/phone_edittext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:layout_marginTop="16dp"
-            android:hint="@string/phone_number"
-            android:background="@drawable/button_bg_layout_ivory"
-            android:textColor="@color/green"
-            android:inputType="phone"
-            android:visibility="gone"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:text="Phone Number"
+                android:textStyle="bold"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_13ssp"
+                android:visibility="visible" />
 
-        <Button
-            android:id="@+id/save_profile_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"
-            android:textAllCaps="false"
-            android:text="Save"
-            android:textColor="@color/ivory_white"
-            android:background="@drawable/button_bg_layout_green"
-            android:visibility="gone" />
+            <TextView
+                android:id="@+id/phone_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="16dp"
+                android:hint="Not Specified"
+                android:background="@drawable/button_bg_layout_ivory"
+                android:textColor="@color/green"
+                android:inputType="phone"
+                android:visibility="visible"/>
 
-        <Button
-            android:id="@+id/logout_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/button_bg_layout_green"
-            android:textAllCaps="false"
-            android:backgroundTint="#0A5B02"
-            android:text="@string/logout"
-            android:textColor="#FFFFFF" />
+            <EditText
+                android:id="@+id/phone_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="16dp"
+                android:hint="@string/phone_number"
+                android:background="@drawable/button_bg_layout_ivory"
+                android:textColor="@color/green"
+                android:inputType="phone"
+                android:visibility="gone"/>
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/save_profile_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:textAllCaps="false"
+                android:text="Save"
+                android:textColor="@color/ivory_white"
+                android:background="@drawable/button_bg_layout_green"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/logout_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/button_bg_layout_green"
+                android:textAllCaps="false"
+                android:backgroundTint="#0A5B02"
+                android:text="@string/logout"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+    </ScrollView>
 
     <include
         android:id="@+id/bottom_toolbar"
-        layout="@layout/bottom_toolbar" />
+        layout="@layout/bottom_toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
