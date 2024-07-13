@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/ivory_white">
 
-
     <!-- Heading -->
     <LinearLayout
         android:id="@+id/layout_heading"
@@ -150,12 +149,6 @@
                 android:padding="@dimen/_8sdp"
                 android:visibility="visible" />
 
-<!--            <TextView
-                android:id="@+id/tvTimeSlot"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />-->
-
             <!-- Empty State TextView for Time Slots -->
             <TextView
                 android:id="@+id/tvTimeSlotsEmpty"
@@ -167,83 +160,53 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/_16sdp" />
 
-            <!-- Today's Appointments Title -->
+            <!-- Appointments Title -->
             <TextView
-                android:id="@+id/tvTodayAppointments"
+                android:id="@+id/tvAppointments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Today's Appointments"
+                android:text="Upcoming Appointments"
                 android:textColor="@color/green"
                 android:textSize="@dimen/_18ssp"
                 android:textStyle="bold"
                 android:padding="@dimen/_8sdp"
                 android:layout_marginTop="@dimen/_16sdp" />
 
-            <!-- Progress Bar for Today's Appointments -->
+            <!-- Progress Bar for Appointments -->
             <ProgressBar
-                android:id="@+id/progressBarTodayAppointments"
+                android:id="@+id/progressBarAppointments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:visibility="gone"/>
 
-            <!-- RecyclerView for Today's Appointments -->
+            <!-- RecyclerView for Appointments -->
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvTodayAppointments"
+                android:id="@+id/rvAppointments"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_8sdp"
                 android:visibility="visible" />
 
-            <!-- Empty State TextView for Today's Appointments -->
             <TextView
-                android:id="@+id/tvTodayAppointmentsEmpty"
+                android:id="@+id/tvStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="No appointments for today."
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:visibility="gone" />
+
+            <!-- Empty State TextView for Appointments -->
+            <TextView
+                android:id="@+id/tvAppointmentsEmpty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No appointments available."
                 android:textColor="@color/green"
                 android:visibility="gone"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/_16sdp" />
 
-            <!-- Future Appointments Title -->
-            <TextView
-                android:id="@+id/tvFutureAppointments"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Future Appointments"
-                android:textColor="@color/green"
-                android:textSize="@dimen/_18ssp"
-                android:textStyle="bold"
-                android:padding="@dimen/_8sdp"
-                android:layout_marginTop="@dimen/_16sdp" />
-
-            <!-- Progress Bar for Future Appointments -->
-            <ProgressBar
-                android:id="@+id/progressBarFutureAppointments"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:visibility="gone"/>
-
-            <!-- RecyclerView for Future Appointments -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvFutureAppointments"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/_8sdp"
-                android:visibility="visible" />
-
-            <!-- Empty State TextView for Future Appointments -->
-            <TextView
-                android:id="@+id/tvFutureAppointmentsEmpty"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="No future appointments."
-                android:textColor="@color/green"
-                android:visibility="gone"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/_16sdp" />
 
         </LinearLayout>
 
@@ -253,6 +216,8 @@
     <include
         android:id="@+id/bottom_toolbar_dr"
         layout="@layout/bottom_toolbar_dr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
