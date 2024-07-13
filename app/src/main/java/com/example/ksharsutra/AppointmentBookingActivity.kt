@@ -77,7 +77,7 @@ class AppointmentBookingActivity : AppCompatActivity() {
         db.collection("appointments")
             .add(appointment)
             .addOnSuccessListener {
-                Toast.makeText(this, "Appointment booked successfully", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Confirmation email will be sent to you shortly, based on availability.", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, HomePageActivity::class.java))
                 finish()
             }
