@@ -25,6 +25,8 @@
         android:layout_marginTop="@dimen/_20sdp"
         android:text="Hi-TECH Centre for Piles-Fissure-Fistula and Pilonidal Sinus | Ischiorectal | Perianal Abscess"
         android:textColor="@color/green"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
         android:textSize="@dimen/_13ssp"
         android:textAlignment="center"
         android:textStyle="bold"
@@ -33,270 +35,279 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Main Content -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/contentLayout"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_85sdp"
-        android:elevation="@dimen/_4sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/_10sdp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomToolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hospitalDetails">
 
-        <!-- Doctor Image -->
-        <ImageView
-            android:id="@+id/doctorImage"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/_80sdp"
-            android:elevation="@dimen/_8sdp"
-            android:padding="@dimen/_4sdp"
-            android:src="@drawable/doctor_image"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <!-- Doctor Name -->
-        <TextView
-            android:id="@+id/doctorName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:text="Dr. Manish Kothia"
-            android:textColor="@color/green"
-            android:textSize="@dimen/_16ssp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/doctorImage" />
-
-        <!-- Doctor Specialty -->
-        <TextView
-            android:id="@+id/doctorSpecialty"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_3sdp"
-            android:text="M.S.(Ayu.) Surgeon"
-            android:textColor="@color/green"
-            android:textSize="@dimen/_12ssp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/doctorName" />
-
-        <TextView
-            android:id="@+id/doctorDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:text="Specialist in Piles-Fissure-Fistula"
-            android:textColor="@color/light_green"
-            android:textSize="@dimen/_12ssp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/doctorSpecialty" />
-
-        <!-- Doctor Details -->
-        <LinearLayout
-            android:id="@+id/doctorDetails"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/doctorDescription">
-
-            <!-- Patients Count -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginEnd="@dimen/_16sdp"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="@dimen/_24sdp"
-                    android:layout_height="@dimen/_24sdp" />
-
-                <TextView
-                    android:id="@+id/patientsCount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1000+"
-                    android:textColor="@color/green"
-                    android:textSize="@dimen/_14ssp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Patients"
-                    android:textColor="@color/green"
-                    android:textSize="@dimen/_12ssp" />
-            </LinearLayout>
-
-            <!-- Reviews Count -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginEnd="@dimen/_16sdp"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="@dimen/_24sdp"
-                    android:layout_height="@dimen/_24sdp" />
-
-                <TextView
-                    android:id="@+id/reviewsCount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="4.7/5"
-                    android:textColor="@color/green"
-                    android:textSize="@dimen/_14ssp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ratings"
-                    android:textColor="@color/green"
-                    android:textSize="@dimen/_12ssp" />
-            </LinearLayout>
-
-            <!-- Experience Years -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="@dimen/_24sdp"
-                    android:layout_height="@dimen/_24sdp" />
-
-                <TextView
-                    android:id="@+id/experienceYears"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="10+"
-                    android:textColor="@color/green"
-                    android:textSize="@dimen/_14ssp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Years Experience"
-                    android:textColor="@color/green"
-                    android:textSize="@dimen/_12ssp" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <!-- Description -->
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_16sdp"
-            android:layout_marginStart="@dimen/_16sdp"
-            android:layout_marginEnd="@dimen/_16sdp"
-            android:text="Best leading doctor in Maharashtra for treatment of Anorectal Diseases."
-            android:textColor="@color/green"
-            android:textAllCaps="false"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/doctorDetails" />
-
-        <!-- Schedules Title -->
-        <TextView
-            android:id="@+id/scheduleTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_16sdp"
-            android:text="Schedules"
-            android:textColor="@color/green"
-            android:textSize="@dimen/_15ssp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/description" />
-
-        <!-- Schedule Grid -->
-        <androidx.gridlayout.widget.GridLayout
-            android:id="@+id/scheduleGrid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:columnCount="3"
-            gravity="center"
-            android:layout_marginStart="@dimen/_16sdp"
-            android:layout_marginEnd="@dimen/_16sdp"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/scheduleTitle">
-
-        </androidx.gridlayout.widget.GridLayout>
-
-        <!-- Time Slots Title -->
-        <TextView
-            android:id="@+id/timeSlotsTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_16sdp"
-            android:text="Time Slots"
-            android:textColor="@color/green"
-            android:textSize="@dimen/_15ssp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/scheduleGrid" />
-
-        <!-- Time Slots Grid -->
-        <androidx.gridlayout.widget.GridLayout
-            android:id="@+id/timeSlotsGrid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:columnCount="3"
-            gravity="center"
-            android:layout_marginStart="@dimen/_16sdp"
-            android:layout_marginEnd="@dimen/_16sdp"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:layout_marginBottom="@dimen/_16sdp"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/timeSlotsTitle">
-
-        </androidx.gridlayout.widget.GridLayout>
-
-        <!-- Book Now Button -->
-        <Button
-            android:id="@+id/bookNowButton"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/contentLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_16sdp"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:layout_marginEnd="@dimen/_16sdp"
-            android:text="Book Now"
-            android:textColor="@color/ivory_white"
-            android:textSize="@dimen/_14ssp"
-            android:textAllCaps="false"
-            android:padding="@dimen/_6sdp"
-            android:background="@drawable/button_bg_layout_green"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/timeSlotsGrid" />
+            android:layout_height="wrap_content">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- Doctor Image -->
+            <ImageView
+                android:id="@+id/doctorImage"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_80sdp"
+                android:elevation="@dimen/_8sdp"
+                android:padding="@dimen/_4sdp"
+                android:src="@drawable/doctor_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <include android:id="@+id/bottomToolbar"
+            <!-- Doctor Name -->
+            <TextView
+                android:id="@+id/doctorName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="Dr. Manish Kothia"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_16ssp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/doctorImage" />
+
+            <!-- Doctor Specialty -->
+            <TextView
+                android:id="@+id/doctorSpecialty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:text="M.S.(Ayu.) Surgeon"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/doctorName" />
+
+            <TextView
+                android:id="@+id/doctorDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="Specialist in Piles-Fissure-Fistula"
+                android:textColor="@color/light_green"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/doctorSpecialty" />
+
+            <!-- Doctor Details -->
+            <LinearLayout
+                android:id="@+id/doctorDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/doctorDescription">
+
+                <!-- Patients Count -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="@dimen/_16sdp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="@dimen/_24sdp"
+                        android:layout_height="@dimen/_24sdp" />
+
+                    <TextView
+                        android:id="@+id/patientsCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1000+"
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/_14ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Patients"
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/_12ssp" />
+                </LinearLayout>
+
+                <!-- Reviews Count -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="@dimen/_16sdp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="@dimen/_24sdp"
+                        android:layout_height="@dimen/_24sdp" />
+
+                    <TextView
+                        android:id="@+id/reviewsCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4.7/5"
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/_14ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ratings"
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/_12ssp" />
+                </LinearLayout>
+
+                <!-- Experience Years -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="@dimen/_24sdp"
+                        android:layout_height="@dimen/_24sdp" />
+
+                    <TextView
+                        android:id="@+id/experienceYears"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10+"
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/_14ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Years Experience"
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/_12ssp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Description -->
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:text="Best leading doctor in Maharashtra for treatment of Anorectal Diseases."
+                android:textColor="@color/green"
+                android:textAllCaps="false"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/doctorDetails" />
+
+            <!-- Schedules Title -->
+            <TextView
+                android:id="@+id/scheduleTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:text="Schedules"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_15ssp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/description" />
+
+            <!-- Schedule Grid -->
+            <androidx.gridlayout.widget.GridLayout
+                android:id="@+id/scheduleGrid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:columnCount="3"
+                gravity="center"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/scheduleTitle">
+
+            </androidx.gridlayout.widget.GridLayout>
+
+            <!-- Time Slots Title -->
+            <TextView
+                android:id="@+id/timeSlotsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:text="Time Slots"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_15ssp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/scheduleGrid" />
+
+            <!-- Time Slots Grid -->
+            <androidx.gridlayout.widget.GridLayout
+                android:id="@+id/timeSlotsGrid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:columnCount="2"
+                gravity="center"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_16sdp"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/timeSlotsTitle">
+
+            </androidx.gridlayout.widget.GridLayout>
+
+            <!-- Book Now Button -->
+            <Button
+                android:id="@+id/bookNowButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:text="Book Now"
+                android:textColor="@color/ivory_white"
+                android:textSize="@dimen/_14ssp"
+                android:textAllCaps="false"
+                android:padding="@dimen/_6sdp"
+                android:background="@drawable/button_bg_layout_green"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/timeSlotsGrid" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <!-- Include bottom toolbar -->
+    <include
+        android:id="@+id/bottomToolbar"
         layout="@layout/bottom_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
