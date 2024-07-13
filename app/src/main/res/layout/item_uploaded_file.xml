@@ -2,19 +2,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="8dp"
+    android:padding="@dimen/_8sdp"
     android:background="?android:attr/selectableItemBackground"
-    android:layout_marginBottom="8dp"
-    android:elevation="2dp">
+    android:layout_marginBottom="@dimen/_5sdp"
+    android:elevation="@dimen/_2sdp">
 
     <TextView
         android:id="@+id/file_name_text_view"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textColor="@android:color/black"
-        android:textSize="16sp"
-        android:paddingEnd="8dp"
+        android:textSize="@dimen/_13ssp"
+        android:padding="@dimen/_5sdp"
         android:text="File Name" />
 
     <Button
