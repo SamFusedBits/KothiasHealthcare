@@ -22,18 +22,20 @@
         android:text="Search"
         android:textColor="@color/ivory_white"
         android:textAllCaps="false"
+        android:layout_marginEnd="@dimen/_8sdp"
         android:onClick="onSearchButtonClick"
-        android:background="@color/light_green"/>
+        android:background="@drawable/rounded_button"/>
 
     <!-- Header -->
     <TextView
         android:id="@+id/dashboard_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/_16sdp"
+        android:padding="@dimen/_5sdp"
         android:text="Patient Reports"
         android:textColor="@color/green"
         android:textSize="@dimen/_20ssp"
+        android:layout_marginStart="@dimen/_8sdp"
         android:textStyle="bold"
         android:layout_below="@id/search_edit_text"/>
 
@@ -48,7 +50,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/reports_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/dashboard_title"
         android:layout_above="@id/bottom_toolbar_dr"
         android:padding="@dimen/_16sdp"/>
@@ -57,6 +59,5 @@
         layout="@layout/bottom_toolbar_dr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/_5sdp"/>
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>
