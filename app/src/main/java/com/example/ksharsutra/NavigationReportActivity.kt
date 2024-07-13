@@ -1,12 +1,14 @@
 package com.example.ksharsutra
 
 import android.app.Activity
+import android.content.ActivityNotFoundException
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.OpenableColumns
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -32,6 +34,9 @@ class NavigationReportActivity : AppCompatActivity() {
 
     private val PICK_FILE_REQUEST = 1
     private val READ_EXTERNAL_STORAGE_PERMISSION_CODE = 100
+
+    // Allowed file MIME types
+    private val ALLOWED_FILE_TYPES = arrayOf("application/pdf", "image/jpeg", "image/png")
 
     // Cache for storing file metadata
     private val fileCache = mutableListOf<FileMetadata>()
@@ -62,7 +67,7 @@ class NavigationReportActivity : AppCompatActivity() {
         }
 
         navigation_appointment.setOnClickListener {
-            val intent = Intent(this, ManageAppointmentsActivity::class.java)
+            val intent = Intent(this, AppointmentActivity::class.java)
             startActivity(intent)
         }
 
@@ -77,12 +82,11 @@ class NavigationReportActivity : AppCompatActivity() {
             openFilePicker()
         }
 
-        // Fetch and display last 3 uploaded files from fileCache
-        displayLast3UploadedFiles()
+        // Fetch and display last 2 uploaded files from fileCache
+        displayLast2UploadedFiles()
 
         // Optional: Fetch files from Firestore initially if needed
         fetchUserFiles()
-
     }
 
     private fun fetchUserFiles() {
@@ -93,7 +97,7 @@ class NavigationReportActivity : AppCompatActivity() {
             firestore.collection("uploads")
                 .whereEqualTo("userId", uid)
                 .orderBy("timestamp", Query.Direction.DESCENDING)
-                .limit(3)
+                .limit(2)
                 .get()
                 .addOnSuccessListener { querySnapshot ->
                     fileCache.clear()  // Clear the cache before adding new data
@@ -108,8 +112,8 @@ class NavigationReportActivity : AppCompatActivity() {
                         }
                     }
 
-                    // Display last 3 uploaded files
-                    displayLast3UploadedFiles()
+                    // Display last 2 uploaded files
+                    displayLast2UploadedFiles()
                 }
                 .addOnFailureListener { exception ->
                     Toast.makeText(this, "Failed to fetch user files: ${exception.message}", Toast.LENGTH_SHORT).show()
@@ -117,17 +121,24 @@ class NavigationReportActivity : AppCompatActivity() {
         }
     }
 
-    private fun displayLast3UploadedFiles() {
+    private fun displayLast2UploadedFiles() {
         // Clear existing views in filesContainer
         filesContainer.removeAllViews()
 
         // Sort the cache by timestamp in descending order
         val sortedCache = fileCache.sortedByDescending { it.timestamp }
 
-        // Display the last 3 files from sortedCache
-        val last3Files = sortedCache.take(3)
-        last3Files.forEach { fileMetadata ->
-            addFileToUI(fileMetadata.name, fileMetadata.url, fileMetadata.timestamp)
+        // Display the last 2 files from sortedCache
+        val last2Files = sortedCache.take(2)
+        if (last2Files.isNotEmpty()) {
+            last2Files.forEach { fileMetadata ->
+                addFileToUI(fileMetadata.name, fileMetadata.url, fileMetadata.timestamp)
+            }
+            // Show filesContainer if there are files
+            filesContainer.visibility = View.VISIBLE
+        } else {
+            // Hide filesContainer if there are no files
+            filesContainer.visibility = View.GONE
         }
     }
 
@@ -138,8 +149,12 @@ class NavigationReportActivity : AppCompatActivity() {
                 android.Manifest.permission.READ_EXTERNAL_STORAGE
             ) == android.content.pm.PackageManager.PERMISSION_GRANTED
         ) {
-            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            // Set allowed MIME types
+            val mimeTypes = arrayOf("application/pdf", "image/jpeg", "image/png")
+            val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
+            intent.addCategory(Intent.CATEGORY_OPENABLE)
             intent.type = "*/*"
+            intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes)
             startActivityForResult(intent, PICK_FILE_REQUEST)
         } else {
             ActivityCompat.requestPermissions(
@@ -149,7 +164,6 @@ class NavigationReportActivity : AppCompatActivity() {
             )
         }
     }
-
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<out String>, grantResults: IntArray
     ) {
@@ -170,10 +184,15 @@ class NavigationReportActivity : AppCompatActivity() {
         if (requestCode == PICK_FILE_REQUEST && resultCode == Activity.RESULT_OK) {
             data?.data?.let { uri ->
                 Log.d(TAG, "File selected: $uri")
-                // Prompt user for additional details before uploading file
-                fetchUserDetailsAndUpload(uri)
+                // Check if the selected file type is allowed
+                if (ALLOWED_FILE_TYPES.contains(contentResolver.getType(uri))) {
+                    // Prompt user for additional details before uploading file
+                    fetchUserDetailsAndUpload(uri)
+                } else {
+                    Toast.makeText(this, "Please select a PDF, JPG, or PNG file", Toast.LENGTH_SHORT).show()
+                }
             }
-        }else{
+        } else {
             Log.d(TAG, "No file selected")
             Toast.makeText(this, "No file selected", Toast.LENGTH_SHORT).show()
         }
@@ -270,21 +289,81 @@ class NavigationReportActivity : AppCompatActivity() {
 
         fileNameTextView.text = fileName
         viewFileButton.setOnClickListener {
-            openFileInBrowser(fileUrl)
+            openFile(fileName, fileUrl)
         }
 
-        // Check if filesContainer already has 3 child views
-        if (filesContainer.childCount >= 3) {
-            filesContainer.removeViewAt(0) // Remove the oldest file view if more than 3
+        // Check if filesContainer already has 2 child views
+        if (filesContainer.childCount >= 2) {
+            filesContainer.removeViewAt(0) // Remove the oldest file view if more than 2
         }
 
         filesContainer.addView(fileView)
+
+        // To ensure filesContainer is visible when adding a file view
+        filesContainer.visibility = View.VISIBLE
     }
 
-    private fun openFileInBrowser(fileUrl: String) {
+    private fun openFileInGoogleDrive(uri: Uri, mimeType: String) {
         val intent = Intent(Intent.ACTION_VIEW)
-        intent.data = Uri.parse(fileUrl)
-        startActivity(intent)
+        intent.setDataAndType(uri, mimeType)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+        intent.setPackage("com.google.android.apps.docs")
+
+        try {
+            val chooserIntent = Intent.createChooser(intent, "Open with")
+            startActivity(chooserIntent)
+        } catch (e: ActivityNotFoundException) {
+            // Google Drive app not found, fall back to default handling
+            openFileInDefaultChooser(uri, mimeType)
+        }
+    }
+
+    private fun openFileInDefaultChooser(uri: Uri, mimeType: String) {
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.setDataAndType(uri, mimeType)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+
+        try {
+            val chooserIntent = Intent.createChooser(intent, "Open with")
+            startActivity(chooserIntent)
+        } catch (e: ActivityNotFoundException) {
+            // No app found to handle the file, show a toast or handle the situation accordingly
+            Toast.makeText(this, "No app found to open this file", Toast.LENGTH_SHORT).show()
+            openFileInBrowser(uri)
+        }
+    }
+
+    private fun openFileInBrowser(uri: Uri) {
+        val browserIntent = Intent(Intent.ACTION_VIEW, uri)
+        browserIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+        try {
+            startActivity(browserIntent)
+        } catch (e: ActivityNotFoundException) {
+            // No browser found, show a toast or handle the situation accordingly
+            Toast.makeText(this, "No app found to open this file", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun openFile(fileName: String, fileUrl: String) {
+        val uri = Uri.parse(fileUrl)
+        val mimeType = when {
+            fileName.endsWith(".pdf", true) -> "application/pdf"
+            fileName.endsWith(".png", true) -> "image/png"
+            fileName.endsWith(".jpg", true) || fileName.endsWith(".jpeg", true) -> "image/jpeg"
+            else -> null
+        }
+
+        if (mimeType != null) {
+            if (mimeType == "application/pdf") {
+                openFileInGoogleDrive(uri, mimeType)
+            } else {
+                openFileInDefaultChooser(uri, mimeType)
+            }
+        } else {
+            // Unsupported file type, show a toast or handle the situation accordingly
+            Toast.makeText(this, "Unsupported file format", Toast.LENGTH_SHORT).show()
+            openFileInBrowser(uri)
+        }
     }
 
     private fun getFileName(uri: Uri): String? {
