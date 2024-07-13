@@ -7,7 +7,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ReportAdapter(private val reports: List<Report>, private val onReportClick: (String) -> Unit) :
+class ReportAdapter(private val reports: List<Report>, private val onFileClick: (fileUrl: String, mimeType: String?) -> Unit) :
     RecyclerView.Adapter<ReportAdapter.ReportViewHolder>() {
 
     class ReportViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -27,7 +27,23 @@ class ReportAdapter(private val reports: List<Report>, private val onReportClick
         holder.fileNameTextView.text = "File Name: ${report.fileName}"
         holder.usernameTextView.text = "Patient Name: ${report.patientName ?: "Unknown"}"
         holder.emailTextView.text = "Patient Email: ${report.patientEmail ?: "Unknown"}"
-        holder.viewButton.setOnClickListener { onReportClick(report.fileUrl) }
+
+        // Set click listener on your item
+        holder.viewButton.setOnClickListener {
+            // Determine the mimeType based on the file extension or type
+            val mimeType = determineMimeType(report.fileName)
+            onFileClick(report.fileUrl, mimeType)
+        }
+    }
+
+    // Helper function to determine mimeType based on file extension
+    private fun determineMimeType(fileName: String): String? {
+        return when {
+            fileName.endsWith(".pdf") -> "application/pdf"
+            fileName.endsWith(".jpg") || fileName.endsWith(".jpeg") -> "image/jpeg"
+            fileName.endsWith(".png") -> "image/png"
+            else -> null // Fallback to null if mimeType is unknown
+        }
     }
 
     override fun getItemCount(): Int = reports.size
