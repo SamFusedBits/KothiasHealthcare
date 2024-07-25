@@ -9,6 +9,7 @@ import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,12 +26,13 @@ class QuestionnaireActivity : AppCompatActivity() {
 
         // Initialize Retrofit
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.0.106:8000/api/submit/") // Replace with your actual backend URL
+            .baseUrl("https://render-clinic.onrender.com/") // Replace with your actual backend URL
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         apiService = retrofit.create(ApiService::class.java)
 
+        val editTextName: EditText = findViewById(R.id.editTextName)
         val editTextAge: EditText = findViewById(R.id.editTextAge)
         val radioGroupGender: RadioGroup = findViewById(R.id.radioGroupGender)
         val radioGroupWorking: RadioGroup = findViewById(R.id.radioGroupWorking)
@@ -75,6 +77,7 @@ class QuestionnaireActivity : AppCompatActivity() {
         val buttonSubmit: Button = findViewById(R.id.submit_button)
 
         buttonSubmit.setOnClickListener {
+            val name = findViewById<EditText>(R.id.editTextName)?.text?.toString() ?: ""
             val age = findViewById<EditText>(R.id.editTextAge)?.text?.toString() ?: ""
             val gender = findViewById<RadioButton>(radioGroupGender.checkedRadioButtonId)?.text?.toString() ?: ""
             val working = findViewById<RadioButton>(radioGroupWorking.checkedRadioButtonId)?.text?.toString() ?: ""
@@ -118,6 +121,7 @@ class QuestionnaireActivity : AppCompatActivity() {
             val first_time_doctor_visit = findViewById<RadioButton>(radioGroupFirstTimeDoctorVisit.checkedRadioButtonId)?.text?.toString() ?: ""
 
             val questionnaire = Questionnaire(
+                name,
                 age,
                 gender,
                 working,
@@ -161,6 +165,11 @@ class QuestionnaireActivity : AppCompatActivity() {
                 first_time_doctor_visit
             )
 
+            // Log the JSON payload being sent
+            val gson = Gson()
+            val requestBody = gson.toJson(questionnaire)
+            Log.d("QuestionnaireActivity", "Request Payload: $requestBody")
+
             // Call API to submit questionnaire
             apiService.submitQuestionnaire(questionnaire).enqueue(object : Callback<ResponseData> {
                 override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
@@ -174,6 +183,7 @@ class QuestionnaireActivity : AppCompatActivity() {
                         }
                     } else {
                         Toast.makeText(this@QuestionnaireActivity, "Failed to submit questionnaire", Toast.LENGTH_SHORT).show()
+                        Log.d("QuestionnaireActivity", "Failed to submit questionnaire: ${response.code()} ${response.message()}")
                     }
                 }
 
