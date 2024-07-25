@@ -1,6 +1,7 @@
 package com.example.ksharsutra
 
 data class Questionnaire(
+    val name: String,
     val age: String,
     val gender: String,
     val working: String,
