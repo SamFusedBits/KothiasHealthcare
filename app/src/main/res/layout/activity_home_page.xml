@@ -21,7 +21,7 @@
         <ImageView
         android:id="@+id/imageView3"
         android:layout_width="@dimen/_290sdp"
-        android:layout_height="@dimen/_133sdp"
+        android:layout_height="@dimen/_80sdp"
         android:layout_marginStart="@dimen/_16sdp"
         android:drawablePadding="@dimen/_10sdp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
