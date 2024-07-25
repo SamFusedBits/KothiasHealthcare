@@ -1,7 +1,6 @@
 package com.example.ksharsutra
 
 import android.os.Bundle
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +9,7 @@ class PrecautionsTreatmentsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_precationstreatments)
+        setContentView(R.layout.activity_precautionstreatments)
 
         val title = findViewById<TextView>(R.id.title)
         val precautions_list = findViewById<TextView>(R.id.precautions_list)
