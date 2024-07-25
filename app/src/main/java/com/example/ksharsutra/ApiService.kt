@@ -6,6 +6,6 @@ import retrofit2.http.POST
 
 interface ApiService {
 
-    @POST("submitQuestionnaire")
+    @POST("api/submit/")
     fun submitQuestionnaire(@Body questionnaire: Questionnaire): Call<ResponseData>
 }
