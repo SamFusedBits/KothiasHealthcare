@@ -4,6 +4,7 @@ data class Questionnaire(
     val name: String,
     val age: String,
     val gender: String,
+    val weight: String,
     val working: String,
     val work_shift: String,
     val job_nature: String,
