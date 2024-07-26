@@ -1,20 +1,18 @@
 package com.example.ksharsutra
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class QuestionnaireActivity : AppCompatActivity() {
 
@@ -24,17 +22,13 @@ class QuestionnaireActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_questionnaire)
 
-        // Initialize Retrofit
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://render-clinic.onrender.com/") // Replace with your actual backend URL
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        apiService = retrofit.create(ApiService::class.java)
+        // Initialize ApiService using RetrofitClient
+        apiService = RetrofitClient.getInstance().create(ApiService::class.java)
 
         val editTextName: EditText = findViewById(R.id.editTextName)
         val editTextAge: EditText = findViewById(R.id.editTextAge)
         val radioGroupGender: RadioGroup = findViewById(R.id.radioGroupGender)
+        val radioGroupWeight: RadioGroup = findViewById(R.id.radioGroupWeight)
         val radioGroupWorking: RadioGroup = findViewById(R.id.radioGroupWorking)
         val radioGroupWorkShift: RadioGroup = findViewById(R.id.radioGroupWorking)
         val radioGroupJobNature: RadioGroup = findViewById(R.id.radioGroupNatureOfJob)
@@ -80,6 +74,7 @@ class QuestionnaireActivity : AppCompatActivity() {
             val name = findViewById<EditText>(R.id.editTextName)?.text?.toString() ?: ""
             val age = findViewById<EditText>(R.id.editTextAge)?.text?.toString() ?: ""
             val gender = findViewById<RadioButton>(radioGroupGender.checkedRadioButtonId)?.text?.toString() ?: ""
+            val weight = findViewById<RadioButton>(radioGroupWeight.checkedRadioButtonId)?.text?.toString() ?: ""
             val working = findViewById<RadioButton>(radioGroupWorking.checkedRadioButtonId)?.text?.toString() ?: ""
             val work_shift = findViewById<RadioButton>(radioGroupWorkShift.checkedRadioButtonId)?.text?.toString() ?: ""
             val job_nature = findViewById<RadioButton>(radioGroupJobNature.checkedRadioButtonId)?.text?.toString() ?: ""
@@ -124,6 +119,7 @@ class QuestionnaireActivity : AppCompatActivity() {
                 name,
                 age,
                 gender,
+                weight,
                 working,
                 work_shift,
                 job_nature,
@@ -165,33 +161,67 @@ class QuestionnaireActivity : AppCompatActivity() {
                 first_time_doctor_visit
             )
 
+
             // Log the JSON payload being sent
             val gson = Gson()
             val requestBody = gson.toJson(questionnaire)
             Log.d("QuestionnaireActivity", "Request Payload: $requestBody")
+
+            // Show a progress message
+            Toast.makeText(this, "Submitting your responses, please wait...", Toast.LENGTH_SHORT).show()
 
             // Call API to submit questionnaire
             apiService.submitQuestionnaire(questionnaire).enqueue(object : Callback<ResponseData> {
                 override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
                     if (response.isSuccessful) {
                         val responseData = response.body()
-                        // Handle response data as needed
                         responseData?.let {
-                            Toast.makeText(this@QuestionnaireActivity, "Response: ${it.result}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@QuestionnaireActivity, "Your responses have been submitted successfully! Redirecting to prediction details...", Toast.LENGTH_SHORT).show()
                             Log.d("QuestionnaireActivity", "Response: ${it.result}")
-                            // Display or process the response
+
+                            // Call the predict API
+                            getPrediction()
                         }
                     } else {
-                        Toast.makeText(this@QuestionnaireActivity, "Failed to submit questionnaire", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@QuestionnaireActivity, "Please try again after some time.", Toast.LENGTH_SHORT).show()
                         Log.d("QuestionnaireActivity", "Failed to submit questionnaire: ${response.code()} ${response.message()}")
                     }
                 }
 
                 override fun onFailure(call: Call<ResponseData>, t: Throwable) {
-                    Toast.makeText(this@QuestionnaireActivity, "Error submitting questionnaire: ${t.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@QuestionnaireActivity, "Please wait a moment while we set up the server for you. Try again in a minute.", Toast.LENGTH_SHORT).show()
                     Log.d("QuestionnaireActivity", "Error submitting questionnaire", t)
                 }
             })
         }
+    }
+
+    private fun getPrediction() {
+        apiService.getPrediction().enqueue(object : Callback<PredictionResponse> {
+            override fun onResponse(call: Call<PredictionResponse>, response: Response<PredictionResponse>) {
+                if (response.isSuccessful) {
+                    val predictionResponse = response.body()
+                    predictionResponse?.let {
+                        // Assuming prediction is a list, display the first item
+                        val predictionText = it.prediction.firstOrNull() ?: "No prediction available"
+
+                        // Create an Intent to start PredictionResponseActivity
+                        val intent = Intent(this@QuestionnaireActivity, PredictionResponseActivity::class.java)
+                        intent.putExtra("PREDICTION_TEXT", predictionText)
+
+                        // Start PredictionResponseActivity
+                        startActivity(intent)
+                    }
+                } else {
+                    Toast.makeText(this@QuestionnaireActivity, "Failed to get prediction. Please fill out all required fields before submitting.", Toast.LENGTH_SHORT).show()
+                    Log.d("QuestionnaireActivity", "Failed to get prediction: ${response.code()} ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<PredictionResponse>, t: Throwable) {
+                Toast.makeText(this@QuestionnaireActivity, "Error getting prediction.", Toast.LENGTH_SHORT).show()
+                Log.d("QuestionnaireActivity", "Error getting prediction", t)
+            }
+        })
     }
 }
