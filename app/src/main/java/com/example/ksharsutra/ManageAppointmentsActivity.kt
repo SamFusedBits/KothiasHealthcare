@@ -451,32 +451,47 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
         val subject = "Appointment ${if (action == "approve") "Approved" else "Declined"}"
         val content = when (action) {
             "approve" -> """
-            Dear ${appointment.name},
-
-            We are pleased to inform you that your appointment request has been approved. Please find the details of your appointment below:
-
-            Appointment Date and Time: ${appointment.schedule}
-            Location: Saurabh Building, Kshara Sutra Hospital, Domnic Colony Rd Number 1, near N.L. High School, Malad, Daruwala Compound, Malad West, Mumbai, Maharashtra 400064.
-
-            If you have any questions or need further assistance, please do not hesitate to contact us.
-
-            Thank you for choosing our clinic.
-
-            Best regards,
-            Dr. Kothia's Clinic
-            """
-            "decline" -> {
+            <html>
+                <body>
+                    <p>Dear ${appointment.name},</p>
+                    <p>We are pleased to inform you that your appointment request has been approved. Please find the details of your appointment below:</p>
+                    <p>Appointment Date and Time: ${appointment.schedule}</p>
+                    <p>Location: Saurabh Building, Kshara Sutra Hospital, Domnic Colony Rd Number 1, near N.L. High School, Malad, Daruwala Compound, Malad West, Mumbai, Maharashtra 400064.</p>
+                    <p>If you have any questions or need further assistance, please do not hesitate to contact us.</p>
+                    <p>Thank you for choosing our clinic.</p>
+                    <p>Best regards,<br>Dr. Kothia's Clinic</p>
+                </body>
+            </html>
+        """
+            "decline" -> """
+            <html>
+                <body>
+                    <p>Dear ${appointment.name},</p>
+                    <p>We regret to inform you that your appointment request has been declined.</p>
+                    <p>If you have any questions or need further assistance, please feel free to contact us.</p>
+                    <p>Thank you for understanding.</p>
+                    <p>Best regards,<br>Dr. Kothia's Clinic</p>
+                </body>
+            </html>
+        """.trimIndent().also {
                 // Remove the declined appointment from the list and Firestore
                 db.collection("appointments").document(appointment.id)
                     .delete()
                     .addOnSuccessListener {
+                        // Find the appointment in the local list and remove it
+                        val localAppointmentIndex = cachedAllAppointments?.indexOfFirst { it.id == appointment.id }
+                        if (localAppointmentIndex != null && localAppointmentIndex != -1) {
+                            cachedAllAppointments?.removeAt(localAppointmentIndex)
+
+                            // Notify the adapter of the change
+                            AppointmentsAdapter.notifyItemRemoved(localAppointmentIndex)
+                        }
                         Toast.makeText(this, "Appointment declined successfully.", Toast.LENGTH_SHORT).show()
                         loadAppointments() // Reload appointments after deletion
                     }
                     .addOnFailureListener { exception ->
                         Toast.makeText(this, "Failed to decline appointment: ${exception.message}", Toast.LENGTH_SHORT).show()
                     }
-                return
             }
             else -> "We are sorry, your appointment has not been approved. Please contact us for further details."
         }
@@ -486,20 +501,29 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
             db.collection("appointments").document(appointment.id)
                 .update("status", "Approved")
                 .addOnSuccessListener {
+                    // Find the appointment in the local list and update its status
+                    val localAppointment = cachedAllAppointments?.find { it.id == appointment.id }
+                    localAppointment?.status = "Approved"
+
+                    // Notify the adapter of the change
+                    AppointmentsAdapter.notifyDataSetChanged()
+
                     Toast.makeText(this, "Appointment approved successfully.", Toast.LENGTH_SHORT).show()
-                    loadAppointments() // Reload appointments after approval
                 }
                 .addOnFailureListener { exception ->
                     Toast.makeText(this, "Failed to approve appointment: ${exception.message}", Toast.LENGTH_SHORT).show()
                 }
         }
 
-        try {
-            //SendGridHelper.sendEmail(appointment.email, subject, content)
-            Toast.makeText(this, "Email sent successfully.", Toast.LENGTH_LONG).show()
-        } catch (e: IOException) {
-            Toast.makeText(this, "Failed to send email: ${e.message}", Toast.LENGTH_LONG).show()
-            e.printStackTrace()
+        // Send email
+        SendinblueHelper.sendEmail(appointment.email, subject, content) { success, message ->
+            runOnUiThread {
+                if (success) {
+                    Toast.makeText(this, "Email sent successfully.", Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(this, "Failed to send email: $message", Toast.LENGTH_LONG).show()
+                }
+            }
         }
     }
 }
