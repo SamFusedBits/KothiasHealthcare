@@ -1,7 +1,14 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
+}
+
+val localProperties = Properties().apply {
+    FileInputStream(rootProject.file("local.properties")).use { load(it) }
 }
 
 android {
@@ -16,6 +23,13 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "BASE_URL", "\"${localProperties["BASE_URL"]}\"")
+        buildConfigField("String", "API_KEY", "\"${localProperties["API_KEY"]}\"")
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     buildTypes {
@@ -82,8 +96,7 @@ dependencies {
 
     implementation("com.google.firebase:firebase-appcheck:17.0.0")
 
-    // SendGrid Email API
-    implementation("com.sendgrid:sendgrid-java:4.8.3")
+    implementation("com.squareup.okhttp3:okhttp:4.10.0")
 
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
