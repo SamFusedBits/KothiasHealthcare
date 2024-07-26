@@ -3,7 +3,7 @@
     <string name="default_web_client_id">256519567139-jfafgthdookh34pr0tq6k0lfr354dvbk.apps.googleusercontent.com</string>
 
     <string name="app_name">Kothias Clinic</string>
-    <string name="emailID">abc@example.com</string>
+    <string name="emailID">drkothiasclinic@gmail.com</string>
     <string name="phoneno">+91 9876543210</string>
     <string name="address">Kshara Sutra Hospital, near N.L. High School, Malad West, Mumbai, Maharashtra - 400064</string>
     <string name="book_an_appointment">Book an appointment</string>
@@ -20,7 +20,13 @@
         <string name="enter_gender">Gender:</string>
         <string name="male">Male</string>
         <string name="female">Female</string>
-        <string name="other">Other</string>
+    
+        <string name="enter_weight">Select your weight:</string>
+        <string name="sixty">60 - 70 kg</string>
+        <string name="seventy">70 - 80 kg</string>
+        <string name="eighty">80 - 90 kg</string>
+        <string name="aboveninety">Above 90 kg</string>
+        <string name="below60">Below 60 kg</string>
 
         <!-- Are you working? -->
         <string name="are_you_working">Are you working?</string>
