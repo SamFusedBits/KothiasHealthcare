@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ivory_white"
+    tools:context=".HealthAdviceActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp">
+
+            <ImageView
+                android:id="@+id/back_arrow"
+                android:layout_width="@dimen/_34sdp"
+                android:layout_height="@dimen/_52sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_25sdp"
+                app:srcCompat="@drawable/back_arrow"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_25sdp"
+                android:layout_marginTop="@dimen/_33sdp"
+                android:layout_marginEnd="@dimen/_35sdp"
+                android:text="Health Advice"
+                android:textAlignment="center"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_25ssp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/back_arrow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Card 1: Piles -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_piles"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginBottom="@dimen/_16sdp"
+                app:cardBackgroundColor="@color/ivory_white"
+                app:cardCornerRadius="@dimen/_20sdp"
+                app:layout_constraintTop_toBottomOf="@id/title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/card_fissure"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintWidth_percent="0.48">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/green_border"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_15sdp">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_125sdp"
+                        android:layout_gravity="left"
+                        app:cardBackgroundColor="@color/ivory_white"
+                        app:cardCornerRadius="@dimen/_24sdp"
+                        app:cardUseCompatPadding="true">
+
+                        <ImageView
+                            android:id="@+id/piles_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/piles_image" />
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/piles_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Piles"
+                        android:textAlignment="center"
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/_25ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/piles_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/piles_description"
+                        android:textAlignment="center"
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/_14ssp" />
+
+                    <Button
+                        android:id="@+id/learnmore_piles"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:background="@drawable/button_bg_layout_green"
+                        android:text="@string/learn_more"
+                        android:textColor="@color/ivory_white"
+                        android:textSize="@dimen/_13ssp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Card 2: Fissure -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_fissure"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginBottom="@dimen/_16sdp"
+                app:cardBackgroundColor="@color/ivory_white"
+                app:cardCornerRadius="@dimen/_20sdp"
+                app:layout_constraintTop_toBottomOf="@id/title"
+                app:layout_constraintStart_toEndOf="@+id/card_piles"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintWidth_percent="0.48">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/green_border"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_15sdp">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_125sdp"
+                        android:layout_gravity="center"
+                        app:cardBackgroundColor="@color/ivory_white"
+                        app:cardCornerRadius="@dimen/_24sdp"
+                        app:cardUseCompatPadding="true">
+
+                        <ImageView
+                            android:id="@+id/fissure_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/fissure_image" />
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/fissure_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Fissure"
+                        android:textAlignment="center"
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/_25ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/fissure_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fissure_description"
+                        android:textAlignment="center"
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/_14ssp" />
+
+                    <Button
+                        android:id="@+id/learnmore_fissure"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:background="@drawable/button_bg_layout_green"
+                        android:text="@string/learn_more"
+                        android:textColor="@color/ivory_white"
+                        android:textSize="@dimen/_13ssp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Card 3: Pilonidal Sinus -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_pilonidal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginBottom="@dimen/_50sdp"
+                app:cardBackgroundColor="@color/ivory_white"
+                app:cardCornerRadius="@dimen/_20sdp"
+                app:layout_constraintTop_toBottomOf="@+id/card_piles"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/card_fistula"
+                app:layout_constraintWidth_percent="0.48">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/green_border"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_15sdp">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_125sdp"
+                        android:layout_gravity="center"
+                        app:cardCornerRadius="@dimen/_24sdp"
+                        app:cardUseCompatPadding="true">
+
+                        <ImageView
+                            android:id="@+id/pilonidalsinus_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/pilonidalsinus_image" />
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/pilonidalsinus_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Pilonidal Sinus"
+                        android:textAlignment="center"
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/_25ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/pilonidalsinus_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/PilonidalSinus_description"
+                        android:textAlignment="center"
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/_14ssp" />
+
+                    <Button
+                        android:id="@+id/learnmore_pilonidalsinus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:background="@drawable/button_bg_layout_green"
+                        android:text="@string/learn_more"
+                        android:textColor="@color/ivory_white"
+                        android:textSize="@dimen/_13ssp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Card 4: Fistula -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_fistula"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginBottom="@dimen/_50sdp"
+                app:cardBackgroundColor="@color/ivory_white"
+                app:cardCornerRadius="@dimen/_20sdp"
+                app:layout_constraintTop_toBottomOf="@+id/card_fissure"
+                app:layout_constraintStart_toEndOf="@+id/card_pilonidal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintWidth_percent="0.48">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/green_border"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_15sdp">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_125sdp"
+                        android:layout_gravity="center"
+                        app:cardBackgroundColor="@color/ivory_white"
+                        app:cardCornerRadius="@dimen/_24sdp"
+                        app:cardUseCompatPadding="true">
+
+                        <ImageView
+                            android:id="@+id/fistula_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/fistula_image" />
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/fistula_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Fistula"
+                        android:textAlignment="center"
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/_25ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/fistula_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fistula_description"
+                        android:textAlignment="center"
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/_14ssp" />
+
+                    <Button
+                        android:id="@+id/learnmore_fistula"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:background="@drawable/button_bg_layout_green"
+                        android:text="@string/learn_more"
+                        android:textColor="@color/ivory_white"
+                        android:textSize="@dimen/_13ssp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
