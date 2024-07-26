@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/_15sdp"
-                android:background="@drawable/toolbar_user_profile_logo"
+                android:background="@drawable/user_icon"
                 android:scaleType="centerCrop"
                 android:backgroundTint="#0A5B02" />
 
