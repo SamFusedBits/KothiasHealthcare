@@ -1,0 +1,79 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/ivory_white"
+    android:padding="@dimen/_16sdp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Title TextView -->
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You're at risk of having:"
+            android:textAlignment="center"
+            android:textColor="@color/green"
+            android:textSize="@dimen/_22ssp"
+            android:layout_marginTop="@dimen/_184sdp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0.2"
+            app:layout_constraintHorizontal_bias="0.5"/>
+
+        <!-- Prediction TextView -->
+        <TextView
+            android:id="@+id/textViewPrediction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prediction will appear here"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:textColor="@color/green"
+            android:textSize="@dimen/_28ssp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/textViewTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0.4"/>
+
+        <!-- Health Advice Button -->
+        <Button
+            android:id="@+id/buttonHealthAdvice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Health Advice"
+            android:textAllCaps="false"
+            android:textColor="@color/ivory_white"
+            android:textSize="@dimen/_16ssp"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:padding="@dimen/_12sdp"
+            android:background="@drawable/button_bg_layout_green"
+            app:layout_constraintTop_toBottomOf="@id/textViewPrediction"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0.4"/>
+
+        <!-- Disclaimer TextView -->
+        <TextView
+            android:id="@+id/textViewDisclaimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Disclaimer: This prediction is based on the information provided and may not be a definitive diagnosis. Please consult a healthcare professional for accurate medical advice."
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/light_green"
+            android:padding="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:layout_marginBottom="@dimen/_50sdp"
+            app:layout_constraintTop_toBottomOf="@id/buttonHealthAdvice"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
