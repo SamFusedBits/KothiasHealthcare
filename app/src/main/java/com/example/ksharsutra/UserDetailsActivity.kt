@@ -20,6 +20,9 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.ksharsutra.R
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -47,6 +50,7 @@ class UserDetailsActivity : AppCompatActivity() {
     private lateinit var profileImageUri: Uri // To store selected image URI
     private lateinit var profileImageView: ImageView
     private lateinit var logoutButton: Button
+    private lateinit var googleSignInClient: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,6 +89,14 @@ class UserDetailsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // Configure Google Sign-In
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+
+        googleSignInClient = GoogleSignIn.getClient(this, gso)
+
         // Fetch and display user details
         fetchUserDetails()
 
@@ -109,9 +121,20 @@ class UserDetailsActivity : AppCompatActivity() {
                 requestStoragePermission()
             }
         }
+        logoutButton.setOnClickListener {
+            logoutUser()
+        }
+    }
+    private fun logoutUser() {
+        // Log out the user from Firebase Authentication
+        mAuth.signOut()
 
-        logoutButton.setOnClickListener { // Temporary implementation
-            startActivity(Intent(this, ManageAppointmentsActivity::class.java))
+        // Clear cached Google Sign-In account information
+        googleSignInClient.signOut().addOnCompleteListener {
+            // Redirect the user to the login screen
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
             finish()
         }
     }
