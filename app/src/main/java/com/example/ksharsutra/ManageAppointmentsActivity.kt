@@ -16,7 +16,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.google.firebase.firestore.MemoryCacheSettings
@@ -58,9 +62,23 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
     private var cachedAllAppointments: MutableList<ManageAppointment>? = null
     private var cachedTimeSlots: MutableMap<String, MutableList<Pair<String, String>>> = mutableMapOf()
 
+    private lateinit var logoutButton: Button
+    private lateinit var googleSignInClient: GoogleSignInClient
+    private lateinit var mAuth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manage_appointments)
+
+        mAuth = FirebaseAuth.getInstance()
+        logoutButton = findViewById(R.id.logoutButton)
+        // Configure Google Sign-In
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+
+        googleSignInClient = GoogleSignIn.getClient(this, gso)
 
         // Initialize RecyclerView for time slots
         rvTimeSlots = findViewById(R.id.rvTimeSlots)
@@ -128,8 +146,24 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
         btnAddTimeSlot.setOnClickListener {
             addSelectedTimeSlots(selectedDate) // Pass selected date when adding time slots
         }
-    }
 
+        logoutButton.setOnClickListener {
+            logoutUser()
+        }
+    }
+    private fun logoutUser() {
+        // Log out the user from Firebase Authentication
+        mAuth.signOut()
+
+        // Clear cached Google Sign-In account information
+        googleSignInClient.signOut().addOnCompleteListener {
+            // Redirect the user to the login screen
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()
+        }
+    }
     private fun setupScheduleDates(layoutScheduleDates: LinearLayout) {
         val displayDateFormat = SimpleDateFormat("EEE, MMM d", Locale.getDefault())
         val queryDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
