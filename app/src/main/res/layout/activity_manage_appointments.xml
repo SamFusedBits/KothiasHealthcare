@@ -207,6 +207,15 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/_16sdp" />
 
+            <Button
+                android:id="@+id/logoutButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Logout"
+                android:background="@drawable/button_bg_layout_green"
+                android:textColor="@color/ivory_white"
+                android:textAllCaps="false"
+                android:layout_marginTop="@dimen/_16sdp" />
 
         </LinearLayout>
 
