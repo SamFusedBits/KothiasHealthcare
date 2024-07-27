@@ -26,6 +26,7 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".HomePageActivity" />
+        <activity android:name=".AboutUsActivity" />
         <activity android:name=".PredictionActivity" />
         <activity android:name=".PredictionResponseActivity"/>
         <activity android:name=".HealthAdviceActivity" />
