@@ -19,19 +19,14 @@ class HomePageActivity: AppCompatActivity() {
         val scaledDrawable = BitmapDrawable(resources, Bitmap.createScaledBitmap((drawable as BitmapDrawable).bitmap, 40, 40, true))
 
         val navigation_profile = findViewById<ImageView>(R.id.navigation_profile)
-
         val questionnaire_card = findViewById<CardView>(R.id.questionnaire_card)
         val prediction_card = findViewById<CardView>(R.id.analysisscore_card)
-
         val navigation_report = findViewById<ImageView>(R.id.navigation_report)
-
         val contactus_card = findViewById<CardView>(R.id.contactus_card)
         val healthadvice_card = findViewById<CardView>(R.id.healthadvice_card)
-
         val feedback_card = findViewById<CardView>(R.id.feedback_card)
-
+        val aboutus_card = findViewById<CardView>(R.id.aboutus_card)
         val appointment  = findViewById<ImageView>(R.id.navigation_appointment)
-
 
         questionnaire_card.setOnClickListener {
             val intent = Intent(this, QuestionnaireActivity::class.java)
@@ -63,6 +58,10 @@ class HomePageActivity: AppCompatActivity() {
         }
         feedback_card.setOnClickListener() {
             val intent = Intent(this, FeedbackActivity::class.java)
+            startActivity(intent)
+        }
+        aboutus_card.setOnClickListener {
+            val intent = Intent(this, AboutUsActivity::class.java)
             startActivity(intent)
         }
         appointment.setOnClickListener {
