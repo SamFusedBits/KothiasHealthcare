@@ -47,12 +47,12 @@
             android:id="@+id/imageView"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_30sdp"
             android:background="@drawable/rounded_image"
-            android:src="@drawable/doctors"
+            android:src="@drawable/feedback_img"
             app:layout_constraintDimensionRatio="H,2.08:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="@dimen/_16sdp"
             app:layout_constraintTop_toBottomOf="@id/title"
             app:layout_constraintWidth_max="@dimen/_520sdp" />
 
