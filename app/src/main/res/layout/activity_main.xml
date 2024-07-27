@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="@dimen/_24sdp"
-            android:text="KsharSutra"
+            android:text="Kshara Sutra"
             android:textColor="@color/green"
             android:textSize="@dimen/_32ssp"
             android:textStyle="bold" />
