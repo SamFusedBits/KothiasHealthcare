@@ -26,6 +26,8 @@ android {
 
         buildConfigField("String", "BASE_URL", "\"${localProperties["BASE_URL"]}\"")
         buildConfigField("String", "API_KEY", "\"${localProperties["API_KEY"]}\"")
+        buildConfigField("String", "DOCTOR_EMAIL", "\"${localProperties["DOCTOR_EMAIL"]}\"")
+        buildConfigField("String", "STAFF_EMAIL", "\"${localProperties["STAFF_EMAIL"]}\"")
     }
 
     buildFeatures {
