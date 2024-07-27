@@ -32,9 +32,8 @@ class MainActivity : AppCompatActivity() {
         // Check if user is already logged in
         val currentUser = mAuth.currentUser
         if (currentUser != null) {
-            // User is logged in, navigate to HomePageActivity
-            startActivity(Intent(this, HomePageActivity::class.java))
-            finish()  // Close MainActivity
+            // User is logged in, navigate to the appropriate activity based on email
+            navigateBasedOnEmail(currentUser)
             return  // Exit onCreate to prevent initializing the login buttons
         }
 
@@ -60,7 +59,9 @@ class MainActivity : AppCompatActivity() {
 
         val googleLoginLayout = findViewById<LinearLayout>(R.id.google_login)
         googleLoginLayout.setOnClickListener {
-            signInWithGoogle()
+            googleSignInClient.signOut().addOnCompleteListener() {
+                signInWithGoogle()
+            }
         }
     }
 
@@ -111,19 +112,34 @@ class MainActivity : AppCompatActivity() {
         val userMap = hashMapOf(
             "username" to username,
             "email" to email
-            // Add other fields as needed
         )
 
         FirebaseFirestore.getInstance().collection("users").document(userId)
             .set(userMap)
             .addOnSuccessListener {
                 Toast.makeText(this, "User details saved", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, HomePageActivity::class.java))
-                finish()
+                navigateBasedOnEmail(user)
             }
             .addOnFailureListener { e ->
                 Toast.makeText(this, "Failed to save user details: ${e.message}", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    private fun navigateBasedOnEmail(user: FirebaseUser) {
+        val email = user.email ?: return
+
+        when (email) {
+            BuildConfig.DOCTOR_EMAIL -> {
+                startActivity(Intent(this, ManageReportsActivity::class.java))
+            }
+            BuildConfig.STAFF_EMAIL -> {
+                startActivity(Intent(this, ManageAppointmentsActivity::class.java))
+            }
+            else -> {
+                startActivity(Intent(this, HomePageActivity::class.java))
+            }
+        }
+        finish()
     }
     companion object {
         private const val RC_SIGN_IN = 9001
