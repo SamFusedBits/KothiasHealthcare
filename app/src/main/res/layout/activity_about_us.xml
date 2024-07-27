@@ -21,7 +21,7 @@
             android:layout_width="@dimen/_34sdp"
             android:layout_height="@dimen/_42sdp"
             android:layout_marginStart="@dimen/_5sdp"
-            android:layout_marginTop="@dimen/_35sdp"
+            android:layout_marginTop="@dimen/_25sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/back_arrow" />
@@ -30,8 +30,8 @@
             android:id="@+id/title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_35sdp"
-            android:layout_marginEnd="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_30sdp"
             android:textAlignment="center"
             android:text="About Us"
             android:textColor="@color/green"
@@ -42,6 +42,72 @@
             app:layout_constraintTop_toTopOf="parent"
             android:clickable="false"
             android:focusable="false"/>
+
+        <!-- Container for VideoView -->
+        <FrameLayout
+            android:id="@+id/video_container"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_300sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@android:color/black">
+
+            <!-- Video View -->
+            <VideoView
+                android:id="@+id/video_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"/>
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:src="@drawable/about_hospital"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/video_container" />
+
+        <TextView
+            android:id="@+id/about_us_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="@dimen/_8sdp"
+            android:paddingBottom="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/about_us"
+            android:textColor="@color/green"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintTop_toBottomOf="@id/imageView"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/reach_us_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:background="@drawable/button_bg_layout_green"
+            android:text="@string/reach_us"
+            android:textAllCaps="false"
+            android:textColor="@color/ivory_white"
+            android:textSize="@dimen/_18ssp"
+            app:layout_constraintTop_toBottomOf="@id/about_us_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+        app:layout_constraintTop_toBottomOf="@id/reach_us_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
