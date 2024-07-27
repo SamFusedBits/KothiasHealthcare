@@ -1,5 +1,6 @@
 package com.example.ksharsutra
 
+import com.example.ksharsutra.BuildConfig
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
@@ -75,8 +76,21 @@ class LoginActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     val user = mAuth.currentUser
                     if (user?.isEmailVerified == true) {
-                        Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this, HomePageActivity::class.java))
+                        // Check the user's email and navigate to the appropriate activity
+                        when (user.email) {
+                            BuildConfig.DOCTOR_EMAIL -> {
+                                Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
+                                startActivity(Intent(this, ManageReportsActivity::class.java))
+                            }
+                            BuildConfig.STAFF_EMAIL -> {
+                                Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
+                                startActivity(Intent(this, ManageAppointmentsActivity::class.java))
+                            }
+                            else -> {
+                                Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
+                                startActivity(Intent(this, HomePageActivity::class.java))
+                            }
+                        }
                         finish()
                     } else {
                         Toast.makeText(this, "Please verify your email first.", Toast.LENGTH_SHORT).show()
