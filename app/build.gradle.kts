@@ -5,6 +5,8 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
+    id("com.google.firebase.firebase-perf")
 }
 
 val localProperties = Properties().apply {
@@ -72,6 +74,11 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.work:work-runtime-ktx:2.9.0")
     implementation("com.google.firebase:firebase-database:21.0.0")
+    implementation("com.google.firebase:firebase-crashlytics:19.0.3")
+    implementation("com.google.firebase:firebase-perf:21.0.1")
+    implementation("com.google.firebase:firebase-analytics:22.0.2")
+    implementation("com.google.firebase:firebase-messaging:24.0.0")
+    implementation("com.google.firebase:firebase-inappmessaging-display:21.0.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -91,7 +98,8 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore-ktx:24.0.0")
     // Firebase Storage
     implementation("com.google.firebase:firebase-storage-ktx")
-
+    implementation("com.google.firebase:firebase-messaging")
+    implementation("com.google.firebase:firebase-analytics")
     implementation("com.firebaseui:firebase-ui-storage:7.2.0")
     implementation("com.firebaseui:firebase-ui-firestore:7.2.0")
     implementation("com.google.firebase:firebase-storage:20.0.0")
