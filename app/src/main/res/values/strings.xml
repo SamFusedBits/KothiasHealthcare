@@ -2,11 +2,14 @@
     // Google Sign In
     <string name="default_web_client_id">256519567139-jfafgthdookh34pr0tq6k0lfr354dvbk.apps.googleusercontent.com</string>
 
-    <string name="app_name_login">Hi-Tech Multi-Speciality Hospital</string>
+    <string name="app_desc">Excellence in Care</string>
+    <string name="app_authen_desc">Your Health, Our Priority</string>
     <string name="emailID">drkothiasclinic@gmail.com</string>
     <string name="phoneno">+91 8928054361</string>
     <string name="address">Kshara Sutra Hospital, near N.L. High School, Malad West, Mumbai, Maharashtra - 400064</string>
     <string name="book_an_appointment">Book An Appointment</string>
+
+    <string name="questionnaire_instructions">Help us assess your risk for Fistula, Pilonidal Sinus, Fissure, and Piles by answering each question as accurately as possible. Your health and privacy are our top priorities.</string>
 
     <string name="about_us">At Dr. Manish Kothia\'s Ayurvedic Sanctuary, we believe that true healing begins with addressing the root cause of imbalance, rather than merely treating symptoms.\n\nOur comprehensive approach to wellness encompasses personalized consultations, therapeutic treatments, herbal remedies, lifestyle guidance, and more.\n\nExperience the transformative power of Ayurveda and embark on a path to holistic harmony with us.</string>
     <string name="reach_us">Reach Out To Us</string>
