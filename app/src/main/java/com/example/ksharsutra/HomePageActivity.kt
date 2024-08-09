@@ -10,12 +10,21 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.content.res.ResourcesCompat
+import com.google.firebase.Firebase
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.analytics
 
 class HomePageActivity: AppCompatActivity() {
+    private lateinit var analytics: FirebaseAnalytics
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page)
+
+        // Obtain the FirebaseAnalytics instance.
+        analytics = Firebase.analytics
+
         val drawable = ResourcesCompat.getDrawable(resources, R.drawable.search_logo, null)
+        // Scale the drawable to 40x40 pixels
         val scaledDrawable = BitmapDrawable(resources, Bitmap.createScaledBitmap((drawable as BitmapDrawable).bitmap, 40, 40, true))
 
         val navigation_profile = findViewById<ImageView>(R.id.navigation_profile)
@@ -28,6 +37,7 @@ class HomePageActivity: AppCompatActivity() {
         val aboutus_card = findViewById<CardView>(R.id.aboutus_card)
         val appointment  = findViewById<ImageView>(R.id.navigation_appointment)
 
+        // Handle navigation item clicks
         questionnaire_card.setOnClickListener {
             val intent = Intent(this, QuestionnaireActivity::class.java)
             startActivity(intent)

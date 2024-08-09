@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 class PredictionActivity : AppCompatActivity(){
 
+    // Constants for shared preferences
     private val PREFS_NAME = "PredictionPrefs"
     private val PREDICTION_KEY = "PredictionText"
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,11 +29,17 @@ class PredictionActivity : AppCompatActivity(){
             viewPrediction()
         }
     }
+
+    // Function to view the prediction
     private fun viewPrediction() {
+
+        // Get the shared preferences and retrieve the prediction
         val sharedPref: SharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         val cachedPrediction = sharedPref.getString(PREDICTION_KEY, null)
 
+        // Start the PredictionResponseActivity and pass the prediction text
         val intent = Intent(this, PredictionResponseActivity::class.java)
+        // If the prediction is cached, pass it to the PredictionResponseActivity
         if (cachedPrediction != null) {
             intent.putExtra("PREDICTION_TEXT", cachedPrediction)
         } else {

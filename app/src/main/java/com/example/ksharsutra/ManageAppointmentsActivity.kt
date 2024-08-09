@@ -48,13 +48,17 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
     private lateinit var checkBoxSlot2: CheckBox
     private lateinit var checkBoxSlot3: CheckBox
 
+    // Initialize Firestore
     private var db = FirebaseFirestore.getInstance()
 
+    // Date format for Firestore queries
     private val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
 
+    // Progress bars for loading appointments and time slots
     private lateinit var progressBarAppointments: ProgressBar
     private lateinit var progressBarTimeSlots: ProgressBar
 
+    // Calendar instance for date manipulation
     private val calendar = Calendar.getInstance()
     private var selectedDate: String = "" // Track selected date
 
@@ -70,6 +74,7 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manage_appointments)
 
+        // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance()
         logoutButton = findViewById(R.id.logoutButton)
         // Configure Google Sign-In
@@ -78,6 +83,7 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
             .requestEmail()
             .build()
 
+        // Initialize Google Sign-In client
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
         // Initialize RecyclerView for time slots
@@ -92,8 +98,10 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
             .setPersistenceEnabled(true) // Enable offline persistence
             .build()
 
+        // Set Firestore settings
         db.firestoreSettings = settings
 
+        // Initialize views
         rvAppointments = findViewById(R.id.rvAppointments)
         progressBarAppointments = findViewById(R.id.progressBarAppointments)
         progressBarTimeSlots = findViewById(R.id.progressBarTimeSlots)
@@ -112,8 +120,10 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
         timeSlotAdapter = TimeSlotAdapter(timeSlots) { position -> removeSelectedSlot(position) }
         rvTimeSlots.adapter = timeSlotAdapter
 
+        // Setup schedule dates
         rvAppointments.layoutManager = LinearLayoutManager(this)
 
+        // Initialize adapter for appointments
         AppointmentsAdapter = ManageAppointmentAdapter() { appointment, action -> handleAppointmentAction(appointment, action) }
         rvAppointments.adapter = AppointmentsAdapter
 
@@ -128,6 +138,7 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
         val layoutScheduleDates = findViewById<LinearLayout>(R.id.layout_schedule_dates)
         setupScheduleDates(layoutScheduleDates)
 
+        // Load appointments and time slots
         loadAppointments()
         loadTimeSlots(selectedDate)
 
@@ -151,6 +162,8 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
             logoutUser()
         }
     }
+
+    // Function to log out the user
     private fun logoutUser() {
         // Log out the user from Firebase Authentication
         mAuth.signOut()
@@ -159,12 +172,16 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
         googleSignInClient.signOut().addOnCompleteListener {
             // Redirect the user to the login screen
             val intent = Intent(this, MainActivity::class.java)
+            // Clear the back stack and start the new activity
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
             finish()
         }
     }
+
+    // Function to setup schedule dates
     private fun setupScheduleDates(layoutScheduleDates: LinearLayout) {
+        // Date formats for display and Firestore queries
         val displayDateFormat = SimpleDateFormat("EEE, MMM d", Locale.getDefault())
         val queryDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
 
@@ -174,12 +191,14 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
         var datesDisplayed = 0
         var currentRow: LinearLayout? = null
 
+        // Track the previously selected date view
         var previousSelectedView: TextView? = null
 
         tvTimeSlotsEmpty.text = "Please select a date to view slots"
         tvTimeSlotsEmpty.visibility = View.VISIBLE
         rvTimeSlots.visibility = View.GONE
 
+        // Loop through the next `numDates` dates
         while (datesDisplayed < numDates) {
             // Skip Sundays
             if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
@@ -189,8 +208,10 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
 
             // Create a new row for every `numCols` items
             if (datesDisplayed % numCols == 0) {
+                // Create a new row
                 currentRow = LinearLayout(this).apply {
                     layoutParams = LinearLayout.LayoutParams(
+                        // Adjust layout parameters as needed
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.WRAP_CONTENT
                     ).apply {
@@ -204,11 +225,13 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
             // Create TextView for each date
             val dayTextView = TextView(this).apply {
                 layoutParams = LinearLayout.LayoutParams(
+                    // Adjust layout parameters as needed
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
                 ).apply {
                     setMargins(8.dpToPx(), 8.dpToPx(), 8.dpToPx(), 8.dpToPx()) // Adjust margins as needed
                 }
+                // Format the date and set it as text
                 val currentDisplayDate = displayDateFormat.format(calendar.time)
                 val currentQueryDate = queryDateFormat.format(calendar.time)
                 text = currentDisplayDate
@@ -250,12 +273,16 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
 
     // Function to load appointments
     private fun loadAppointments() {
+        // Show progress bar while loading appointments
         progressBarAppointments.visibility = View.VISIBLE
 
         // Use cached data if available
         cachedAllAppointments?.let {
+            // Update the adapter with cached data
             AppointmentsAdapter.submitList(it)
+            // Update empty state views
             updateEmptyStateViews(it.isEmpty())
+            // Hide progress bar
             progressBarAppointments.visibility = View.GONE
             return
         }
@@ -264,17 +291,23 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
         db.collection("appointments")
             .get()
             .addOnSuccessListener { result ->
+                // List to store all appointments
                 val allAppointments = mutableListOf<ManageAppointment>()
 
+                // Loop through the result and add each document to the list
                 for (document in result) {
+                    // Convert each document to a ManageAppointment object
                     val appointment = document.toObject(ManageAppointment::class.java)
+                    // Set the document ID as the appointment ID
                     appointment.id = document.id
+                    // Add the appointment to the list
                     allAppointments.add(appointment)
                 }
 
                 // Update cached data
                 cachedAllAppointments = allAppointments
 
+                // Update the adapter with new data
                 AppointmentsAdapter.submitList(allAppointments)
                 updateEmptyStateViews(allAppointments.isEmpty())
 
@@ -286,6 +319,7 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
             }
     }
 
+    // Function to update empty state views
     private fun updateEmptyStateViews(appointmentsEmpty: Boolean) {
         if (appointmentsEmpty) {
             tvAppointmentsEmpty.visibility = View.VISIBLE
@@ -296,28 +330,36 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
         }
     }
 
+    // Function to load time slots
     private fun loadTimeSlots(selectedDate: String) {
         progressBarTimeSlots.visibility = View.VISIBLE
+        // Check if the time slots for the selected date are already cached
         if (cachedTimeSlots.containsKey(selectedDate)) {
             // Use cached data
             val slots = cachedTimeSlots[selectedDate]!!
+            // Update the adapter with cached data
             timeSlots.clear()
             timeSlots.addAll(slots)
             timeSlotAdapter.notifyDataSetChanged()
+            // Update empty state view
             updateEmptyStateViewForTimeSlots(slots.isEmpty())
             return
         }
 
+        // Fetch time slots from Firestore
         db.collection("time_slots")
             .whereEqualTo("date", selectedDate)
             .get()
             .addOnSuccessListener { result ->
                 val slots = mutableListOf<Pair<String, String>>()
+                // Loop through the result and add each time slot to the list
                 for (document in result) {
+                    // Get the date and time slot from the document
                     val slot = document.getString("time_slot") ?: continue
                     slots.add(Pair(selectedDate, slot))
                 }
 
+                // Update cached data
                 cachedTimeSlots[selectedDate] = slots
 
                 // Update the adapter with new slots
@@ -325,8 +367,10 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
                 timeSlots.addAll(slots)
                 timeSlotAdapter.notifyDataSetChanged()
 
+                // Update empty state view
                 updateEmptyStateViewForTimeSlots(slots.isEmpty())
 
+                // Hide progress bar
                 progressBarTimeSlots.visibility = View.GONE
             }
             .addOnFailureListener { exception ->
@@ -335,13 +379,19 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
             }
     }
 
+    // Function to refresh data
     private fun refreshData() {
+        // Clear cached data
         cachedAllAppointments = null
+        // Clear cached time slots
         cachedTimeSlots.clear()
+        // Reload appointments and time slots
         loadAppointments()
+        // Load time slots for the selected date
         loadTimeSlots(selectedDate)
     }
 
+    // Function to update empty state view for time slots
     private fun updateEmptyStateViewForTimeSlots(slotsEmpty: Boolean) {
         if (slotsEmpty) {
             tvTimeSlotsEmpty.visibility = View.VISIBLE
@@ -352,8 +402,11 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
         }
     }
 
+    // Function to remove selected slot
     private fun removeSelectedSlot(position: Int) {
+        // Check if a slot is selected
         if (position != RecyclerView.NO_POSITION) {
+            // Get the selected slot
             val selectedSlot = timeSlots[position]
 
             // Delete slot from Firestore
@@ -361,15 +414,18 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
                 .whereEqualTo("time_slot", selectedSlot.second)
                 .get()
                 .addOnSuccessListener { result ->
+                    // Check if the slot exists
                     if (!result.isEmpty) {
+                        // Get the document ID of the slot
                         val documentId = result.documents[0].id
+                        // Delete the slot document
                         db.collection("time_slots").document(documentId)
                             .delete()
                             .addOnSuccessListener {
                                 Toast.makeText(this, "Slot removed successfully.", Toast.LENGTH_SHORT).show()
                                 timeSlots.removeAt(position) // Remove slot from local list
                                 timeSlotAdapter.notifyItemRemoved(position) // Notify adapter of item removal
-                                updateEmptyStateViewForTimeSlots(timeSlots.isEmpty())
+                                updateEmptyStateViewForTimeSlots(timeSlots.isEmpty()) // Update empty state view
                             }
                             .addOnFailureListener { exception ->
                                 Toast.makeText(this, "Failed to remove slot: ${exception.message}", Toast.LENGTH_SHORT).show()
@@ -386,9 +442,12 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
         }
     }
 
+    // Function to add selected time slots
     private fun addSelectedTimeSlots(selectedDate: String) {
+        // Check if a date is selected
         val selectedSlots = mutableListOf<String>()
 
+        // Check if any slot is selected
         if (checkBoxSlot1.isChecked) {
             selectedSlots.add(checkBoxSlot1.text.toString())
         }
@@ -409,6 +468,7 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
         // Use a set to keep track of slots already added
         val addedSlots = mutableSetOf<String>()
 
+        // Loop through selected slots and add them to Firestore
         for (slot in selectedSlots) {
             // Check if the slot already exists
             db.collection("time_slots")
@@ -422,7 +482,9 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
                             "date" to selectedDate,
                             "time_slot" to slot
                         )
+                        // Create a new document reference
                         val newDocRef = db.collection("time_slots").document()
+                        // Add the slot data to the batch
                         batch.set(newDocRef, slotData)
                         addedSlots.add(slot) // Track added slots
                     } else {
@@ -432,12 +494,14 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
 
                     // Commit batch write after processing all slots
                     if (addedSlots.size == selectedSlots.size) {
+                        // Execute the batch write
                         batch.commit()
                             .addOnSuccessListener {
                                 Toast.makeText(this, "Time slots added successfully.", Toast.LENGTH_SHORT).show()
                                 // Update local list and RecyclerView adapter if needed
                                 for (slot in addedSlots) {
                                     if (!timeSlots.any { it.second == slot }) {
+                                        // Add the new slot to the local list
                                         timeSlots.add(Pair(selectedDate, slot))
                                     }
                                 }
@@ -455,17 +519,21 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
         }
     }
 
+    // Function to remove past appointments
     private fun removePastAppointments() {
+        // Get the current date
         val todayDate = dateFormat.format(Date())
 
         db.collection("appointments")
             .whereLessThan("schedule", todayDate)
             .get()
             .addOnSuccessListener { result ->
+                // Use batch operation to delete multiple documents
                 val batch = db.batch()
                 for (document in result) {
                     batch.delete(document.reference)
                 }
+                // Commit the batch operation
                 batch.commit()
                     .addOnSuccessListener {
                         // Refresh data after deletion
@@ -481,7 +549,9 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
             }
     }
 
+    // Function to handle appointment actions
     private fun handleAppointmentAction(appointment: ManageAppointment, action: String) {
+        // Email subject and content based on action
         val subject = "Appointment ${if (action == "approve") "Approved" else "Declined"}"
         val content = when (action) {
             "approve" -> """
@@ -514,6 +584,7 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
                     .addOnSuccessListener {
                         // Find the appointment in the local list and remove it
                         val localAppointmentIndex = cachedAllAppointments?.indexOfFirst { it.id == appointment.id }
+                        // Remove the appointment from the local list
                         if (localAppointmentIndex != null && localAppointmentIndex != -1) {
                             cachedAllAppointments?.removeAt(localAppointmentIndex)
 
@@ -549,7 +620,7 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
                 }
         }
 
-        // Send email
+        // Send email to the patient based on action (approve or decline)
         SendinblueHelper.sendEmail(appointment.email, subject, content) { success, message ->
             runOnUiThread {
                 if (success) {

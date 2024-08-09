@@ -30,18 +30,22 @@ class LoginActivity : AppCompatActivity() {
         forgotPasswordTextView = findViewById(R.id.forgot_password)
         signupTextView = findViewById(R.id.create_account)
 
+        // Check if the user is already logged in
         loginButton.setOnClickListener {
             loginUser()
         }
 
+        // Handle forgot password click
         forgotPasswordTextView.setOnClickListener {
             val email = emailEditText.text.toString().trim()
 
+            // Validate email
             if (TextUtils.isEmpty(email)) {
                 emailEditText.error = "Email is required."
                 return@setOnClickListener
             }
 
+            // Send password reset email
             mAuth.sendPasswordResetEmail(email)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
@@ -52,15 +56,18 @@ class LoginActivity : AppCompatActivity() {
                 }
         }
 
+        // Handle signup click
         signupTextView.setOnClickListener {
             startActivity(Intent(this, SignupActivity::class.java))
         }
     }
 
+    // Login user with email and password
     private fun loginUser() {
         val email = emailEditText.text.toString().trim()
         val password = passwordEditText.text.toString().trim()
 
+        // Validate email and password
         if (TextUtils.isEmpty(email)) {
             emailEditText.error = "Email is required."
             return
@@ -71,9 +78,11 @@ class LoginActivity : AppCompatActivity() {
             return
         }
 
+        // Sign in user with email and password
         mAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+                    // Check if the user's email is verified
                     val user = mAuth.currentUser
                     if (user?.isEmailVerified == true) {
                         // Check the user's email and navigate to the appropriate activity

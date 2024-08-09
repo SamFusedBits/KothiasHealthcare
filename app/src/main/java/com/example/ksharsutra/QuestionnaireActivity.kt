@@ -25,6 +25,7 @@ class QuestionnaireActivity : AppCompatActivity() {
         // Initialize ApiService using RetrofitClient
         apiService = RetrofitClient.getInstance().create(ApiService::class.java)
 
+        // Find all the views
         val editTextName: EditText = findViewById(R.id.editTextName)
         val editTextAge: EditText = findViewById(R.id.editTextAge)
         val radioGroupGender: RadioGroup = findViewById(R.id.radioGroupGender)
@@ -70,6 +71,7 @@ class QuestionnaireActivity : AppCompatActivity() {
         val radioGroupFirstTimeDoctorVisit: RadioGroup = findViewById(R.id.radioGroupFirstTimeDoctorVisit)
         val buttonSubmit: Button = findViewById(R.id.submit_button)
 
+        // Set an OnClickListener for the Submit button
         buttonSubmit.setOnClickListener {
             val name = findViewById<EditText>(R.id.editTextName)?.text?.toString() ?: ""
             val age = findViewById<EditText>(R.id.editTextAge)?.text?.toString() ?: ""
@@ -115,6 +117,7 @@ class QuestionnaireActivity : AppCompatActivity() {
             val family_anal_cancer = findViewById<RadioButton>(radioGroupFamilyAnalCancer.checkedRadioButtonId)?.text?.toString() ?: ""
             val first_time_doctor_visit = findViewById<RadioButton>(radioGroupFirstTimeDoctorVisit.checkedRadioButtonId)?.text?.toString() ?: ""
 
+            // Create a Questionnaire object
             val questionnaire = Questionnaire(
                 name,
                 age,
@@ -161,7 +164,6 @@ class QuestionnaireActivity : AppCompatActivity() {
                 first_time_doctor_visit
             )
 
-
             // Log the JSON payload being sent
             val gson = Gson()
             val requestBody = gson.toJson(questionnaire)
@@ -172,9 +174,12 @@ class QuestionnaireActivity : AppCompatActivity() {
 
             // Call API to submit questionnaire
             apiService.submitQuestionnaire(questionnaire).enqueue(object : Callback<ResponseData> {
+                // Handle API response for submitting questionnaire
                 override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
                     if (response.isSuccessful) {
+                        // Handle successful response from API
                         val responseData = response.body()
+                        // Check if response data is not null
                         responseData?.let {
                             Toast.makeText(this@QuestionnaireActivity, "Your responses have been submitted successfully! Redirecting to prediction details...", Toast.LENGTH_SHORT).show()
                             Log.d("QuestionnaireActivity", "Response: ${it.result}")
@@ -196,11 +201,16 @@ class QuestionnaireActivity : AppCompatActivity() {
         }
     }
 
+    // Function to get prediction from the API
     private fun getPrediction() {
+        // Call the API to get prediction
         apiService.getPrediction().enqueue(object : Callback<PredictionResponse> {
+            // Handle API response for getting prediction
             override fun onResponse(call: Call<PredictionResponse>, response: Response<PredictionResponse>) {
                 if (response.isSuccessful) {
+                    // Handle successful response from API
                     val predictionResponse = response.body()
+                    // Check if prediction response is not null
                     predictionResponse?.let {
                         // Assuming prediction is a list, display the first item
                         val predictionText = it.prediction.firstOrNull() ?: "No prediction available"

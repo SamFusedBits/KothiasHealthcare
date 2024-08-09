@@ -8,6 +8,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -97,7 +98,19 @@ class UserDetailsActivity : AppCompatActivity() {
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
-        // Fetch and display user details
+        // Fetch user details from Firestore or passed Intent data
+        val profileImageUrl = intent.getStringExtra("profileImageUrl")
+
+        // Log the received profile image URL
+        Log.d("UserDetailsActivity", "Received Profile Image URL: $profileImageUrl")
+
+        if (profileImageUrl.isNullOrEmpty()) {
+            Log.e("UserDetailsActivity", "Profile Image URL is null or empty")
+        } else {
+            loadProfileImage(profileImageUrl)
+        }
+
+        // Fetch user details from Firestore
         fetchUserDetails()
 
         // Load cached profile image
@@ -125,6 +138,28 @@ class UserDetailsActivity : AppCompatActivity() {
             logoutUser()
         }
     }
+
+    private fun loadProfileImage(imageUrl: String?) {
+        imageUrl?.let {
+            if (it.isNotBlank()) {
+            // Load image using Glide into profileImageView
+            Glide.with(this)
+                .load(imageUrl)
+                .circleCrop()
+                .placeholder(R.drawable.user_icon) // Optional placeholder
+                .error(R.drawable.user_icon) // Optional error image
+                .into(profileImageView)
+
+            // Log when the image loading is attempted
+            Log.d("UserDetailsActivity", "Loading image from URL: $imageUrl")
+        } else {
+                Log.e("UserDetailsActivity", "Profile Image URL is blank")
+            }
+        } ?: run {
+            Log.e("UserDetailsActivity", "Profile Image URL is null")
+        }
+    }
+
     private fun logoutUser() {
         // Log out the user from Firebase Authentication
         mAuth.signOut()
@@ -239,18 +274,6 @@ class UserDetailsActivity : AppCompatActivity() {
         val editor = sharedPreferences.edit()
         editor.putString("profileImageUrl", imageUrl)
         editor.apply()
-    }
-
-    private fun loadProfileImage(imageUrl: String?) {
-        imageUrl?.let {
-            // Load image using Glide into profileImageView
-            Glide.with(this)
-                .load(imageUrl)
-                .circleCrop()
-                .placeholder(R.drawable.toolbar_user_profile_logo) // Optional placeholder
-                .error(R.drawable.toolbar_user_profile_logo) // Optional error image
-                .into(profileImageView)
-        }
     }
 
     private fun loadCachedProfileImage() {

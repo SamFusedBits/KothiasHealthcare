@@ -16,6 +16,7 @@ import androidx.core.view.WindowInsetsCompat
 class ContactUSActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Enable edge to edge display for the activity layout (Notch display)
         enableEdgeToEdge()
         setContentView(R.layout.activity_contactus)
 
@@ -27,6 +28,7 @@ class ContactUSActivity : AppCompatActivity() {
 
         val titleTextView = findViewById<TextView>(R.id.title)
 
+        // Add onclick listeners
         email.setOnClickListener {
             val emailIntent = Intent(Intent.ACTION_SENDTO).apply {
                 data = Uri.parse("mailto:${getString(R.string.emailID)}")

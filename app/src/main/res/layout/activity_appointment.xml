@@ -185,7 +185,7 @@
                         android:id="@+id/experienceYears"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="10+"
+                        android:text="17+"
                         android:textColor="@color/green"
                         android:textSize="@dimen/_14ssp"
                         android:textStyle="bold" />

@@ -17,6 +17,7 @@ class PrecautionsTreatmentsActivity : AppCompatActivity() {
 
         val disease = intent.getStringExtra("disease")
 
+        // Set the title, precautions, and treatment based on the disease
         if(disease == "piles") {
             title.text = "Piles"
             precautions_list.text = getString(R.string.piles_precautions)

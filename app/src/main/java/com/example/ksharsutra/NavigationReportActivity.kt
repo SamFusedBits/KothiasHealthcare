@@ -32,7 +32,9 @@ class NavigationReportActivity : AppCompatActivity() {
     private lateinit var filesContainer: LinearLayout
     private lateinit var progressBar: ProgressBar
 
+    // Request code for selecting a file
     private val PICK_FILE_REQUEST = 1
+    // Request code for permissions
     private val READ_EXTERNAL_STORAGE_PERMISSION_CODE = 100
 
     // Allowed file MIME types
@@ -56,6 +58,7 @@ class NavigationReportActivity : AppCompatActivity() {
         val navigation_home = findViewById<ImageView>(R.id.navigation_home)
         val navigation_appointment = findViewById<ImageView>(R.id.navigation_appointment)
 
+        // Handle navigation item clicks
         navigation_profile.setOnClickListener {
             val intent = Intent(this, UserDetailsActivity::class.java)
             startActivity(intent)
@@ -89,10 +92,12 @@ class NavigationReportActivity : AppCompatActivity() {
         fetchUserFiles()
     }
 
+    // Fetch last 2 uploaded files from Firestore
     private fun fetchUserFiles() {
         val firestore = FirebaseFirestore.getInstance()
         val userId = FirebaseAuth.getInstance().currentUser?.uid
 
+        // Fetch last 2 uploaded files for the current user
         userId?.let { uid ->
             firestore.collection("uploads")
                 .whereEqualTo("userId", uid)
@@ -101,11 +106,13 @@ class NavigationReportActivity : AppCompatActivity() {
                 .get()
                 .addOnSuccessListener { querySnapshot ->
                     fileCache.clear()  // Clear the cache before adding new data
+                    // Add fetched files to cache
                     for (document in querySnapshot.documents) {
                         val fileName = document.getString("name")
                         val fileUrl = document.getString("url")
                         val timestamp = document.getLong("timestamp") ?: 0
 
+                        // Add to cache only if both fileName and fileUrl are not null
                         if (fileName != null && fileUrl != null) {
                             val fileMetadata = FileMetadata(fileName, fileUrl, timestamp)
                             fileCache.add(fileMetadata)
@@ -121,6 +128,7 @@ class NavigationReportActivity : AppCompatActivity() {
         }
     }
 
+    // Display the last 2 uploaded files in the UI
     private fun displayLast2UploadedFiles() {
         // Clear existing views in filesContainer
         filesContainer.removeAllViews()
@@ -130,6 +138,7 @@ class NavigationReportActivity : AppCompatActivity() {
 
         // Display the last 2 files from sortedCache
         val last2Files = sortedCache.take(2)
+        // Add the last 2 files to the UI
         if (last2Files.isNotEmpty()) {
             last2Files.forEach { fileMetadata ->
                 addFileToUI(fileMetadata.name, fileMetadata.url, fileMetadata.timestamp)
@@ -142,8 +151,10 @@ class NavigationReportActivity : AppCompatActivity() {
         }
     }
 
+    // Open file picker to select a file
     private fun openFilePicker() {
         Log.d(TAG, "Opening file picker")
+        // Check if permission is granted
         if (ContextCompat.checkSelfPermission(
                 this,
                 android.Manifest.permission.READ_EXTERNAL_STORAGE
@@ -151,23 +162,29 @@ class NavigationReportActivity : AppCompatActivity() {
         ) {
             // Set allowed MIME types
             val mimeTypes = arrayOf("application/pdf", "image/jpeg", "image/png")
+            // Create an intent to select a file
             val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
+            // Set MIME type and category
             intent.addCategory(Intent.CATEGORY_OPENABLE)
+            // Set MIME types
             intent.type = "*/*"
             intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes)
             startActivityForResult(intent, PICK_FILE_REQUEST)
         } else {
             ActivityCompat.requestPermissions(
                 this,
+                // Request permission to read external storage
                 arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
                 READ_EXTERNAL_STORAGE_PERMISSION_CODE
             )
         }
     }
+    // Handle permission request result
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<out String>, grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        // Check if permission is granted
         if (requestCode == READ_EXTERNAL_STORAGE_PERMISSION_CODE) {
             if ((grantResults.isNotEmpty() && grantResults[0] == android.content.pm.PackageManager.PERMISSION_GRANTED)) {
                 Log.d(TAG, "Permission granted")

@@ -36,6 +36,7 @@ class SignupActivity : AppCompatActivity() {
         }
     }
 
+    // Function to sign up a new user
     private fun signUpUser() {
         val username = usernameEditText.text.toString().trim()
         val email = emailEditText.text.toString().trim()
@@ -43,6 +44,7 @@ class SignupActivity : AppCompatActivity() {
         val confirmPassword = confirmPasswordEditText.text.toString().trim()
         val dob = dob.text.toString().trim()
 
+        // Validate the input fields
         if (TextUtils.isEmpty(username)) {
             usernameEditText.error = "Username is required."
             return
@@ -63,12 +65,15 @@ class SignupActivity : AppCompatActivity() {
             return
         }
 
+        // Create a new user with email and password
         mAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+                    // Send email verification to the user
                     val user = mAuth.currentUser
                     user?.sendEmailVerification()
                         ?.addOnCompleteListener { verificationTask ->
+                            // Check if the verification email was sent successfully
                             if (verificationTask.isSuccessful) {
                                 // Save user details to Firestore
                                 user?.let {
@@ -78,6 +83,7 @@ class SignupActivity : AppCompatActivity() {
                                         "email" to email,
                                         "dob" to dob
                                     )
+                                    // Save user details to Firestore
                                     FirebaseFirestore.getInstance().collection("users").document(userId)
                                         .set(userMap)
                                         .addOnSuccessListener {

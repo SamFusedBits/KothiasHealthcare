@@ -52,6 +52,7 @@ class FeedbackActivity : AppCompatActivity() {
         }
     }
 
+    // Submit feedback to Firestore
     private fun submitFeedback() {
         val name = nameEditText.text.toString().trim()
         val email = emailEditText.text.toString().trim()

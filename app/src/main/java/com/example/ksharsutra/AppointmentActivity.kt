@@ -26,6 +26,7 @@ class AppointmentActivity : AppCompatActivity() {
     private var selectedScheduleTextView: TextView? = null
     private var selectedTimeSlotTextView: TextView? = null
 
+    // Firestore instance
     private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,14 +58,17 @@ class AppointmentActivity : AppCompatActivity() {
         // Setup schedule grid
         setupScheduleGrid()
 
+        // Setup book now button
         findViewById<View>(R.id.bookNowButton).setOnClickListener {
             // Handle booking process
             if (selectedSchedule != null && selectedTimeSlot != null) {
                 val selectedDate = selectedScheduleTextView?.tag.toString() // Get the date in database format
                 val intent = Intent(this, AppointmentBookingActivity::class.java).apply {
+                    // Pass the selected schedule and time slot to the next activity
                     putExtra("selected_schedule", "$selectedDate | $selectedTimeSlot")
                 }
                 startActivity(intent)
+                // Reset the selected schedule and time slot
             } else if (selectedSchedule == null) {
                 Toast.makeText(this, "Please select a schedule", Toast.LENGTH_SHORT).show()
             } else {
@@ -75,30 +79,39 @@ class AppointmentActivity : AppCompatActivity() {
 
     // Function to set up schedule grid
     private fun setupScheduleGrid() {
+        // Get the current date
         val calendar = Calendar.getInstance()
         val databaseDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()) // Format for saving in Firestore
         val displayDateFormat = SimpleDateFormat("MMMM, dd", Locale.getDefault()) // Format for displaying to the user
 
+        // Set the calendar to the current date
         for (i in 0..5) {
             // Skip Sundays
             if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
                 calendar.add(Calendar.DAY_OF_MONTH, 1)
             }
 
+            // Create a TextView for the day
             val dayTextView = TextView(this).apply {
+                // Set the layout parameters
                 layoutParams = GridLayout.LayoutParams().apply {
+                    // Set the width and height to wrap content
                     width = GridLayout.LayoutParams.WRAP_CONTENT
                     height = GridLayout.LayoutParams.WRAP_CONTENT
+                    // Set the margins to 4dp
                     setMargins(4.dpToPx(), 4.dpToPx(), 4.dpToPx(), 4.dpToPx())
                 }
+                // Format the date
                 val dateForDatabase = databaseDateFormat.format(calendar.time)
                 val dateForDisplay = displayDateFormat.format(calendar.time)
+                // Set the text to the formatted date
                 text = dateForDisplay
                 tag = dateForDatabase // Store the database format date as tag
                 setBackgroundResource(R.drawable.day_background)
                 gravity = Gravity.CENTER
                 setPadding(8.dpToPx(), 8.dpToPx(), 8.dpToPx(), 8.dpToPx())
 
+                // Set the onClickListener to select the schedule
                 setOnClickListener {
                     selectSchedule(this)
                 }
@@ -118,10 +131,13 @@ class AppointmentActivity : AppCompatActivity() {
 
         // Fetch time slots from Firestore for the selected date
         db.collection("time_slots")
+            // Query for the selected date
             .whereEqualTo("date", selectedDate)
             .get()
+            // Get the time slots
             .addOnSuccessListener { result ->
                 val slots = mutableListOf<String>()
+                // Loop through the documents and get the time slots
                 for (document in result) {
                     val timeSlot = document.getString("time_slot")
                     if (timeSlot != null) {
@@ -129,10 +145,13 @@ class AppointmentActivity : AppCompatActivity() {
                     }
                 }
 
+                // If time slots are available, display them
                 if (slots.isNotEmpty()) {
                     for (timeSlot in slots) {
+                        // Create a TextView for the time slot
                         val timeSlotTextView = TextView(this).apply {
                             layoutParams = GridLayout.LayoutParams().apply {
+                                // Set the width and height to wrap content
                                 width = GridLayout.LayoutParams.WRAP_CONTENT
                                 height = GridLayout.LayoutParams.WRAP_CONTENT
                                 setMargins(8.dpToPx(), 8.dpToPx(), 8.dpToPx(), 8.dpToPx())
@@ -147,11 +166,13 @@ class AppointmentActivity : AppCompatActivity() {
                             }
                         }
 
+                        // Add the TextView to the grid
                         timeSlotsGrid.addView(timeSlotTextView)
                     }
                 } else {
                     // Display a message indicating no slots available for the day
                     val noSlotsTextView = TextView(this).apply {
+                        // Set the layout parameters
                         layoutParams = GridLayout.LayoutParams().apply {
                             width = GridLayout.LayoutParams.WRAP_CONTENT
                             height = GridLayout.LayoutParams.WRAP_CONTENT
@@ -172,6 +193,7 @@ class AppointmentActivity : AppCompatActivity() {
             }
     }
 
+    // Function to select a schedule
     private fun selectSchedule(scheduleTextView: TextView) {
         // Deselect the previously selected schedule
         selectedScheduleTextView?.apply {

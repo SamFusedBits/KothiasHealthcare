@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import com.google.firebase.auth.FirebaseAuth
 import android.widget.LinearLayout
@@ -40,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         val signInButton = findViewById<Button>(R.id.login)
         val signUpButton = findViewById<Button>(R.id.signup)
 
+        // Set on click listeners for sign in and sign up buttons
         signInButton.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
@@ -55,8 +57,10 @@ class MainActivity : AppCompatActivity() {
             .requestEmail()
             .build()
 
+        // Initialize Google Sign-In client
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
+        // Set on click listener for Google sign-in button
         val googleLoginLayout = findViewById<LinearLayout>(R.id.google_login)
         googleLoginLayout.setOnClickListener {
             googleSignInClient.signOut().addOnCompleteListener() {
@@ -65,14 +69,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Start the Google sign-in flow
     private fun signInWithGoogle() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 
+    // Handle the result of the Google sign-in flow
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
+        // Result returned from launching the Intent from GoogleSignInClient.signInIntent
         if (requestCode == RC_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
@@ -86,6 +93,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Authenticate with Firebase using the Google ID token
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         mAuth.signInWithCredential(credential)
@@ -94,7 +102,16 @@ class MainActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     val user = mAuth.currentUser
                     if (user != null) {
+                        // Log the photo URL
+                        Log.d("MainActivity", "Google Profile Photo URL: ${user.photoUrl}")
+
                         saveGoogleUserToFirestore(user)
+                        // Set profile image in UserDetailsActivity
+                        val intent = Intent(this, UserDetailsActivity::class.java)
+                        intent.putExtra("profileImageUrl", user.photoUrl.toString()) // Add the profile image URL to the intent
+                        Log.d("MainActivity", "Google Profile Photo URL: ${user.photoUrl}")
+                        startActivity(intent)
+                        finish()
                     } else {
                         Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show()
                     }
@@ -104,16 +121,23 @@ class MainActivity : AppCompatActivity() {
                 }
             }
     }
+
+    // Save Google user details to Firestore
     private fun saveGoogleUserToFirestore(user: FirebaseUser) {
         val userId = user.uid
         val username = user.displayName ?: "Unknown"
         val email = user.email ?: "Unknown"
+        val photoUrl = user.photoUrl?.toString() ?: ""
 
+        // Create a HashMap to store the user details
         val userMap = hashMapOf(
+            "userId" to userId,
             "username" to username,
-            "email" to email
+            "email" to email,
+            "photoUrl" to photoUrl
         )
 
+        // Save user details to Firestore
         FirebaseFirestore.getInstance().collection("users").document(userId)
             .set(userMap)
             .addOnSuccessListener {
@@ -125,6 +149,7 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
+    // Navigate to the appropriate activity based on user email
     private fun navigateBasedOnEmail(user: FirebaseUser) {
         val email = user.email ?: return
 

@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 class PredictionResponseActivity : AppCompatActivity() {
 
+    // Constants for shared preferences
     private val PREFS_NAME = "PredictionPrefs"
     private val PREDICTION_KEY = "PredictionText"
 
@@ -36,6 +37,7 @@ class PredictionResponseActivity : AppCompatActivity() {
         }
     }
 
+    // Function to cache the prediction text
     private fun cachePrediction(predictionText: String) {
         val sharedPref: SharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         with(sharedPref.edit()) {

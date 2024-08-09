@@ -13,13 +13,14 @@ class HealthAdviceActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_healthadvice)
 
-
+        // Initialize views
         val learnmore_piles = findViewById<Button>(R.id.learnmore_piles)
         val learnmore_fissure = findViewById<Button>(R.id.learnmore_fissure)
         val learnmore_pilonidalsinus = findViewById<Button>(R.id.learnmore_pilonidalsinus)
         val learnmore_fistula = findViewById<Button>(R.id.learnmore_fistula)
         val back_arrow = findViewById<ImageView>(R.id.back_arrow)
 
+        // Set onclick listeners
         learnmore_piles.setOnClickListener {
             val intent = Intent(this, PrecautionsTreatmentsActivity::class.java)
             intent.putExtra("disease", "piles")

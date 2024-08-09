@@ -1,6 +1,7 @@
 package com.example.ksharsutra
 
 data class Questionnaire(
+    // Define the data model for the Questionnaire object
     val name: String,
     val age: String,
     val gender: String,
