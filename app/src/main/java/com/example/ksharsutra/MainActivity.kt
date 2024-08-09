@@ -110,8 +110,6 @@ class MainActivity : AppCompatActivity() {
                         val intent = Intent(this, UserDetailsActivity::class.java)
                         intent.putExtra("profileImageUrl", user.photoUrl.toString()) // Add the profile image URL to the intent
                         Log.d("MainActivity", "Google Profile Photo URL: ${user.photoUrl}")
-                        startActivity(intent)
-                        finish()
                     } else {
                         Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show()
                     }
