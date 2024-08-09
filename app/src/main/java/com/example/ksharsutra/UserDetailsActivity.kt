@@ -32,7 +32,7 @@ data class User(
     var username: String = "",
     val email: String = "",
     var phone: String = "",
-    var profileImageUrl: String = ""
+    var photoUrl: String = ""
 )
 
 class UserDetailsActivity : AppCompatActivity() {
@@ -170,7 +170,6 @@ class UserDetailsActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
-            finish()
         }
     }
 
@@ -221,11 +220,13 @@ class UserDetailsActivity : AppCompatActivity() {
             userRef.update("profileImageUrl", imageUrl)
                 .addOnSuccessListener {
                     // Update local cached user object if necessary
-                    currentUser?.profileImageUrl = imageUrl
+                    currentUser?.photoUrl = imageUrl
                     Toast.makeText(this, "Profile image updated successfully", Toast.LENGTH_SHORT).show()
+                    Log.d("UserDetailsActivity", "Profile image URL updated to: $imageUrl")
                 }
                 .addOnFailureListener { exception ->
                     Toast.makeText(this, "Failed to update profile image: ${exception.message}", Toast.LENGTH_SHORT).show()
+                    Log.e("UserDetailsActivity", "Error updating profile image URL: ${exception.message}")
                 }
         }
     }
@@ -254,10 +255,10 @@ class UserDetailsActivity : AppCompatActivity() {
                             phoneEditText.setText(it.phone)
 
                             // Load and cache profile image URL
-                            loadProfileImage(it.profileImageUrl)
+                            loadProfileImage(it.photoUrl)
 
                             // Cache profile image URL in SharedPreferences
-                            saveProfileImageUrl(it.profileImageUrl)
+                            saveProfileImageUrl(it.photoUrl)
                         }
                     } else {
                         Toast.makeText(this, "No such document", Toast.LENGTH_SHORT).show()
