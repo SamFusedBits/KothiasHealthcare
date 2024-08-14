@@ -15,6 +15,8 @@ import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -23,6 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import java.util.*
 import com.google.firebase.firestore.Query
+import android.provider.Settings
 
 class NavigationReportActivity : AppCompatActivity() {
 
@@ -43,6 +46,10 @@ class NavigationReportActivity : AppCompatActivity() {
     // Cache for storing file metadata
     private val fileCache = mutableListOf<FileMetadata>()
 
+    // Declare an instance of ActivityResultLauncher
+    private lateinit var filePickerActivityResultLauncher: ActivityResultLauncher<Intent>
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_navigation_report)
@@ -57,6 +64,26 @@ class NavigationReportActivity : AppCompatActivity() {
         val navigation_profile = findViewById<ImageView>(R.id.navigation_profile)
         val navigation_home = findViewById<ImageView>(R.id.navigation_home)
         val navigation_appointment = findViewById<ImageView>(R.id.navigation_appointment)
+
+        // Initialize the ActivityResultLauncher instance
+        filePickerActivityResultLauncher = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val uri: Uri? = result.data?.data
+                uri?.let {
+                    // Handle the Uri as required
+                    Log.d(TAG, "File selected: $uri")
+                    // Check if the selected file type is allowed
+                    if (ALLOWED_FILE_TYPES.contains(contentResolver.getType(uri))) {
+                        // Prompt user for additional details before uploading file
+                        fetchUserDetailsAndUpload(uri)
+                    } else {
+                        Toast.makeText(this, "Please select a PDF, JPG, or PNG file", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
 
         // Handle navigation item clicks
         navigation_profile.setOnClickListener {
@@ -158,8 +185,15 @@ class NavigationReportActivity : AppCompatActivity() {
         if (ContextCompat.checkSelfPermission(
                 this,
                 android.Manifest.permission.READ_EXTERNAL_STORAGE
-            ) == android.content.pm.PackageManager.PERMISSION_GRANTED
+            ) != android.content.pm.PackageManager.PERMISSION_GRANTED
         ) {
+            ActivityCompat.requestPermissions(
+                this,
+                // Request permission to read external storage
+                arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+                READ_EXTERNAL_STORAGE_PERMISSION_CODE
+            )
+        } else {
             // Set allowed MIME types
             val mimeTypes = arrayOf("application/pdf", "image/jpeg", "image/png")
             // Create an intent to select a file
@@ -169,16 +203,10 @@ class NavigationReportActivity : AppCompatActivity() {
             // Set MIME types
             intent.type = "*/*"
             intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes)
-            startActivityForResult(intent, PICK_FILE_REQUEST)
-        } else {
-            ActivityCompat.requestPermissions(
-                this,
-                // Request permission to read external storage
-                arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
-                READ_EXTERNAL_STORAGE_PERMISSION_CODE
-            )
+            filePickerActivityResultLauncher.launch(intent)
         }
     }
+
     // Handle permission request result
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<out String>, grantResults: IntArray
@@ -191,7 +219,37 @@ class NavigationReportActivity : AppCompatActivity() {
                 openFilePicker()
             } else {
                 Log.d(TAG, "Permission denied")
-                Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
+                // Show rationale and ask for permission again
+                if (ActivityCompat.shouldShowRequestPermissionRationale(
+                        this,
+                        android.Manifest.permission.READ_EXTERNAL_STORAGE
+                    )
+                ) {
+                    // Show an explanation to the user *asynchronously* -- don't block
+                    // this thread waiting for the user's response! After the user
+                    // sees the explanation, try again to request the permission.
+                    Toast.makeText(
+                        this,
+                        "Storage permission is required to select a file.",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    ActivityCompat.requestPermissions(
+                        this,
+                        arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+                        READ_EXTERNAL_STORAGE_PERMISSION_CODE
+                    )
+                } else {
+                    // Direct the user to app settings
+                    Toast.makeText(
+                        this,
+                        "Please enable storage access in settings",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                    val uri = Uri.fromParts("package", packageName, null)
+                    intent.data = uri
+                    startActivity(intent)
+                }
             }
         }
     }
@@ -199,19 +257,25 @@ class NavigationReportActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PICK_FILE_REQUEST && resultCode == Activity.RESULT_OK) {
-            data?.data?.let { uri ->
+            if (resultCode == Activity.RESULT_OK && data?.data != null) {
+                val uri = data.data
                 Log.d(TAG, "File selected: $uri")
                 // Check if the selected file type is allowed
-                if (ALLOWED_FILE_TYPES.contains(contentResolver.getType(uri))) {
+                if (ALLOWED_FILE_TYPES.contains(contentResolver.getType(uri!!))) {
                     // Prompt user for additional details before uploading file
                     fetchUserDetailsAndUpload(uri)
                 } else {
-                    Toast.makeText(this, "Please select a PDF, JPG, or PNG file", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        "Please select a PDF, JPG, or PNG file",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
+
+            } else {
+                Log.d(TAG, "No file selected")
+                Toast.makeText(this, "No file selected", Toast.LENGTH_SHORT).show()
             }
-        } else {
-            Log.d(TAG, "No file selected")
-            Toast.makeText(this, "No file selected", Toast.LENGTH_SHORT).show()
         }
     }
 
