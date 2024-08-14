@@ -3,6 +3,7 @@ package com.example.ksharsutra
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -76,7 +77,7 @@ class SignupActivity : AppCompatActivity() {
         if (!TextUtils.isEmpty(phone)) {
             // Verify by phone number
             verifyPhoneNumber(phone, username, email, password, dob)
-        } else if (!TextUtils.isEmpty(email)) {
+        } else {
             // Verify by email
             verifyByEmail(username, email, password, dob)
         }
@@ -143,9 +144,8 @@ class SignupActivity : AppCompatActivity() {
                     // Start HomepageActivity
                     val intent = Intent(this, HomePageActivity::class.java)
                     startActivity(intent)
-                    finish()
                 } else {
-                    Toast.makeText(this, "Phone verification failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Phone verification failed. Please try again later.", Toast.LENGTH_SHORT).show()
                 }
             }
     }
@@ -161,12 +161,15 @@ class SignupActivity : AppCompatActivity() {
                         ?.addOnCompleteListener { verificationTask ->
                             if (verificationTask.isSuccessful) {
                                 saveUserToFirestore(username, email, dob, "")
+                                // Start LoginActivity
+                                val intent = Intent(this, LoginActivity::class.java)
+                                startActivity(intent)
                             } else {
                                 Toast.makeText(this, "Failed to send verification email: ${verificationTask.exception?.message}", Toast.LENGTH_SHORT).show()
                             }
                         }
                 } else {
-                    Toast.makeText(this, "Registration failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
     }
@@ -183,10 +186,7 @@ class SignupActivity : AppCompatActivity() {
             FirebaseFirestore.getInstance().collection("users").document(userId)
                 .set(userMap)
                 .addOnSuccessListener {
-                    Toast.makeText(this, "Registration succeeded. Please check your email for verification.", Toast.LENGTH_SHORT).show()
-                    mAuth.signOut()
-                    startActivity(Intent(this, LoginActivity::class.java))
-                    finish()
+                     Log.d("SignupActivity", "User details saved to Firestore: $userMap")
                 }
                 .addOnFailureListener {
                     Toast.makeText(this, "Failed to save user details: ${it.message}", Toast.LENGTH_SHORT).show()
