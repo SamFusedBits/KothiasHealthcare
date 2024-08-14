@@ -2,6 +2,7 @@ package com.example.ksharsutra
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -87,11 +88,38 @@ class AppointmentBookingActivity : AppCompatActivity() {
             .add(appointment)
             .addOnSuccessListener {
                 Toast.makeText(this, "Confirmation email will be sent to you shortly, based on availability.", Toast.LENGTH_SHORT).show()
+                // Send confirmation email
+                sendConfirmationEmail(email, name)
+
                 startActivity(Intent(this, HomePageActivity::class.java))
                 finish()
             }
             .addOnFailureListener { e ->
                 Toast.makeText(this, "Error booking appointment: ${e.message}", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    // Send confirmation email to the user
+    private fun sendConfirmationEmail(userEmail: String, userName: String) {
+        val subject = "Appointment Confirmation"
+        val content = """
+        <html>
+            <body>
+                <p>Dear $userName,</p>
+                <p>Thank you for choosing Dr. Kothia's Clinic.</p>
+                <p>We have received your appointment request and are currently processing it. You will receive a confirmation email shortly with the details of your appointment once it has been scheduled based on availability.</p>
+                <p>If you have any questions or need further assistance, please feel free to contact us.</p>
+                <p>Thank you for your patience and understanding.</p>
+                <p>Best regards,</p>
+                <p><strong>Kothia's Clinic Team</strong></p>
+            </body>
+        </html>
+    """.trimIndent()
+
+        SendinblueHelper.sendEmail(userEmail, subject, content) { success, error ->
+            if (!success) {
+                Log.d("AppointmentBookingActivity", "Failed to send confirmation email: $error")
+            }
+        }
     }
 }
