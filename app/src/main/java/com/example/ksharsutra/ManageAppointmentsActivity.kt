@@ -562,7 +562,7 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
                     <p>Appointment Date and Time: ${appointment.schedule}</p>
                     <p>Location: Saurabh Building, Kshara Sutra Hospital, Domnic Colony Rd Number 1, near N.L. High School, Malad, Daruwala Compound, Malad West, Mumbai, Maharashtra 400064.</p>
                     <p>If you have any questions or need further assistance, please do not hesitate to contact us.</p>
-                    <p>Thank you for choosing our clinic.</p>
+                    <p>Thank you for choosing us.</p>
                     <p>Best regards,<br>Dr. Kothia's Clinic</p>
                 </body>
             </html>
@@ -571,10 +571,10 @@ class ManageAppointmentsActivity() : AppCompatActivity() {
             <html>
                 <body>
                     <p>Dear ${appointment.name},</p>
-                    <p>We regret to inform you that your appointment request has been declined.</p>
+                    <p>Thank you for choosing Dr. Kothia's Clinic. Unfortunately, we were unable to accommodate your appointment request at this time.</p>
                     <p>If you have any questions or need further assistance, please feel free to contact us.</p>
-                    <p>Thank you for understanding.</p>
-                    <p>Best regards,<br>Dr. Kothia's Clinic</p>
+                    <p>We appreciate your understanding and look forward to serving you in the future.</p>
+                    <p>Warm regards,<br>Dr. Kothia's Clinic</p>
                 </body>
             </html>
         """.trimIndent().also {
