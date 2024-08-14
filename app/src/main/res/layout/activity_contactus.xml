@@ -126,7 +126,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/phoneno"
                     android:textColor="@color/green"
-                    android:textSize="@dimen/_16ssp"
+                    android:textSize="@dimen/_14ssp"
                     android:layout_marginStart="@dimen/_8sdp" />
             </LinearLayout>
 
@@ -153,7 +153,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/clinic_timing"
                     android:textColor="@color/green"
-                    android:textSize="@dimen/_15ssp"
+                    android:textSize="@dimen/_11ssp"
                     android:layout_marginStart="@dimen/_8sdp" />
             </LinearLayout>
 
@@ -180,7 +180,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/address"
                     android:textColor="@color/green"
-                    android:textSize="@dimen/_16ssp"
+                    android:textSize="@dimen/_12ssp"
                     android:layout_marginStart="@dimen/_8sdp" />
             </LinearLayout>
 

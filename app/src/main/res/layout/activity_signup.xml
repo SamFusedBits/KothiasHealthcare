@@ -110,7 +110,7 @@
             android:layout_marginBottom="@dimen/_48sdp"
             android:background="@drawable/button_bg_layout_ivory"
             android:gravity="center_vertical"
-            android:hint="Date of Birth"
+            android:hint="Dob (dd/mm/yyyy)"
             android:inputType="date"
             android:paddingLeft="@dimen/_16sdp"
             android:paddingRight="@dimen/_16sdp"
