@@ -5,7 +5,7 @@
     <string name="app_desc">Excellence in Care</string>
     <string name="app_authen_desc">Your Health, Our Priority</string>
     <string name="emailID">drkothiasclinic@gmail.com</string>
-    <string name="phoneno">+91 9324499061</string>
+    <string name="phoneno">+91 8928054361</string>
     <string name="address">Kshara Sutra Hospital Near N.L High School Malad West, Mumbai 400064</string>
     <string name="book_an_appointment">Book An Appointment</string>
 
@@ -220,7 +220,7 @@
     <string name="username">Username</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="email">example@gmail.com</string>
-    <string name="phone_number">9867541287</string>
+    <string name="phone_number">E.g. 9867541287</string>
     <string name="clinic_timing">Monday - Saturday\n10:00 am - 1:00 pm \n04:30 pm - 06:00 pm</string>
 
 
