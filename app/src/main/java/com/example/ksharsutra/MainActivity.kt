@@ -139,7 +139,7 @@ class MainActivity : AppCompatActivity() {
         FirebaseFirestore.getInstance().collection("users").document(userId)
             .set(userMap)
             .addOnSuccessListener {
-                Toast.makeText(this, "User details saved", Toast.LENGTH_SHORT).show()
+                Log.d("MainActivity", "User details saved to Firestore: $userMap")
                 navigateBasedOnEmail(user)
             }
             .addOnFailureListener { e ->
