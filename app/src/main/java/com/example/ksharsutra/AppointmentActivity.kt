@@ -110,6 +110,7 @@ class AppointmentActivity : AppCompatActivity() {
                 setBackgroundResource(R.drawable.day_background)
                 gravity = Gravity.CENTER
                 setPadding(8.dpToPx(), 8.dpToPx(), 8.dpToPx(), 8.dpToPx())
+                setTextColor(Color.BLACK) // Set the text color to black
 
                 // Set the onClickListener to select the schedule
                 setOnClickListener {
@@ -145,9 +146,12 @@ class AppointmentActivity : AppCompatActivity() {
                     }
                 }
 
+                // Sort the time slots based on start time
+                val sortedSlots = slots.sortedBy { parseTimeSlot(it) }
+
                 // If time slots are available, display them
-                if (slots.isNotEmpty()) {
-                    for (timeSlot in slots) {
+                if (sortedSlots.isNotEmpty()) {
+                    for (timeSlot in sortedSlots) {
                         // Create a TextView for the time slot
                         val timeSlotTextView = TextView(this).apply {
                             layoutParams = GridLayout.LayoutParams().apply {
@@ -160,6 +164,7 @@ class AppointmentActivity : AppCompatActivity() {
                             setBackgroundResource(R.drawable.time_background)
                             gravity = Gravity.CENTER
                             setPadding(12.dpToPx(), 12.dpToPx(), 12.dpToPx(), 12.dpToPx())
+                            setTextColor(Color.BLACK) // Set the text color to black
 
                             setOnClickListener {
                                 selectTimeSlot(this)
@@ -170,20 +175,23 @@ class AppointmentActivity : AppCompatActivity() {
                         timeSlotsGrid.addView(timeSlotTextView)
                     }
                 } else {
-                    // Display a message indicating no slots available for the day
-                    val noSlotsTextView = TextView(this).apply {
-                        // Set the layout parameters
-                        layoutParams = GridLayout.LayoutParams().apply {
-                            width = GridLayout.LayoutParams.WRAP_CONTENT
-                            height = GridLayout.LayoutParams.WRAP_CONTENT
-                            setMargins(8.dpToPx(), 8.dpToPx(), 8.dpToPx(), 8.dpToPx())
+                    // Ensure only one "No slots available" message is added
+                    if (timeSlotsGrid.childCount == 0) {
+                        // Display a message indicating no slots available for the day
+                        val noSlotsTextView = TextView(this).apply {
+                            // Set the layout parameters
+                            layoutParams = GridLayout.LayoutParams().apply {
+                                width = GridLayout.LayoutParams.WRAP_CONTENT
+                                height = GridLayout.LayoutParams.WRAP_CONTENT
+                                setMargins(8.dpToPx(), 8.dpToPx(), 8.dpToPx(), 8.dpToPx())
+                            }
+                            text = "No slots available for $selectedDate"
+                            gravity = Gravity.CENTER
+                            setTextColor(Color.BLACK)
+                            setPadding(12.dpToPx(), 12.dpToPx(), 12.dpToPx(), 12.dpToPx())
                         }
-                        text = "No slots available for $selectedDate"
-                        gravity = Gravity.CENTER
-                        setTextColor(Color.BLACK)
-                        setPadding(12.dpToPx(), 12.dpToPx(), 12.dpToPx(), 12.dpToPx())
+                        timeSlotsGrid.addView(noSlotsTextView)
                     }
-                    timeSlotsGrid.addView(noSlotsTextView)
                 }
             }
             .addOnFailureListener { exception ->
@@ -191,6 +199,22 @@ class AppointmentActivity : AppCompatActivity() {
                 Log.e("AppointmentActivity", "Failed to load time slots: ${exception.message}", exception)
                 Toast.makeText(this, "Failed to load time slots: ${exception.message}", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    // Function to parse time slots and return comparable values for sorting
+    private fun parseTimeSlot(timeSlot: String): Int {
+        val timeParts = timeSlot.split(" ")[0].split("-")
+        val startTime = timeParts[0].toInt()
+        val period = timeSlot.split(" ")[1] // AM or PM
+
+        // Convert 12-hour format to 24-hour format for sorting
+        return if (period == "PM" && startTime != 12) {
+            startTime + 12
+        } else if (period == "AM" && startTime == 12) {
+            0
+        } else {
+            startTime
+        }
     }
 
     // Function to select a schedule
