@@ -13,12 +13,26 @@ import androidx.core.content.res.ResourcesCompat
 import com.google.firebase.Firebase
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.analytics
+import com.google.firebase.auth.FirebaseAuth
 
 class HomePageActivity: AppCompatActivity() {
     private lateinit var analytics: FirebaseAnalytics
+    private lateinit var mAuth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page)
+
+        // Initialize FirebaseAuth instance
+        mAuth = FirebaseAuth.getInstance()
+
+        // Check if user is authenticated
+        val currentUser = mAuth.currentUser
+        if (currentUser == null) {
+            // User is not authenticated, navigate to LoginActivity
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+            return
+        }
 
         // Obtain the FirebaseAnalytics instance.
         analytics = Firebase.analytics
