@@ -128,17 +128,21 @@ class UserDetailsActivity : AppCompatActivity() {
 
         // Handle profile image click to open gallery
         profileImageView.setOnClickListener {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-                openGallery()
-            } else {
-                requestStoragePermission()
+            if (isEditMode) {
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                    openGallery()
+                } else {
+                    requestStoragePermission()
+                }
             }
         }
+
         logoutButton.setOnClickListener {
             logoutUser()
         }
     }
 
+    // Load profile image from URL using Glide
     private fun loadProfileImage(imageUrl: String?) {
         imageUrl?.let {
             if (it.isNotBlank()) {
@@ -160,6 +164,7 @@ class UserDetailsActivity : AppCompatActivity() {
         }
     }
 
+    // Log out the user and redirect to the login screen
     private fun logoutUser() {
         // Log out the user from Firebase Authentication
         mAuth.signOut()
@@ -173,6 +178,7 @@ class UserDetailsActivity : AppCompatActivity() {
         }
     }
 
+    // Register an ActivityResultLauncher for gallery intent
     private val galleryLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             val data: Intent? = result.data
@@ -186,11 +192,13 @@ class UserDetailsActivity : AppCompatActivity() {
         }
     }
 
+    // Open gallery to select an image
     private fun openGallery() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         galleryLauncher.launch(intent)
     }
 
+    // Upload the selected image to Firebase Storage
     private fun uploadProfileImage(imageUri: Uri) {
         val user = mAuth.currentUser
         user?.let {
@@ -198,20 +206,26 @@ class UserDetailsActivity : AppCompatActivity() {
                 .child("profile_images/${user.uid}.jpg")
             storageRef.putFile(imageUri)
                 .addOnSuccessListener { taskSnapshot ->
-                    // Get the download URL from Firebase Storage
-                    storageRef.downloadUrl.addOnSuccessListener { uri ->
-                        // Update Firestore with the new image URL
-                        updateProfileImageUrl(uri.toString())
-                    }.addOnFailureListener { exception ->
-                        Toast.makeText(this, "Failed to retrieve download URL: ${exception.message}", Toast.LENGTH_SHORT).show()
+                    // Get the download URL of the uploaded image
+                    taskSnapshot.storage.downloadUrl.addOnSuccessListener { downloadUri ->
+                        // Save the download URL in Firestore
+                        val userRef = firestore.collection("users").document(user.uid)
+                        userRef.update("photoUrl", downloadUri.toString())
+                            .addOnSuccessListener {
+                                Log.d("UserDetailsActivity", "Profile image URL updated in Firestore.")
+                            }
+                            .addOnFailureListener { e ->
+                                Log.e("UserDetailsActivity", "Failed to update profile image URL in Firestore.", e)
+                            }
                     }
                 }
                 .addOnFailureListener { exception ->
-                    Toast.makeText(this, "Failed to upload image: ${exception.message}", Toast.LENGTH_SHORT).show()
+                    Log.e("UserDetailsActivity", "Failed to upload profile image.", exception)
                 }
         }
     }
 
+    // Update the profile image URL in Firestore
     private fun updateProfileImageUrl(imageUrl: String) {
         val user = mAuth.currentUser
         user?.let {
@@ -221,7 +235,6 @@ class UserDetailsActivity : AppCompatActivity() {
                 .addOnSuccessListener {
                     // Update local cached user object if necessary
                     currentUser?.photoUrl = imageUrl
-                    Toast.makeText(this, "Profile image updated successfully", Toast.LENGTH_SHORT).show()
                     Log.d("UserDetailsActivity", "Profile image URL updated to: $imageUrl")
                 }
                 .addOnFailureListener { exception ->
@@ -231,6 +244,7 @@ class UserDetailsActivity : AppCompatActivity() {
         }
     }
 
+    // Request storage permission to access gallery
     private fun requestStoragePermission() {
         ActivityCompat.requestPermissions(
             this,
@@ -239,6 +253,7 @@ class UserDetailsActivity : AppCompatActivity() {
         )
     }
 
+    // Fetch user details from Firestore
     private fun fetchUserDetails() {
         val user = mAuth.currentUser
         user?.let {
@@ -270,6 +285,7 @@ class UserDetailsActivity : AppCompatActivity() {
         }
     }
 
+    // Cache profile image URL in SharedPreferences
     private fun saveProfileImageUrl(imageUrl: String) {
         val sharedPreferences = getSharedPreferences("UserProfile", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
@@ -277,6 +293,7 @@ class UserDetailsActivity : AppCompatActivity() {
         editor.apply()
     }
 
+    // Load cached profile image URL from SharedPreferences
     private fun loadCachedProfileImage() {
         val sharedPreferences = getSharedPreferences("UserProfile", Context.MODE_PRIVATE)
         val profileImageUrl = sharedPreferences.getString("profileImageUrl", null)
@@ -285,6 +302,7 @@ class UserDetailsActivity : AppCompatActivity() {
         }
     }
 
+    // Toggle between view and edit mode
     private fun toggleEditMode() {
         if (!isEditMode) {
             // Switch to edit mode
@@ -299,6 +317,7 @@ class UserDetailsActivity : AppCompatActivity() {
         }
     }
 
+    // Save profile changes to Firestore
     private fun saveProfileChanges() {
         val user = mAuth.currentUser
         user?.let {
