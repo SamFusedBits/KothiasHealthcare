@@ -174,6 +174,10 @@ class QuestionnaireActivity : AppCompatActivity() {
 
             // Show a progress message
             Toast.makeText(this, "Submitting your responses, please wait...", Toast.LENGTH_SHORT).show()
+            // Send email notification after 50 seconds
+            Handler(Looper.getMainLooper()).postDelayed({
+                sendEmailNotification()
+            }, 50000) // 50 seconds delay
 
             // Call API to submit questionnaire
             apiService.submitQuestionnaire(questionnaire).enqueue(object : Callback<ResponseData> {
@@ -189,11 +193,6 @@ class QuestionnaireActivity : AppCompatActivity() {
 
                             // Call the predict API
                             getPrediction()
-
-                            // Send email notification after 50 seconds
-                            Handler(Looper.getMainLooper()).postDelayed({
-                                sendEmailNotification(name)
-                            }, 50000) // 50 seconds delay
                         }
                     } else {
                         Toast.makeText(this@QuestionnaireActivity, "Please try again after some time.", Toast.LENGTH_SHORT).show()
@@ -250,13 +249,13 @@ class QuestionnaireActivity : AppCompatActivity() {
     }
 
     // Function to send an email notification to the user
-    private fun sendEmailNotification(userName: String) {
+    private fun sendEmailNotification() {
         val userEmail = getCurrentUserEmail()
 
         if (userEmail != null) {
             val subject = "Thank you for your submission!"
             val content = """
-            <h1>Hello $userName,</h1>
+            <h1>Dear Patient,</h1>
             <p>Great news! Your previous submission is now processed, and you can enter your details again to receive your prediction.</p>
             <p>Simply visit our application and submit your details to get the latest prediction results.</p>
             <p>If you have any questions or need further assistance, feel free to reach out to us.</p>
