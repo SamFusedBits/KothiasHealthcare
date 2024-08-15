@@ -12,7 +12,10 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/_8sdp">
+        android:paddingTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_50ssp"
+        android:paddingBottom="?attr/actionBarSize"
+        android:clipToPadding="false">
 
         <!-- Main Content -->
         <androidx.constraintlayout.widget.ConstraintLayout
