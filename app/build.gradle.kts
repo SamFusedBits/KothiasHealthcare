@@ -14,11 +14,11 @@ val localProperties = Properties().apply {
 }
 
 android {
-    namespace = "com.example.ksharsutra"
+    namespace = "com.kothias.clinic"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.ksharsutra"
+        applicationId = "com.kothias.clinic"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
