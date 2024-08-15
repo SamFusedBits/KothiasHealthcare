@@ -34,6 +34,11 @@ class ManageReportsActivity : AppCompatActivity() {
     private var isLoadingReports = false
     private val PAGE_SIZE = 20
 
+    @Suppress("SuperOnBackPressed")
+    override fun onBackPressed() {
+        finishAffinity() // This will finish all activities in the stack and exit the app
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manage_patient_reports)

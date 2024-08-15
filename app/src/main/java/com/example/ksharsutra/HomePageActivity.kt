@@ -18,6 +18,12 @@ import com.google.firebase.auth.FirebaseAuth
 class HomePageActivity: AppCompatActivity() {
     private lateinit var analytics: FirebaseAnalytics
     private lateinit var mAuth: FirebaseAuth
+
+    @Suppress("SuperOnBackPressed")
+    override fun onBackPressed() {
+        finishAffinity() // This will finish all activities in the stack and exit the app
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page)
