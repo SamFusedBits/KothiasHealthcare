@@ -2,6 +2,8 @@ package com.example.ksharsutra
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
@@ -9,6 +11,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
@@ -186,6 +189,11 @@ class QuestionnaireActivity : AppCompatActivity() {
 
                             // Call the predict API
                             getPrediction()
+
+                            // Send email notification after 50 seconds
+                            Handler(Looper.getMainLooper()).postDelayed({
+                                sendEmailNotification(name)
+                            }, 50000) // 50 seconds delay
                         }
                     } else {
                         Toast.makeText(this@QuestionnaireActivity, "Please try again after some time.", Toast.LENGTH_SHORT).show()
@@ -233,5 +241,40 @@ class QuestionnaireActivity : AppCompatActivity() {
                 Log.d("QuestionnaireActivity", "Error getting prediction", t)
             }
         })
+    }
+
+    // Function to get the current user's email
+    private fun getCurrentUserEmail(): String? {
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        return currentUser?.email
+    }
+
+    // Function to send an email notification to the user
+    private fun sendEmailNotification(userName: String) {
+        val userEmail = getCurrentUserEmail()
+
+        if (userEmail != null) {
+            val subject = "Thank you for your submission!"
+            val content = """
+            <h1>Hello $userName,</h1>
+            <p>Great news! Your previous submission is now processed, and you can enter your details again to receive your prediction.</p>
+            <p>Simply visit our application and submit your details to get the latest prediction results.</p>
+            <p>If you have any questions or need further assistance, feel free to reach out to us.</p>
+            <p>Best regards,<br>Dr. Kothia's Clinic</p>
+        """
+            SendinblueHelper.sendEmail(
+                to = userEmail, // Use the logged-in user's email
+                subject = subject,
+                content = content
+            ) { success, message ->
+                if (success) {
+                    Log.d("SendinblueHelper", "Email sent successfully")
+                } else {
+                    Log.d("SendinblueHelper", "Failed to send email: $message")
+                }
+            }
+        } else {
+            Log.e("SendinblueHelper", "Failed to retrieve user email")
+        }
     }
 }
