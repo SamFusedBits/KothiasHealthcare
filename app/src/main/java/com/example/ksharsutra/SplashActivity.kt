@@ -17,6 +17,6 @@ class SplashActivity : AppCompatActivity() {
             // Start the main activity
             startActivity(Intent(this, MainActivity::class.java))
             finish() // Close the splash screen so that user can't go back to it
-        }, 2000) // Adjust the delay time as needed
+        }, 800) // Adjust the delay time as needed
     }
 }
