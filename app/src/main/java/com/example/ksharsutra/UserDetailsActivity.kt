@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -16,6 +17,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -53,6 +55,9 @@ class UserDetailsActivity : AppCompatActivity() {
     private lateinit var logoutButton: Button
     private lateinit var googleSignInClient: GoogleSignInClient
 
+    // Request code for permissions
+    private val READ_EXTERNAL_STORAGE_PERMISSION_CODE = 100
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_details)
@@ -74,6 +79,7 @@ class UserDetailsActivity : AppCompatActivity() {
         val navigation_report = findViewById<ImageView>(R.id.navigation_report)
         val navigation_appointment = findViewById<ImageView>(R.id.navigation_appointment)
         val navigation_home = findViewById<ImageView>(R.id.navigation_home)
+
 
         navigation_report.setOnClickListener{
             val intent = Intent(this, NavigationReportActivity::class.java)
@@ -129,10 +135,15 @@ class UserDetailsActivity : AppCompatActivity() {
         // Handle profile image click to open gallery
         profileImageView.setOnClickListener {
             if (isEditMode) {
-                if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-                    openGallery()
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    openGallery() // Directly open gallery as READ_EXTERNAL_STORAGE is not required
                 } else {
-                    requestStoragePermission()
+                    // For Android versions below Android 11, check for READ_EXTERNAL_STORAGE permission
+                    if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                        openGallery()
+                    } else {
+                        requestStoragePermission()
+                    }
                 }
             }
         }
@@ -194,7 +205,24 @@ class UserDetailsActivity : AppCompatActivity() {
 
     // Open gallery to select an image
     private fun openGallery() {
-        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            // No need to check for READ_EXTERNAL_STORAGE permission in Android 11 (API level 30) and above
+            launchGalleryIntent()
+        } else {
+            // Check for READ_EXTERNAL_STORAGE permission for Android versions below Android 11
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                launchGalleryIntent()
+            } else {
+                requestStoragePermission()
+            }
+        }
+    }
+
+    private fun launchGalleryIntent() {
+        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+            addCategory(Intent.CATEGORY_OPENABLE)
+            type = "image/*"
+        }
         galleryLauncher.launch(intent)
     }
 
@@ -225,32 +253,37 @@ class UserDetailsActivity : AppCompatActivity() {
         }
     }
 
-    // Update the profile image URL in Firestore
-    private fun updateProfileImageUrl(imageUrl: String) {
-        val user = mAuth.currentUser
-        user?.let {
-            // Update Firestore with new image URL
-            val userRef = firestore.collection("users").document(user.uid)
-            userRef.update("profileImageUrl", imageUrl)
-                .addOnSuccessListener {
-                    // Update local cached user object if necessary
-                    currentUser?.photoUrl = imageUrl
-                    Log.d("UserDetailsActivity", "Profile image URL updated to: $imageUrl")
-                }
-                .addOnFailureListener { exception ->
-                    Toast.makeText(this, "Failed to update profile image: ${exception.message}", Toast.LENGTH_SHORT).show()
-                    Log.e("UserDetailsActivity", "Error updating profile image URL: ${exception.message}")
-                }
+    // Request storage permission to access gallery
+    private fun requestStoragePermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf("android.permission.READ_MEDIA_IMAGES"),
+                READ_EXTERNAL_STORAGE_PERMISSION_CODE
+            )
+        } else {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                READ_EXTERNAL_STORAGE_PERMISSION_CODE
+            )
         }
     }
 
-    // Request storage permission to access gallery
-    private fun requestStoragePermission() {
-        ActivityCompat.requestPermissions(
-            this,
-            arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-            1011
-        )
+    // Handle permission request result
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            READ_EXTERNAL_STORAGE_PERMISSION_CODE -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    openGallery()
+                } else {
+                    // Log the permission denial
+                    Log.d("UserDetailsActivity", "READ_EXTERNAL_STORAGE permission denied")
+                    Toast.makeText(this, "Permission Denied. Please enable storage access permission in app settings.", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 
     // Fetch user details from Firestore
