@@ -4,7 +4,9 @@ import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.ContentValues.TAG
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.OpenableColumns
 import android.util.Log
@@ -26,6 +28,7 @@ import com.google.firebase.storage.FirebaseStorage
 import java.util.*
 import com.google.firebase.firestore.Query
 import android.provider.Settings
+import androidx.annotation.RequiresApi
 
 class NavigationReportActivity : AppCompatActivity() {
 
@@ -48,7 +51,6 @@ class NavigationReportActivity : AppCompatActivity() {
 
     // Declare an instance of ActivityResultLauncher
     private lateinit var filePickerActivityResultLauncher: ActivityResultLauncher<Intent>
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -181,30 +183,15 @@ class NavigationReportActivity : AppCompatActivity() {
     // Open file picker to select a file
     private fun openFilePicker() {
         Log.d(TAG, "Opening file picker")
-        // Check if permission is granted
-        if (ContextCompat.checkSelfPermission(
-                this,
-                android.Manifest.permission.READ_EXTERNAL_STORAGE
-            ) != android.content.pm.PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                this,
-                // Request permission to read external storage
-                arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
-                READ_EXTERNAL_STORAGE_PERMISSION_CODE
-            )
-        } else {
-            // Set allowed MIME types
-            val mimeTypes = arrayOf("application/pdf", "image/jpeg", "image/png")
-            // Create an intent to select a file
-            val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
-            // Set MIME type and category
-            intent.addCategory(Intent.CATEGORY_OPENABLE)
-            // Set MIME types
-            intent.type = "*/*"
-            intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes)
-            filePickerActivityResultLauncher.launch(intent)
+
+        // Create and launch the file picker intent
+        val mimeTypes = arrayOf("application/pdf", "image/jpeg", "image/png")
+        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+            addCategory(Intent.CATEGORY_OPENABLE)
+            type = "*/*"
+            putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes)
         }
+        filePickerActivityResultLauncher.launch(intent)
     }
 
     // Handle permission request result
@@ -214,7 +201,7 @@ class NavigationReportActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         // Check if permission is granted
         if (requestCode == READ_EXTERNAL_STORAGE_PERMISSION_CODE) {
-            if ((grantResults.isNotEmpty() && grantResults[0] == android.content.pm.PackageManager.PERMISSION_GRANTED)) {
+            if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                 Log.d(TAG, "Permission granted")
                 openFilePicker()
             } else {
@@ -222,7 +209,7 @@ class NavigationReportActivity : AppCompatActivity() {
                 // Show rationale and ask for permission again
                 if (ActivityCompat.shouldShowRequestPermissionRationale(
                         this,
-                        android.Manifest.permission.READ_EXTERNAL_STORAGE
+                        "android.permission.READ_MEDIA_IMAGES"
                     )
                 ) {
                     // Show an explanation to the user *asynchronously* -- don't block
@@ -235,7 +222,7 @@ class NavigationReportActivity : AppCompatActivity() {
                     ).show()
                     ActivityCompat.requestPermissions(
                         this,
-                        arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+                        arrayOf("android.permission.READ_MEDIA_IMAGES"),
                         READ_EXTERNAL_STORAGE_PERMISSION_CODE
                     )
                 } else {
@@ -254,14 +241,15 @@ class NavigationReportActivity : AppCompatActivity() {
         }
     }
 
+    // Handle the result of the file picker intent
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PICK_FILE_REQUEST && resultCode == Activity.RESULT_OK) {
-            if (resultCode == Activity.RESULT_OK && data?.data != null) {
-                val uri = data.data
+            val uri = data?.data
+            if (uri != null) {
                 Log.d(TAG, "File selected: $uri")
                 // Check if the selected file type is allowed
-                if (ALLOWED_FILE_TYPES.contains(contentResolver.getType(uri!!))) {
+                if (ALLOWED_FILE_TYPES.contains(contentResolver.getType(uri))) {
                     // Prompt user for additional details before uploading file
                     fetchUserDetailsAndUpload(uri)
                 } else {
@@ -271,7 +259,6 @@ class NavigationReportActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-
             } else {
                 Log.d(TAG, "No file selected")
                 Toast.makeText(this, "No file selected", Toast.LENGTH_SHORT).show()
@@ -279,6 +266,7 @@ class NavigationReportActivity : AppCompatActivity() {
         }
     }
 
+    // Fetch user details and upload the file to Firebase Storage
     private fun fetchUserDetailsAndUpload(fileUri: Uri) {
         val user = FirebaseAuth.getInstance().currentUser
         user?.let {
@@ -290,6 +278,7 @@ class NavigationReportActivity : AppCompatActivity() {
         }
     }
 
+    // Upload the selected file to Firebase Storage
     private fun uploadFileToFirebase(fileUri: Uri, name: String, email: String, phoneNumber: String) {
         Log.d(TAG, "Uploading file to Firebase Storage")
         val fileName = getFileName(fileUri) ?: UUID.randomUUID().toString()
@@ -332,6 +321,7 @@ class NavigationReportActivity : AppCompatActivity() {
         }
     }
 
+    // Save file metadata to Firestore
     private fun saveFileMetadataToFirestore(fileName: String, downloadUrl: String, name: String, email: String, phoneNumber: String) {
         val firestore = FirebaseFirestore.getInstance()
         val userId = FirebaseAuth.getInstance().currentUser?.uid
@@ -363,6 +353,7 @@ class NavigationReportActivity : AppCompatActivity() {
         }
     }
 
+    // Add the uploaded file to the UI
     private fun addFileToUI(fileName: String, fileUrl: String, timestamp: Long) {
         val fileView = layoutInflater.inflate(R.layout.item_uploaded_file, null)
         val fileNameTextView = fileView.findViewById<TextView>(R.id.file_name_text_view)
@@ -384,6 +375,7 @@ class NavigationReportActivity : AppCompatActivity() {
         filesContainer.visibility = View.VISIBLE
     }
 
+    // Open the file using an appropriate app
     private fun openFileInGoogleDrive(uri: Uri, mimeType: String) {
         val intent = Intent(Intent.ACTION_VIEW)
         intent.setDataAndType(uri, mimeType)
@@ -399,6 +391,7 @@ class NavigationReportActivity : AppCompatActivity() {
         }
     }
 
+    // Open the file using an appropriate app
     private fun openFileInDefaultChooser(uri: Uri, mimeType: String) {
         val intent = Intent(Intent.ACTION_VIEW)
         intent.setDataAndType(uri, mimeType)
@@ -414,6 +407,7 @@ class NavigationReportActivity : AppCompatActivity() {
         }
     }
 
+    // Open the file in a browser
     private fun openFileInBrowser(uri: Uri) {
         val browserIntent = Intent(Intent.ACTION_VIEW, uri)
         browserIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
@@ -425,13 +419,14 @@ class NavigationReportActivity : AppCompatActivity() {
         }
     }
 
+    // Open the file using an appropriate app
     private fun openFile(fileName: String, fileUrl: String) {
         val uri = Uri.parse(fileUrl)
         val mimeType = when {
             fileName.endsWith(".pdf", true) -> "application/pdf"
             fileName.endsWith(".png", true) -> "image/png"
             fileName.endsWith(".jpg", true) || fileName.endsWith(".jpeg", true) -> "image/jpeg"
-            else -> null
+            else -> "*/*" // fallback to all file types if the extension is not recognized
         }
 
         if (mimeType != null) {
@@ -447,6 +442,7 @@ class NavigationReportActivity : AppCompatActivity() {
         }
     }
 
+    // Get the file name from the URI
     private fun getFileName(uri: Uri): String? {
         var result: String? = null
         if (uri.scheme == "content") {
@@ -472,5 +468,6 @@ class NavigationReportActivity : AppCompatActivity() {
         return result
     }
 
+    // Data class to store file metadata
     data class FileMetadata(val name: String, val url: String, val timestamp: Long)
 }
