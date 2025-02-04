@@ -101,7 +101,6 @@
             android:paddingLeft="@dimen/_16sdp"
             android:paddingRight="@dimen/_16sdp" />
 
-
         <EditText
             android:id="@+id/dob"
             android:layout_width="match_parent"
@@ -111,7 +110,9 @@
             android:background="@drawable/button_bg_layout_ivory"
             android:gravity="center_vertical"
             android:hint="@string/dob"
-            android:inputType="date"
+            android:inputType="none"
+            android:focusable="true"
+            android:clickable="true"
             android:paddingLeft="@dimen/_16sdp"
             android:paddingRight="@dimen/_16sdp"
             android:textSize="@dimen/_16ssp" />
